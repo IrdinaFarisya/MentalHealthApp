@@ -53,14 +53,37 @@ class Mood {
     'details': details,
   };
 
-  Future<dynamic> saveMood() async {
+  Future<bool> saveMood() async {
     RequestController req = RequestController(path: "/api/mood.php");
     req.setBody(toJson());
     await req.post();
+    print("HTTP Status: ${req.status()}");
+    print("Raw response: ${req.result()}");
+
     if (req.status() == 400) {
       return false;
     } else if (req.status() == 200) {
-      String data = req.result().toString();
+      var result = req.result();
+      print("Response data: $result");
+      try {
+        if (result is Map<String, dynamic>) {
+          // If result is already a Map, use it directly
+          if (result.containsKey('entryId')) {
+            entryId = int.parse(result['entryId'].toString());
+            return true;
+          }
+        } else if (result is String) {
+          // If result is a String, parse it as JSON
+          Map<String, dynamic> response = json.decode(result);
+          if (response.containsKey('entryId')) {
+            entryId = int.parse(response['entryId'].toString());
+            return true;
+          }
+        }
+      } catch (e) {
+        print("Error parsing response: $e");
+      }
+      return false;
     } else {
       return false;
     }

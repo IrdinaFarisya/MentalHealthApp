@@ -22,7 +22,7 @@ class SignUp extends StatefulWidget {
 }
 
 class _signUpState extends State<SignUp> {
-  TextEditingController usernameNameController = TextEditingController();
+  TextEditingController usernameController = TextEditingController();
   TextEditingController emailController=TextEditingController();
   TextEditingController passwordController=TextEditingController();
   TextEditingController dateOfBirthController = TextEditingController();
@@ -49,22 +49,33 @@ class _signUpState extends State<SignUp> {
 
 
   void _addUser() async {
-    final String username = usernameNameController.text.trim();
+    final List<AppUser> admin= [];
+    final String username = usernameController.text.trim();
     final String email = emailController.text.trim();
     final String password = passwordController.text.trim();
     final String dateOfBirth = dateOfBirthController.text.trim();
     final String phoneNumber = phoneNumberController.text.trim();
     final String accessStatus = 'ACTIVE';
-    final int roleId = 1;
+    int appUserId=0;
+    int roleId = 1;
 
     if (username.isNotEmpty && email.isNotEmpty && password.isNotEmpty
         && dateOfBirth.isNotEmpty && phoneNumber.isNotEmpty) {
 
-      AppUser user = AppUser();
+      AppUser user = AppUser(
+          appUserId: appUserId,
+          username: username,
+          email: email,
+          password: password,
+          dateOfBirth: dateOfBirth,
+          phoneNumber: phoneNumber,
+          accessStatus: accessStatus,
+          roleId: roleId
+      );
 
       if (await user.save()) {
         setState(() {
-          usernameNameController.clear();
+          usernameController.clear();
           emailController.clear();
           passwordController.clear();
           dateOfBirthController.clear();
@@ -81,7 +92,7 @@ class _signUpState extends State<SignUp> {
     } else {
       _AlertMessage("Please Insert All The Information Needed");
       setState(() {
-        usernameNameController.clear();
+        usernameController.clear();
         emailController.clear();
         passwordController.clear();
         dateOfBirthController.clear();
@@ -176,7 +187,7 @@ class _signUpState extends State<SignUp> {
                               borderRadius: BorderRadius.circular(50.0),
                             ),
                             child: TextField(
-                              controller: usernameNameController,
+                              controller: usernameController,
                               decoration: const InputDecoration(
                                 border: InputBorder.none,
                               ),

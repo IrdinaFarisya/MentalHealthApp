@@ -11,7 +11,7 @@ class RequestController {
   dynamic _resultData;
 
   RequestController ({required this.path, this.server =
-  "http://192.168.0.10"});
+  "http://10.131.76.112"});
 
 
   setBody (Map<String, dynamic> data){

@@ -7,6 +7,7 @@ import '../../model/appUser.dart';
 import 'package:mentalhealthapp/views/UserSignUp.dart';
 //import 'forgotpassword.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:mentalhealthapp/views/UserForgotPassword.dart';
 
 
 class UserLogin extends StatefulWidget {
@@ -94,7 +95,7 @@ class _SignInState extends State<UserLogin> {
   void _forgetPassword() {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => UserHomePage()),//tba
+      MaterialPageRoute(builder: (context) => PasswordResetPage()),//tba
     );
   }
 

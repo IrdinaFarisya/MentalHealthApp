@@ -53,4 +53,24 @@ class Appointment {
       return false;
     }
   }
+
+  static Future<List<Appointment>> loadAppointment() async {
+    List<Appointment> result = [];
+    RequestController req = RequestController(path: "/api/bookingAppointment.php");
+    await req.get();
+
+    if (req.status() == 200 && req.result() != null) {
+      List<dynamic> responseData = req.result();
+      if (responseData.isNotEmpty) {
+      print(loadAppointment());
+      } else {
+        print('Response data is empty.');
+      }
+    } else {
+      print('Failed to fetch data.');
+      print('Server response: ${req.result()}');
+    }
+
+    return result;
+  }
 }

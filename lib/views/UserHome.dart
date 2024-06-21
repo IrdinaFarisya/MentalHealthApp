@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mentalhealthapp/views/MoodTracker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:mentalhealthapp/views/AppointmentScreen.dart';
 import 'package:mentalhealthapp/model/appUser.dart';
@@ -160,6 +161,7 @@ class _UserHomePageState extends State<UserHomePage> {
               ),
             ),
             bottomNavigationBar: BottomNavigationBar(
+              type: BottomNavigationBarType.fixed, // Add this line
               items: const <BottomNavigationBarItem>[
                 BottomNavigationBarItem(
                   icon: Icon(Icons.home),
@@ -174,8 +176,8 @@ class _UserHomePageState extends State<UserHomePage> {
                   label: 'Therapists',
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.chat),
-                  label: 'Groups',
+                  icon: Icon(Icons.file_copy),
+                  label: 'Resources',
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(Icons.person),
@@ -185,7 +187,43 @@ class _UserHomePageState extends State<UserHomePage> {
               currentIndex: _selectedIndex,
               selectedItemColor: Colors.black,
               unselectedItemColor: Colors.grey,
-              onTap: _onItemTapped,
+              showUnselectedLabels: true, // Add this line to ensure unselected labels are shown
+              onTap: (index) {
+                // Handle item tap
+                switch (index) {
+                  case 0:
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => UserHomePage(),
+                      ),
+                    );
+                  case 1:
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => MoodTrackerPage(),
+                      ),
+                    );
+                    break;
+                  case 2:
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => AppointmentScreen(),
+                      ),
+                    );
+                    break;
+                  /*case 3:
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => updateProfilePage(user: widget.user),
+                      ),
+                    );
+                    break;*/
+                }
+              },
             ),
           ),
         ],

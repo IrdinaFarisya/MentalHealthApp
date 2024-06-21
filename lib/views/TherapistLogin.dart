@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:typed_data';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
-import 'package:mentalhealthapp/views/UserHome.dart';
+import 'package:mentalhealthapp/views/TherapistHome.dart';
 import '../../model/therapist.dart';
 //import 'forgotpassword.dart';
 
@@ -47,7 +47,7 @@ class _SignInState extends State<TherapistLogin> {
         });
 
         _showMessage("LogIn Successful");
-        Navigator.push(context, MaterialPageRoute(builder: (context)=>UserHomePage()));
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>TherapistHomePage()));
 
       }
       else{
@@ -97,7 +97,7 @@ class _SignInState extends State<TherapistLogin> {
   void _forgetPassword() {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => UserHomePage()), // tba
+      MaterialPageRoute(builder: (context) => TherapistHomePage()), // tba
     );
   }
 
@@ -243,7 +243,7 @@ class _SignInState extends State<TherapistLogin> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => UserHomePage()),//change when signup already implemented
+                    MaterialPageRoute(builder: (context) => TherapistHomePage()),//change when signup already implemented
                   );
                 },
                 style: ElevatedButton.styleFrom(
