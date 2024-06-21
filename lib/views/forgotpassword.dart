@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import '../Model/appUser.dart';
-import 'login.dart';
+import 'package:mentalhealthapp/views/UserLogin.dart';
 
 
 class PasswordResetPage extends StatefulWidget {
@@ -24,71 +24,53 @@ class _PasswordResetPageState extends State<PasswordResetPage> {
       isPasswordVisible = !isPasswordVisible;
     });
   }
-  void _checkUser() async{
-
-    final List<AppUser> admin= [];
-
+  void _checkUser() async {
     final String email = emailController.text.trim();
-    final String password=passwordController.text.trim();
+    final String password = passwordController.text.trim();
     final String confirmationpassword = confirmationpasswordController.text.trim();
 
+    if (password == confirmationpassword) {
+      if (email.isNotEmpty && password.isNotEmpty && confirmationpassword.isNotEmpty) {
+        AppUser user = AppUser.getId(email);
 
-    if (password == confirmationpassword){
-      int appUserId=0;
-      String username='';
-      String dateOfBirth='';
-      String phoneNumber='';
-      String accessStatus='';
+        int? userIdResult = await user.getUserId();
 
-      if ( email.isNotEmpty && password.isNotEmpty && confirmationpassword.isNotEmpty) {
-
-        //_AlertMessage("success");
-
-        AppUser user = AppUser.getId (email);
-
-        if(await user.getUserId()){
+        if (userIdResult == 1) {
           int? appUserId = user.appUserId;
 
-          AppUser reset = AppUser.resetPassword(appUserId, password) ;
+          AppUser reset = AppUser.resetPassword(appUserId!, password);
 
-          if (await reset.resetPassword()) {
+          int resetPasswordResult = await reset.resetPassword() ? 1 : 0;
 
+          if (resetPasswordResult == 1) {
             _AlertMessage1("Password successfully being reset");
 
             Future.delayed(Duration(seconds: 2), () {
               // Navigate to the login screen
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>signIn()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => UserLogin()));
             });
-
           }
-
+        } else {
+          _AlertMessage("Invalid email or password");
         }
-
-
-      }
-      else{
+      } else {
         _AlertMessage("Please Insert All The Information Needed");
         setState(() {
-
           emailController.clear();
           passwordController.clear();
           confirmationpasswordController.clear();
         });
-
       }
-    }
-    else
-    {
+    } else {
       _AlertMessage("Confirmation Password not same with the password");
       setState(() {
-
         emailController.clear();
         passwordController.clear();
         confirmationpasswordController.clear();
       });
     }
-
   }
+
 
 
   void _AlertMessage(String msg) {

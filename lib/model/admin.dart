@@ -4,14 +4,20 @@ class Admin {
   int? adminId;
   String? email;
   String? password;
-  int? roleId; // Added roleId field
+  int? roleId;
 
   Admin(
       this.adminId,
       this.email,
       this.password,
-      this.roleId, // Included roleId in the constructor
+      this.roleId,
       );
+
+  Admin.empty()
+      : adminId = 0,
+        email = '',
+        password = '',
+        roleId = 0;
 
   Admin.getId(
       this.email,
@@ -21,14 +27,13 @@ class Admin {
       : adminId = json['adminId'] as int,
         email = json['email'] as String,
         password = json['password'] as String,
-        roleId = json['roleId'] as int; // Included roleId in fromJson
+        roleId = json['roleId'] as int;
 
-  //toJson will be automatically called by jsonEncode when necessary
   Map<String, dynamic> toJson() => {
     'adminId': adminId,
     'email': email,
     'password': password,
-    'roleId': roleId, // Included roleId in toJson
+    'roleId': roleId,
   };
 
   Future<bool> save() async {
@@ -49,20 +54,27 @@ class Admin {
     }
   }
 
-  Future<bool> checkAdminExistence() async {
-    RequestController req =
-    RequestController(path: "/api/adminCheckExistence.php");
-    req.setBody(toJson());
+  Future<bool> checkAdminExistence(String email, String password) async {
+    RequestController req = RequestController(path: "/api/appUserCheckExistence.php");
+    Map<String, String> requestBody = {
+      'email': email,
+      'password': password,
+    };
+    req.setBody(requestBody);
     await req.post();
-    print('Json Data: ${req.result()}');
+
     if (req.status() == 200) {
       Map<String, dynamic> result = req.result();
-
-      // Ensure that the fields are converted to the expected types
       adminId = int.parse(result['adminId'].toString());
+      this.email = result['email'].toString();
+      this.password = result['password'].toString();
+      roleId = int.parse(result['roleId'].toString());
+
+      print('Admin data: $result'); // Add this line for debugging
 
       return true;
     } else {
+      print('Error: ${req.result()}'); // Add this line for debugging
       return false;
     }
   }
@@ -94,13 +106,12 @@ class Admin {
   }
 
   Future<bool> updateProfile() async {
-    RequestController req =
-    RequestController(path: "/api/updateAdminProfile.php");
+    RequestController req = RequestController(path: "/api/updateAdminProfile.php");
     req.setBody({
       "adminId": adminId,
       "email": email,
       "password": password,
-      "roleId": roleId, // Include roleId in the request body
+      "roleId": roleId,
     });
     await req.put();
     if (req.status() == 400) {
