@@ -9,7 +9,8 @@ class PatientsBookingList extends StatefulWidget {
 }
 
 class _PatientsBookingListState extends State<PatientsBookingList> {
-  List<Appointment> appointments = [];
+  List<Appointment> pendingAppointments = [];
+  bool isLoading = true;
 
   @override
   void initState() {
@@ -18,13 +19,20 @@ class _PatientsBookingListState extends State<PatientsBookingList> {
   }
 
   Future<void> _loadAppointments() async {
+    setState(() {
+      isLoading = true;
+    });
     try {
       List<Appointment> loadedAppointments = await Appointment.loadAppointment();
       setState(() {
-        appointments = loadedAppointments;
+        pendingAppointments = loadedAppointments.where((appointment) => appointment.status == 'PENDING').toList();
+        isLoading = false;
       });
     } catch (e) {
       print('Error loading appointments: $e');
+      setState(() {
+        isLoading = false;
+      });
     }
   }
 
@@ -66,20 +74,16 @@ class _PatientsBookingListState extends State<PatientsBookingList> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              'Booking List',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 24,
-                fontFamily: 'BodoniModa',
-              ),
-            ),
             SizedBox(height: 16),
             Expanded(
-              child: ListView.builder(
-                itemCount: appointments.length,
+              child: isLoading
+                  ? Center(child: CircularProgressIndicator())
+                  : pendingAppointments.isEmpty
+                  ? _buildNoAppointmentsWidget()
+                  : ListView.builder(
+                itemCount: pendingAppointments.length,
                 itemBuilder: (context, index) {
-                  final appointment = appointments[index];
+                  final appointment = pendingAppointments[index];
                   final dateTime = DateTime.parse('${appointment.appointmentDate} ${appointment.appointmentTime}');
                   final formattedDate = DateFormat('MMMM d, yyyy').format(dateTime);
                   final formattedTime = DateFormat('h:mm a').format(dateTime);
@@ -125,6 +129,37 @@ class _PatientsBookingListState extends State<PatientsBookingList> {
                   );
                 },
               ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildNoAppointmentsWidget() {
+    return Center(
+      child: Container(
+        padding: EdgeInsets.all(16.0),
+        decoration: BoxDecoration(
+          color: Colors.grey.shade200,
+          borderRadius: BorderRadius.circular(16.0),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              Icons.event_busy,
+              size: 64,
+              color: Colors.grey,
+            ),
+            SizedBox(height: 16.0),
+            Text(
+              'No pending appointments',
+              style: TextStyle(
+                fontSize: 20,
+                fontFamily: 'BodoniModa',
+              ),
+              textAlign: TextAlign.center,
             ),
           ],
         ),
