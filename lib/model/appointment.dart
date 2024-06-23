@@ -1,4 +1,6 @@
 import '../Controller/request_controller.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:mentalhealthapp/model/therapist.dart';
 
 class Appointment {
   int? appointmentId;
@@ -8,6 +10,7 @@ class Appointment {
   String? appointmentTime;
   int? status;
   String? appointmentLink;
+  String? username;  // Add this to store the patient's name
 
   Appointment({
     this.appointmentId,
@@ -17,6 +20,7 @@ class Appointment {
     this.appointmentTime,
     this.status,
     this.appointmentLink,
+    this.username,
   });
 
   Appointment.fromJson(Map<String, dynamic> json)
@@ -26,7 +30,8 @@ class Appointment {
         appointmentDate = json['appointmentDate'],
         appointmentTime = json['appointmentTime'],
         status = json['status'],
-        appointmentLink = json['appointmentLink'];
+        appointmentLink = json['appointmentLink'],
+        username = json['username'];
 
   Map<String, dynamic> toJson() => {
     'appointmentId': appointmentId,
@@ -36,7 +41,9 @@ class Appointment {
     'appointmentTime': appointmentTime,
     'status': status,
     'appointmentLink': appointmentLink,
+    'username': username,
   };
+
 
   Future<bool> saveAppointment() async {
     RequestController req =
@@ -56,13 +63,23 @@ class Appointment {
 
   static Future<List<Appointment>> loadAppointment() async {
     List<Appointment> result = [];
-    RequestController req = RequestController(path: "/api/bookingAppointment.php");
+
+    // Create a Therapist instance to use getTherapistId
+    Therapist therapist = Therapist();
+    int? therapistId = await therapist.getTherapistId();
+
+    if (therapistId == null) {
+      print('Error: Therapist ID not found');
+      return result;
+    }
+
+    RequestController req = RequestController(path: "/api/bookingAppointment.php?therapistId=$therapistId");
     await req.get();
 
     if (req.status() == 200 && req.result() != null) {
       List<dynamic> responseData = req.result();
       if (responseData.isNotEmpty) {
-      print(loadAppointment());
+        result = responseData.map((json) => Appointment.fromJson(json)).toList();
       } else {
         print('Response data is empty.');
       }

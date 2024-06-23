@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:mentalhealthapp/views/TherapistHome.dart';
 import '../../model/therapist.dart';
 //import 'forgotpassword.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class TherapistLogin extends StatefulWidget {
   const TherapistLogin({super.key});
@@ -34,6 +35,9 @@ class _SignInState extends State<TherapistLogin> {
 
     if (email.isNotEmpty && password.isNotEmpty) {
       print('Checking Therapist existence...');
+
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setString('therapistEmail', email);
 
       Therapist therapist = Therapist(
         email: email,

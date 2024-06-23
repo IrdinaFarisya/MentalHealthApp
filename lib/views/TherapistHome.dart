@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mentalhealthapp/views/MoodTracker.dart';
+import 'package:mentalhealthapp/views/PatientsBookingList.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:mentalhealthapp/views/AppointmentScreen.dart';
 
@@ -181,7 +182,7 @@ class _TherapistHomePageState extends State<TherapistHomePage> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => MoodTrackerPage(),
+                      builder: (context) => PatientsBookingList(),
                     ),
                   );
                   break;

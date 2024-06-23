@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:typed_data';
 import '../Controller/request_controller.dart';
 import 'package:mentalhealthapp/model/therapistImage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Therapist {
   int? therapistId;
@@ -127,18 +128,6 @@ class Therapist {
     }
   }
 
-  Future<bool> getTherapistId() async {
-    RequestController req = RequestController(path: "/api/getTherapistId.php");
-    req.setBody(toJson());
-    await req.post();
-    if (req.status() == 200) {
-      therapistId = req.result()['therapistId'];
-      print(therapistId);
-      return true;
-    } else {
-      return false;
-    }
-  }
 
   Future<bool> updateProfile(Uint8List? newProfilePicture) async {
     RequestController req = RequestController(path: "/api/updateTherapistProfile.php");
@@ -203,6 +192,34 @@ class Therapist {
     }
 
     return result;
+  }
+
+  Future<int?> getTherapistId() async {
+    final prefs = await SharedPreferences.getInstance();
+    String therapistEmail = prefs.getString('therapistEmail') ?? '';
+    if (therapistEmail == null || therapistEmail!.isEmpty) {
+      print("Error: Email is not set");
+      return null;
+    }
+
+    RequestController req = RequestController(path: "/api/getTherapistId.php");
+    req.setBody({"email": therapistEmail});
+    await req.post();
+
+    if (req.status() == 200) {
+      Map<String, dynamic> result = req.result();
+      if (result.containsKey('therapistId')) {
+        therapistId = result['therapistId'];
+        print("Fetched therapistId: $therapistId");
+        return therapistId;
+      } else {
+        print("therapistId not found in response");
+        return null;
+      }
+    } else {
+      print("Failed to fetch therapistId, status code: ${req.status()}");
+      return null;
+    }
   }
 
 }

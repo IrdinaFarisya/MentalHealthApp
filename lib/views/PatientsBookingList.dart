@@ -1,21 +1,14 @@
-import 'dart:convert';
-import 'dart:typed_data';
 import 'package:flutter/material.dart';
-import 'package:mentalhealthapp/Model/appUser.dart';
-import 'package:mentalhealthapp/model/appointment.dart';
-import 'package:mentalhealthapp/model/therapist.dart';
-import 'package:mentalhealthapp/views/BookAppointment.dart';
-import 'package:mentalhealthapp/views/TherapistHome.dart';
+import 'package:intl/intl.dart';
+import '../model/appointment.dart';
 
 class PatientsBookingList extends StatefulWidget {
-
   @override
   _PatientsBookingListState createState() => _PatientsBookingListState();
 }
 
 class _PatientsBookingListState extends State<PatientsBookingList> {
-  List<Appointment> appointment = [];
-
+  List<Appointment> appointments = [];
 
   @override
   void initState() {
@@ -27,10 +20,10 @@ class _PatientsBookingListState extends State<PatientsBookingList> {
     try {
       List<Appointment> loadedAppointments = await Appointment.loadAppointment();
       setState(() {
-        appointment = loadedAppointments;
+        appointments = loadedAppointments;
       });
     } catch (e) {
-      print('Error loading therapists: $e');
+      print('Error loading appointments: $e');
     }
   }
 
@@ -47,9 +40,9 @@ class _PatientsBookingListState extends State<PatientsBookingList> {
             fontFamily: 'BodoniModa',
           ),
         ),
-        backgroundColor: Colors.transparent, // Make the background transparent
-        elevation: 0, // Remove the shadow
-        centerTitle: true, // Center the title text
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        centerTitle: true,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -67,47 +60,36 @@ class _PatientsBookingListState extends State<PatientsBookingList> {
             SizedBox(height: 16),
             Expanded(
               child: ListView.builder(
-                itemCount: appointment.length,
+                itemCount: appointments.length,
                 itemBuilder: (context, index) {
-                  final therapist = appointment[index];
+                  final appointment = appointments[index];
+                  final dateTime = DateTime.parse('${appointment.appointmentDate} ${appointment.appointmentTime}');
+                  final formattedDate = DateFormat('MMMM d, yyyy').format(dateTime);
+                  final formattedTime = DateFormat('h:mm a').format(dateTime);
 
-                  return GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => TherapistHomePage()
-                        ),
-                      );
-                    },
-                    child: Container(
-                      margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 16.0),
-                      // Add some margin for spacing
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.brown, width: 2.0),
-                        // Customize the border color and width
-                        borderRadius: BorderRadius.circular(16),
-                        // Match the border radius with the Card
+                  return Container(
+                    margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 16.0),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.brown, width: 2.0),
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    child: Card(
+                      elevation: 4.0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
                       ),
-                      child: Card(
-                        elevation: 4.0,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: Row(
+                      child: Padding(
+                        padding: EdgeInsets.all(16.0),
+                        child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Expanded(
-                              child: Padding(
-                                padding: EdgeInsets.all(8.0),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    // Add  details here if needed
-                                  ],
-                                ),
-                              ),
+                            Text(
+                              'Patient: ${appointment.username}',
+                              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                             ),
+                            SizedBox(height: 8),
+                            Text('Date: $formattedDate'),
+                            Text('Time: $formattedTime'),
                           ],
                         ),
                       ),
@@ -122,4 +104,3 @@ class _PatientsBookingListState extends State<PatientsBookingList> {
     );
   }
 }
-
