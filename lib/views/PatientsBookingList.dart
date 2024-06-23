@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../model/appointment.dart';
+import 'AcceptAppointment.dart';
 
 class PatientsBookingList extends StatefulWidget {
   @override
@@ -24,6 +25,22 @@ class _PatientsBookingListState extends State<PatientsBookingList> {
       });
     } catch (e) {
       print('Error loading appointments: $e');
+    }
+  }
+
+  void _navigateToAcceptAppointment(Appointment appointment) async {
+    final result = await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => AcceptAppointment(appointment: appointment),
+      ),
+    );
+
+    if (result == true) {
+      // Appointment was accepted, reload the appointments list
+      _loadAppointments();
+      // Return true to TherapistHomePage
+      Navigator.pop(context, true);
     }
   }
 
@@ -67,30 +84,41 @@ class _PatientsBookingListState extends State<PatientsBookingList> {
                   final formattedDate = DateFormat('MMMM d, yyyy').format(dateTime);
                   final formattedTime = DateFormat('h:mm a').format(dateTime);
 
-                  return Container(
-                    margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 16.0),
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.brown, width: 2.0),
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    child: Card(
-                      elevation: 4.0,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
+                  return GestureDetector(
+                    onTap: () => _navigateToAcceptAppointment(appointment),
+                    child: Container(
+                      margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 16.0),
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.brown, width: 2.0),
+                        borderRadius: BorderRadius.circular(16),
                       ),
-                      child: Padding(
-                        padding: EdgeInsets.all(16.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Patient: ${appointment.username}',
-                              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                            ),
-                            SizedBox(height: 8),
-                            Text('Date: $formattedDate'),
-                            Text('Time: $formattedTime'),
-                          ],
+                      child: Card(
+                        elevation: 4.0,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.all(16.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Patient: ${appointment.username}',
+                                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                              ),
+                              SizedBox(height: 8),
+                              Text('Date: $formattedDate'),
+                              Text('Time: $formattedTime'),
+                              SizedBox(height: 8),
+                              Text(
+                                'Status: ${_getStatusText(appointment.status)}',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: _getStatusColor(appointment.status),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -102,5 +130,31 @@ class _PatientsBookingListState extends State<PatientsBookingList> {
         ),
       ),
     );
+  }
+
+  String _getStatusText(String? status) {
+    switch (status) {
+      case 'PENDING':
+        return 'Pending';
+      case 'ACCEPTED':
+        return 'Accepted';
+      case 'REJECTED':
+        return 'Rejected';
+      default:
+        return 'Unknown';
+    }
+  }
+
+  Color _getStatusColor(String? status) {
+    switch (status) {
+      case 'PENDING':
+        return Colors.orange;
+      case 'ACCEPTED':
+        return Colors.green;
+      case 'REJECTED':
+        return Colors.red;
+      default:
+        return Colors.grey;
+    }
   }
 }

@@ -233,6 +233,7 @@ class _BookAppointmentState extends State<BookAppointment> {
         therapistId: widget.therapist.therapistId,
         appointmentDate: selectedDate?.toIso8601String().split('T')[0],
         appointmentTime: selectedTimeSlot!,
+        status: 'PENDING', // Change this to 'PENDING'
       );
       _saveAppointment(appointment);
     } else {

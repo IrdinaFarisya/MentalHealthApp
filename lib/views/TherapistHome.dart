@@ -3,24 +3,51 @@ import 'package:mentalhealthapp/views/MoodTracker.dart';
 import 'package:mentalhealthapp/views/PatientsBookingList.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:mentalhealthapp/views/AppointmentScreen.dart';
+import 'package:mentalhealthapp/model/appointment.dart';
+import 'package:mentalhealthapp/views/AcceptAppointment.dart';
 
 class TherapistHomePage extends StatefulWidget {
   const TherapistHomePage({Key? key}) : super(key: key);
-
 
   @override
   _TherapistHomePageState createState() => _TherapistHomePageState();
 }
 
-class _TherapistHomePageState extends State<TherapistHomePage> {
+class _TherapistHomePageState extends State<TherapistHomePage> with WidgetsBindingObserver {
   int _selectedIndex = 0;
+  List<Appointment> acceptedAppointments = [];
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+    fetchAcceptedAppointments();
+  }
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      fetchAcceptedAppointments();
+    }
+  }
+
+  void fetchAcceptedAppointments() async {
+    List<Appointment> appointments = await Appointment.fetchAcceptedAppointments();
+    setState(() {
+      acceptedAppointments = appointments;
+    });
+  }
 
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +57,6 @@ class _TherapistHomePageState extends State<TherapistHomePage> {
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [Color(0xFFFFE8D6), Color(0xFFFFF5F3)],
-              // Gradient colors
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
             ),
@@ -49,12 +75,9 @@ class _TherapistHomePageState extends State<TherapistHomePage> {
               ),
             ),
             backgroundColor: Colors.transparent,
-            // Make the background transparent
             elevation: 0,
-            // Remove the shadow
             automaticallyImplyLeading: false,
-            // Remove the back button
-            centerTitle: true, // Center the title text
+            centerTitle: true,
           ),
           body: SafeArea(
             child: SingleChildScrollView(
@@ -67,15 +90,13 @@ class _TherapistHomePageState extends State<TherapistHomePage> {
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(16.0),
-                        // Softer border radius
                         border: Border.all(color: Colors.grey.shade300),
                         boxShadow: [
                           BoxShadow(
                             color: Colors.grey.withOpacity(0.5),
                             spreadRadius: 2,
                             blurRadius: 5,
-                            offset: Offset(
-                                0, 3), // changes position of shadow
+                            offset: Offset(0, 3),
                           ),
                         ],
                       ),
@@ -106,14 +127,16 @@ class _TherapistHomePageState extends State<TherapistHomePage> {
                           const SizedBox(height: 24),
                           Center(
                             child: ElevatedButton(
-                              onPressed: () {
-                                Navigator.push(
+                              onPressed: () async {  // Make this async
+                                final result = await Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) =>
-                                        AppointmentScreen(),
+                                    builder: (context) => PatientsBookingList(),
                                   ),
                                 );
+                                if (result == true) {  // Check if we need to refresh
+                                  fetchAcceptedAppointments();
+                                }
                               },
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: Colors.black,
@@ -139,13 +162,15 @@ class _TherapistHomePageState extends State<TherapistHomePage> {
                         color: Colors.black,
                       ),
                     ),
+                    const SizedBox(height: 16.0),
+                    _buildAcceptedAppointmentsList(),
                   ],
                 ),
               ),
             ),
           ),
           bottomNavigationBar: BottomNavigationBar(
-            type: BottomNavigationBarType.fixed, // Add this line
+            type: BottomNavigationBarType.fixed,
             items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(
                 icon: Icon(Icons.home),
@@ -167,24 +192,23 @@ class _TherapistHomePageState extends State<TherapistHomePage> {
             currentIndex: _selectedIndex,
             selectedItemColor: Colors.black,
             unselectedItemColor: Colors.grey,
-            showUnselectedLabels: true, // Add this line to ensure unselected labels are shown
+            showUnselectedLabels: true,
             onTap: (index) {
-              // Handle item tap
+              setState(() {
+                _selectedIndex = index;
+              });
               switch (index) {
                 case 0:
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => TherapistHomePage(),
-                    ),
-                  );
+                // Refresh the current page instead of pushing a new one
+                  fetchAcceptedAppointments();
+                  break;
                 case 1:
                   Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => PatientsBookingList(),
                     ),
-                  );
+                  ).then((_) => fetchAcceptedAppointments());
                   break;
                 case 2:
                   Navigator.push(
@@ -192,21 +216,65 @@ class _TherapistHomePageState extends State<TherapistHomePage> {
                     MaterialPageRoute(
                       builder: (context) => AppointmentScreen(),
                     ),
-                  );
+                  ).then((_) => fetchAcceptedAppointments());
                   break;
-              case 3:
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => TherapistHomePage(),
-                      ),
-                    );
-                    break;
+                case 3:
+                // Assuming this is a profile page, refresh after returning
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => TherapistHomePage(),
+                    ),
+                  ).then((_) => fetchAcceptedAppointments());
+                  break;
               }
             },
           ),
         ),
       ],
+    );
+  }
+
+  Widget _buildAcceptedAppointmentsList() {
+    if (acceptedAppointments.isEmpty) {
+      return Text('No upcoming appointments');
+    }
+
+    return ListView.builder(
+      shrinkWrap: true,
+      physics: NeverScrollableScrollPhysics(),
+      itemCount: acceptedAppointments.length,
+      itemBuilder: (context, index) {
+        Appointment appointment = acceptedAppointments[index];
+        return Card(
+          elevation: 2,
+          margin: EdgeInsets.only(bottom: 16),
+          child: ListTile(
+            title: Text('${appointment.username}'),
+            subtitle: Text('${appointment.appointmentDate} at ${appointment.appointmentTime}'),
+            trailing: Text(appointment.status ?? 'PENDING', style: TextStyle(color: Colors.green)),
+            onTap: () async {
+              final result = await Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => AcceptAppointment(appointment: appointment),
+                ),
+              );
+              if (result != null && result is Appointment) {
+                setState(() {
+                  int index = acceptedAppointments.indexWhere((a) => a.appointmentId == result.appointmentId);
+                  if (index != -1) {
+                    acceptedAppointments[index] = result;
+                  } else {
+                    acceptedAppointments.add(result);
+                  }
+                });
+                fetchAcceptedAppointments();
+              }
+            },
+          ),
+        );
+      },
     );
   }
 }

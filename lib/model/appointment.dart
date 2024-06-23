@@ -8,7 +8,7 @@ class Appointment {
   int? therapistId;
   String? appointmentDate;
   String? appointmentTime;
-  int? status;
+  String? status;
   String? appointmentLink;
   String? username;  // Add this to store the patient's name
 
@@ -82,6 +82,36 @@ class Appointment {
         result = responseData.map((json) => Appointment.fromJson(json)).toList();
       } else {
         print('Response data is empty.');
+      }
+    } else {
+      print('Failed to fetch data.');
+      print('Server response: ${req.result()}');
+    }
+
+    return result;
+  }
+
+  static Future<List<Appointment>> fetchAcceptedAppointments() async {
+    List<Appointment> result = [];
+
+    Therapist therapist = Therapist();
+    int? therapistId = await therapist.getTherapistId();
+
+    if (therapistId == null) {
+      print('Error: Therapist ID not found');
+      return result;
+    }
+
+    RequestController req = RequestController(path: "/api/fetchAcceptedAppointment.php?therapistId=$therapistId");
+    await req.get();
+
+    if (req.status() == 200 && req.result() != null) {
+      Map<String, dynamic> responseData = req.result();
+      if (responseData.containsKey('data') && responseData['data'] is List) {
+        List<dynamic> appointmentsData = responseData['data'];
+        result = appointmentsData.map((json) => Appointment.fromJson(json)).toList();
+      } else {
+        print('Response data is not in the expected format.');
       }
     } else {
       print('Failed to fetch data.');
