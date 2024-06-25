@@ -1,10 +1,16 @@
+// TherapistHome.dart
+
 import 'package:flutter/material.dart';
-import 'package:mentalhealthapp/views/MoodTracker.dart';
-import 'package:mentalhealthapp/views/PatientsBookingList.dart';
+import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:mentalhealthapp/views/AppointmentScreen.dart';
-import 'package:mentalhealthapp/model/appointment.dart';
-import 'package:mentalhealthapp/views/AcceptAppointment.dart';
+import 'package:url_launcher/url_launcher.dart';
+import '../model/appointment.dart';
+import 'AcceptAppointment.dart';
+import 'AppointmentDetails.dart';
+import 'AppointmentScreen.dart';
+import 'MoodTracker.dart';
+import 'PatientsBookingList.dart';
+import 'TherapistLogin.dart';
 
 class TherapistHomePage extends StatefulWidget {
   const TherapistHomePage({Key? key}) : super(key: key);
@@ -23,6 +29,7 @@ class _TherapistHomePageState extends State<TherapistHomePage> with WidgetsBindi
     WidgetsBinding.instance.addObserver(this);
     fetchAcceptedAppointments();
   }
+
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
@@ -127,14 +134,14 @@ class _TherapistHomePageState extends State<TherapistHomePage> with WidgetsBindi
                           const SizedBox(height: 24),
                           Center(
                             child: ElevatedButton(
-                              onPressed: () async {  // Make this async
+                              onPressed: () async {
                                 final result = await Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) => PatientsBookingList(),
                                   ),
                                 );
-                                if (result == true) {  // Check if we need to refresh
+                                if (result == true) {
                                   fetchAcceptedAppointments();
                                 }
                               },
@@ -199,7 +206,6 @@ class _TherapistHomePageState extends State<TherapistHomePage> with WidgetsBindi
               });
               switch (index) {
                 case 0:
-                // Refresh the current page instead of pushing a new one
                   fetchAcceptedAppointments();
                   break;
                 case 1:
@@ -219,7 +225,6 @@ class _TherapistHomePageState extends State<TherapistHomePage> with WidgetsBindi
                   ).then((_) => fetchAcceptedAppointments());
                   break;
                 case 3:
-                // Assuming this is a profile page, refresh after returning
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -254,33 +259,16 @@ class _TherapistHomePageState extends State<TherapistHomePage> with WidgetsBindi
             subtitle: Text('${appointment.appointmentDate} at ${appointment.appointmentTime}'),
             trailing: Text(appointment.status ?? 'PENDING', style: TextStyle(color: Colors.green)),
             onTap: () async {
-              final result = await Navigator.push(
+              Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => AcceptAppointment(appointment: appointment),
+                  builder: (context) => AppointmentDetails(appointment: appointment),
                 ),
               );
-              if (result != null && result is Appointment) {
-                setState(() {
-                  int index = acceptedAppointments.indexWhere((a) => a.appointmentId == result.appointmentId);
-                  if (index != -1) {
-                    acceptedAppointments[index] = result;
-                  } else {
-                    acceptedAppointments.add(result);
-                  }
-                });
-                fetchAcceptedAppointments();
-              }
             },
           ),
         );
       },
     );
   }
-}
-
-void main() {
-  runApp(MaterialApp(
-    home: TherapistHomePage(),
-  ));
 }
