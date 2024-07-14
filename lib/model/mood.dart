@@ -38,7 +38,7 @@ class Mood {
   factory Mood.fromJson(Map<String, dynamic> json) {
     return Mood(
       entryId: json['entryId'],
-      appUserId: json['appUserId'],
+      appUserId: json['appuserId'],
       mood: json['mood'],
       date: json['date'],
       details: json['details'],
@@ -127,24 +127,28 @@ class Mood {
     List<Mood> result = [];
 
     RequestController req = RequestController(path: "/api/mood.php");
-    req.setBody(toJson());
-    await req.post();
+    await req.get();
     if (req.status() == 200 && req.result() != null) {
+      var responseData = req.result();
 
-      List<dynamic> responseData = req.result();
-
-      if (responseData.isNotEmpty) {
+      if (responseData is List) {
         for (var item in responseData) {
           result.add(Mood.fromJson(item));
-          print("Result:  ${result}");
+        }
+      } else if (responseData is String) {
+        var jsonData = json.decode(responseData);
+        if (jsonData is List) {
+          for (var item in jsonData) {
+            result.add(Mood.fromJson(item));
+          }
+        } else {
+          print('Unexpected response format.');
         }
       } else {
-        print('Response data is empty.');
-        // Handle the case when the response data is empty
+        print('Unexpected response type.');
       }
     } else {
-      print('Failed to fetch data.');
-      // Handle the case when the request fails
+      print('Failed to fetch data. Status: ${req.status()}, Result: ${req.result()}');
     }
 
     return result;

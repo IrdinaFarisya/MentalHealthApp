@@ -3,9 +3,13 @@ import 'dart:typed_data';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:mentalhealthapp/views/TherapistHome.dart';
+import 'package:mentalhealthapp/views/TherapistRegister.dart';
 import '../../model/therapist.dart';
+import 'package:mentalhealthapp/model/admin.dart';
+import 'package:mentalhealthapp/views/AdminHome.dart';
 //import 'forgotpassword.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:mentalhealthapp/views/TherapistForgotPassword.dart';
 
 class TherapistLogin extends StatefulWidget {
   const TherapistLogin({super.key});
@@ -27,41 +31,47 @@ class _SignInState extends State<TherapistLogin> {
   }
 
   void _checkUser() async {
-    final List<Therapist> admin= [];
-
     final String email = emailController.text.trim();
     final String password = passwordController.text.trim();
 
-
     if (email.isNotEmpty && password.isNotEmpty) {
-      print('Checking Therapist existence...');
+      print('Checking user existence...');
 
-      final prefs = await SharedPreferences.getInstance();
-      await prefs.setString('therapistEmail', email);
+      // Check if it's an admin
+      Admin admin = Admin.empty();
+      if (await admin.checkAdminExistence(email, password)) {
+        // It's an admin
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => AdminHome(admin: admin)));
+      } else {
 
-      Therapist therapist = Therapist(
-        email: email,
-        password: password,
-      );
+        final prefs = await SharedPreferences.getInstance();
+        await prefs.setString('therapistEmail', email);
+        // Check if it's a therapist
+        Therapist therapist = Therapist(
+          email: email,
+          password: password,
+        );
 
-      if (await therapist.checkTherapistExistence()) {
-        setState(() {
-          emailController.clear();
-          passwordController.clear();
-        });
-
-        _showMessage("LogIn Successful");
-        Navigator.push(context, MaterialPageRoute(builder: (context)=>TherapistHomePage()));
-
+        if (await therapist.checkTherapistExistence()) {
+          if (therapist.approvalStatus == 'APPROVED') {
+            setState(() {
+              emailController.clear();
+              passwordController.clear();
+            });
+            _showMessage("Login Successful");
+            Navigator.push(context, MaterialPageRoute(builder: (context) => TherapistHomePage()));
+          } else if (therapist.approvalStatus == 'PENDING') {
+            _AlertMessage("Your account is pending approval.");
+          } else {
+            _AlertMessage("Your account has been rejected.");
+          }
+        } else {
+          _AlertMessage("EMAIL OR PASSWORD WRONG!");
+        }
       }
-      else{
-        _AlertMessage("EMAIL OR PASSWORD WRONG!");
-      }
-    }
-    else{
+    } else {
       _AlertMessage("Please Insert All The Information Needed");
       setState(() {
-
         emailController.clear();
         passwordController.clear();
       });
@@ -101,7 +111,7 @@ class _SignInState extends State<TherapistLogin> {
   void _forgetPassword() {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => TherapistHomePage()), // tba
+      MaterialPageRoute(builder: (context) => PasswordResetPage()), // tba
     );
   }
 
@@ -247,7 +257,7 @@ class _SignInState extends State<TherapistLogin> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => TherapistHomePage()),//change when signup already implemented
+                    MaterialPageRoute(builder: (context) => TherapistRegister()),//change when signup already implemented
                   );
                 },
                 style: ElevatedButton.styleFrom(

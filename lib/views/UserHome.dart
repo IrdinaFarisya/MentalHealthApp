@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'dart:async';
 import 'package:mentalhealthapp/views/MoodTracker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:mentalhealthapp/views/AppointmentScreen.dart';
 import 'package:mentalhealthapp/model/appUser.dart';
 import 'package:mentalhealthapp/model/appointment.dart';
 import 'package:mentalhealthapp/views/UserAppointmentDetails.dart';
+
+import 'MoodTrackerOverview.dart';
+import 'PastAppointmentDetails.dart';
 
 class UserHomePage extends StatefulWidget {
   const UserHomePage({Key? key}) : super(key: key);
@@ -16,18 +20,24 @@ class UserHomePage extends StatefulWidget {
 
 class _UserHomePageState extends State<UserHomePage> with WidgetsBindingObserver{
   int _selectedIndex = 0;
+  Timer? _timer;
+
   List<Appointment> UserAcceptedAppointments = [];
+  List<Appointment> UserPastAppointments = []; // New list for past appointments
+
 
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
     fetchUserAcceptedAppointments();
+    _timer = Timer.periodic(Duration(seconds: 5), (Timer t) => fetchUserAcceptedAppointments());
   }
 
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
+    _timer?.cancel(); // Cancel the timer when the widget is disposed
     super.dispose();
   }
 
@@ -41,7 +51,14 @@ class _UserHomePageState extends State<UserHomePage> with WidgetsBindingObserver
   void fetchUserAcceptedAppointments() async {
     List<Appointment> appointments = await Appointment.fetchUserAcceptedAppointments();
     setState(() {
-      UserAcceptedAppointments = appointments;
+      UserAcceptedAppointments = appointments.where((appointment) =>
+      appointment.status == 'ACCEPTED').toList();
+      UserPastAppointments = appointments.where((appointment) =>
+      appointment.status == 'DONE').toList();
+
+      // Sort past appointments by date, most recent first
+      UserPastAppointments.sort((a, b) => DateTime.parse('${b.appointmentDate} ${b.appointmentTime}')
+          .compareTo(DateTime.parse('${a.appointmentDate} ${a.appointmentTime}')));
     });
   }
 
@@ -173,6 +190,18 @@ class _UserHomePageState extends State<UserHomePage> with WidgetsBindingObserver
                     ),
                     const SizedBox(height: 16.0),
                     _buildAcceptedAppointmentsList(),
+                    const SizedBox(height: 32.0),
+                    Text(
+                      'Past Appointments',
+                      style: TextStyle(
+                        fontFamily: 'LibreBaskerville',
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
+                    ),
+                    const SizedBox(height: 16.0),
+                    _buildPastAppointmentsList(),
                   ],
                 ),
               ),
@@ -220,7 +249,7 @@ class _UserHomePageState extends State<UserHomePage> with WidgetsBindingObserver
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => MoodTrackerPage(),
+                      builder: (context) => MoodTrackerOverview(),
                     ),
                   );
                   break;
@@ -264,12 +293,56 @@ class _UserHomePageState extends State<UserHomePage> with WidgetsBindingObserver
           child: ListTile(
             title: Text('${appointment.name}'),
             subtitle: Text('${appointment.appointmentDate} at ${appointment.appointmentTime}'),
-            trailing: Text(appointment.status ?? 'PENDING', style: TextStyle(color: Colors.green)),
+            trailing: Text(
+              appointment.status ?? 'PENDING',
+              style: TextStyle(
+                color: appointment.status == 'DONE' ? Colors.blue : Colors.green,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
             onTap: () async {
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => UserAppointmentDetails(appointment: appointment),
+                ),
+              );
+            },
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _buildPastAppointmentsList() {
+    if (UserPastAppointments.isEmpty) {
+      return Text('No past appointments');
+    }
+
+    return ListView.builder(
+      shrinkWrap: true,
+      physics: NeverScrollableScrollPhysics(),
+      itemCount: UserPastAppointments.length,
+      itemBuilder: (context, index) {
+        Appointment appointment = UserPastAppointments[index];
+        return Card(
+          elevation: 2,
+          margin: EdgeInsets.only(bottom: 16),
+          child: ListTile(
+            title: Text('${appointment.name}'),
+            subtitle: Text('${appointment.appointmentDate} at ${appointment.appointmentTime}'),
+            trailing: Text(
+              'DONE',
+              style: TextStyle(
+                color: Colors.blue,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            onTap: () async {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => PastAppointmentDetails(appointment: appointment),
                 ),
               );
             },

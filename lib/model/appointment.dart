@@ -11,8 +11,10 @@ class Appointment {
   String? appointmentTime;
   String? status;
   String? appointmentLink;
-  String? username;  
+  String? username;
   String? name;
+  String? consultationDescription;
+
 
   Appointment({
     this.appointmentId,
@@ -24,6 +26,8 @@ class Appointment {
     this.appointmentLink,
     this.username,
     this.name,
+    this.consultationDescription,
+
   });
 
   Appointment.fromJson(Map<String, dynamic> json)
@@ -35,7 +39,9 @@ class Appointment {
         status = json['status'],
         appointmentLink = json['appointmentLink'],
         username = json['username'],
-        name = json['name'];
+        name = json['name'],
+        consultationDescription = json['consultationDescription'];
+
 
 
   Map<String, dynamic> toJson() => {
@@ -48,6 +54,8 @@ class Appointment {
     'appointmentLink': appointmentLink,
     'username': username,
     'name': name,
+    'consultationDescription': consultationDescription,
+
   };
 
 
@@ -146,6 +154,9 @@ class Appointment {
       if (responseData.containsKey('data') && responseData['data'] is List) {
         List<dynamic> appointmentsData = responseData['data'];
         result = appointmentsData.map((json) => Appointment.fromJson(json)).toList();
+        // Filter appointments to include only 'ACCEPTED' and 'DONE' statuses
+        result = result.where((appointment) =>
+        appointment.status == 'ACCEPTED' || appointment.status == 'DONE').toList();
       } else {
         print('Response data is not in the expected format.');
       }

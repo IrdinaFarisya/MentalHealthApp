@@ -1,6 +1,7 @@
 // TherapistHome.dart
 
 import 'package:flutter/material.dart';
+import 'dart:async';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -9,6 +10,7 @@ import 'AcceptAppointment.dart';
 import 'AppointmentDetails.dart';
 import 'AppointmentScreen.dart';
 import 'MoodTracker.dart';
+import 'PastAppointmentDetails.dart';
 import 'PatientsBookingList.dart';
 import 'TherapistLogin.dart';
 
@@ -21,18 +23,26 @@ class TherapistHomePage extends StatefulWidget {
 
 class _TherapistHomePageState extends State<TherapistHomePage> with WidgetsBindingObserver {
   int _selectedIndex = 0;
+  Timer? _timer;
+
+
   List<Appointment> acceptedAppointments = [];
+  List<Appointment> pastAppointments = []; // New list for past appointments
+
 
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
     fetchAcceptedAppointments();
+    _timer = Timer.periodic(Duration(seconds: 5), (Timer t) => fetchAcceptedAppointments());
+
   }
 
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
+    _timer?.cancel(); // Cancel the timer when the widget is disposed
     super.dispose();
   }
 
@@ -46,7 +56,14 @@ class _TherapistHomePageState extends State<TherapistHomePage> with WidgetsBindi
   void fetchAcceptedAppointments() async {
     List<Appointment> appointments = await Appointment.fetchAcceptedAppointments();
     setState(() {
-      acceptedAppointments = appointments;
+      acceptedAppointments = appointments.where((appointment) =>
+      appointment.status == 'ACCEPTED').toList();
+      pastAppointments = appointments.where((appointment) =>
+      appointment.status == 'DONE').toList();
+
+      // Sort past appointments by date, most recent first
+      pastAppointments.sort((a, b) => DateTime.parse('${b.appointmentDate} ${b.appointmentTime}')
+          .compareTo(DateTime.parse('${a.appointmentDate} ${a.appointmentTime}')));
     });
   }
 
@@ -171,6 +188,18 @@ class _TherapistHomePageState extends State<TherapistHomePage> with WidgetsBindi
                     ),
                     const SizedBox(height: 16.0),
                     _buildAcceptedAppointmentsList(),
+                    const SizedBox(height: 32.0),
+                    Text(
+                      'Past Appointments',
+                      style: TextStyle(
+                        fontFamily: 'LibreBaskerville',
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
+                    ),
+                    const SizedBox(height: 16.0),
+                    _buildPastAppointmentsList(),
                   ],
                 ),
               ),
@@ -263,6 +292,38 @@ class _TherapistHomePageState extends State<TherapistHomePage> with WidgetsBindi
                 context,
                 MaterialPageRoute(
                   builder: (context) => AppointmentDetails(appointment: appointment),
+                ),
+              );
+            },
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _buildPastAppointmentsList() {
+    if (pastAppointments.isEmpty) {
+      return Text('No past appointments');
+    }
+
+    return ListView.builder(
+      shrinkWrap: true,
+      physics: NeverScrollableScrollPhysics(),
+      itemCount: pastAppointments.length,
+      itemBuilder: (context, index) {
+        Appointment appointment = pastAppointments[index];
+        return Card(
+          elevation: 2,
+          margin: EdgeInsets.only(bottom: 16),
+          child: ListTile(
+            title: Text('${appointment.username}'),
+            subtitle: Text('${appointment.appointmentDate} at ${appointment.appointmentTime}'),
+            trailing: Text('DONE', style: TextStyle(color: Colors.blue)),
+            onTap: () async {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => PastAppointmentDetails(appointment: appointment),
                 ),
               );
             },

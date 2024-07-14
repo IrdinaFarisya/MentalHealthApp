@@ -13,8 +13,10 @@ class Therapist {
   String? availability;
   String? location;
   String? accessStatus;
-  int? roleId;
   therapistImage? TherapistImage;
+  Uint8List? supportingDocument;  // New field for supporting document
+  String? approvalStatus;
+
 
   Therapist({
     this.therapistId,
@@ -25,8 +27,10 @@ class Therapist {
     this.availability,
     this.location,
     this.accessStatus,
-    this.roleId,
     this.TherapistImage,
+    this.supportingDocument,  // Added to constructor
+    this.approvalStatus,
+
   });
 
   factory Therapist.fromJson(Map<String, dynamic> json) {
@@ -39,10 +43,14 @@ class Therapist {
       availability: json['availability'],
       location: json['location'],
       accessStatus: json['accessStatus'],
-      roleId: json['roleId'],
       TherapistImage: json['therapistImage'] != null
           ? therapistImage.fromJson(json['therapistImage'])
           : null,
+      supportingDocument: json['supportingDocument'] != null
+          ? base64Decode(json['supportingDocument'])
+          : null,  // Decode the base64 string to Uint8List
+      approvalStatus: json['approvalStatus'],
+
     );
   }
 
@@ -55,8 +63,11 @@ class Therapist {
     'availability': availability,
     'location': location,
     'accessStatus': accessStatus,
-    'roleId': roleId,
-    'image': TherapistImage?.toJson(), // Serialize image data using therapistImage class
+    'supportingDocument': supportingDocument != null
+        ? base64Encode(supportingDocument!)
+        : null,
+    'approvalStatus': approvalStatus,
+
   };
 
   Future<bool> saveTherapist() async {
@@ -82,11 +93,11 @@ class Therapist {
     req.setBody(toJson());
     await req.post();
     print('Json Data: ${req.result()}');
+
     if (req.status() == 200) {
       Map<String, dynamic> result = req.result();
 
       therapistId = int.parse(result['therapistId'].toString());
-      roleId = int.parse(result['roleId'].toString());
       name = result['name'].toString();
       email = result['email'].toString();
       password = result['password'].toString();
@@ -94,16 +105,20 @@ class Therapist {
       availability = result['availability'].toString();
       location = result['location'].toString();
       accessStatus = result['accessStatus'].toString();
-      roleId = int.parse(result['roleId'].toString());
+      approvalStatus = result['approvalStatus'].toString();
 
       return true;
+    } else if (req.status() == 403) {
+      // Handle pending or rejected status
+      approvalStatus = 'PENDING'; // or 'REJECTED', depending on the response
+      return true; // Return true because the account exists, even if not approved
     } else {
       return false;
     }
   }
 
   Future<bool> resetPassword() async {
-    RequestController req = RequestController(path: "/api/getTherapistId.php");
+    RequestController req = RequestController(path: "/api/resetPassword.php");
     req.setBody({"therapistId": therapistId, "password": password});
     await req.put();
     if (req.status() == 400) {
@@ -129,12 +144,17 @@ class Therapist {
   }
 
 
-  Future<bool> updateProfile(Uint8List? newProfilePicture) async {
+  Future<bool> updateProfile(Uint8List? newProfilePicture, Uint8List? newSupportingDocument) async {
     RequestController req = RequestController(path: "/api/updateTherapistProfile.php");
-    // Encode the profile picture as base64 if it's not null
+
     String? base64ProfilePicture;
     if (newProfilePicture != null) {
       base64ProfilePicture = base64Encode(newProfilePicture);
+    }
+
+    String? base64SupportingDocument;
+    if (newSupportingDocument != null) {
+      base64SupportingDocument = base64Encode(newSupportingDocument);
     }
 
     req.setBody({
@@ -145,6 +165,8 @@ class Therapist {
       "specialization": specialization,
       "availability": availability,
       "location": location,
+      "profilePicture": base64ProfilePicture,
+      "supportingDocument": base64SupportingDocument,
     });
     await req.put();
     if (req.status() == 400) {
@@ -220,6 +242,26 @@ class Therapist {
       print("Failed to fetch therapistId, status code: ${req.status()}");
       return null;
     }
+  }
+
+  static Future<List<Therapist>> fetchPendingTherapists() async {
+    List<Therapist> result = [];
+    RequestController req = RequestController(path: "/api/pendingTherapists.php");
+    await req.get();
+
+    if (req.status() == 200 && req.result() != null) {
+      List<dynamic> responseData = req.result();
+      result = responseData.map((json) => Therapist.fromJson(json)).toList();
+    }
+
+    return result;
+  }
+
+  Future<bool> approveTherapist() async {
+    RequestController req = RequestController(path: "/api/approveTherapist.php");
+    req.setBody({"therapistId": therapistId});
+    await req.put();
+    return req.status() == 200;
   }
 
 }

@@ -2,11 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:intl/intl.dart';
 import '../model/appointment.dart';
+import '../Controller/request_controller.dart';
 
-class AppointmentDetails extends StatelessWidget {
+class AppointmentDetails extends StatefulWidget {
   final Appointment appointment;
 
   AppointmentDetails({required this.appointment});
+
+  @override
+  _AppointmentDetailsState createState() => _AppointmentDetailsState();
+}
+
+class _AppointmentDetailsState extends State<AppointmentDetails> {
+  final TextEditingController _descriptionController = TextEditingController();
+  bool _isDone = false;
 
   Future<void> _launchURL(BuildContext context, String urlString) async {
     final Uri url = Uri.parse(urlString);
@@ -22,9 +31,34 @@ class AppointmentDetails extends StatelessWidget {
     }
   }
 
+  Future<void> _markAsDone() async {
+    setState(() {
+      _isDone = true;
+    });
+
+    // Update the appointment status and description
+    RequestController req = RequestController(path: "/api/appointment.php");
+    req.setBody({
+      'appointmentId': widget.appointment.appointmentId,
+      'status': 'DONE',
+      'consultationDescription': _descriptionController.text,
+    });
+    await req.put();
+
+    if (req.status() == 200) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Appointment marked as done and description saved.')),
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Failed to update appointment. Please try again.')),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    final dateTime = DateTime.parse('${appointment.appointmentDate} ${appointment.appointmentTime}');
+    final dateTime = DateTime.parse('${widget.appointment.appointmentDate} ${widget.appointment.appointmentTime}');
     final formattedDate = DateFormat('MMMM d, yyyy').format(dateTime);
     final formattedTime = DateFormat('h:mm a').format(dateTime);
 
@@ -65,16 +99,17 @@ class AppointmentDetails extends StatelessWidget {
                 },
                 border: TableBorder.all(color: Colors.grey),
                 children: [
-                  _buildTableRow('Client Name', appointment.username ?? 'N/A'),
+                  _buildTableRow('Client Name', widget.appointment.username ?? 'N/A'),
                   _buildTableRow('Date', formattedDate),
                   _buildTableRow('Time', formattedTime),
-                  _buildTableRow('URL Link', appointment.appointmentLink ?? 'N/A'),
+                  _buildTableRow('URL Link', widget.appointment.appointmentLink ?? 'N/A'),
+                  _buildTableRow('Status', _isDone ? 'DONE' : (widget.appointment.status ?? 'N/A')),
                 ],
               ),
               SizedBox(height: 24),
               Center(
                 child: ElevatedButton(
-                  onPressed: () => _launchURL(context, appointment.appointmentLink ?? ''),
+                  onPressed: () => _launchURL(context, widget.appointment.appointmentLink ?? ''),
                   child: Text(
                     'Join Google Meet',
                     style: TextStyle(color: Colors.white, fontSize: 15,),
@@ -84,6 +119,38 @@ class AppointmentDetails extends StatelessWidget {
                     padding: EdgeInsets.symmetric(horizontal: 60, vertical: 20),
                   ),
                 ),
+              ),
+              SizedBox(height: 24),
+              TextField(
+                controller: _descriptionController,
+                maxLines: 4,
+                decoration: InputDecoration(
+                  labelText: 'Consultation Description',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              SizedBox(height: 24),
+              Center(
+                child: ElevatedButton(
+                  onPressed: _isDone ? null : _markAsDone,
+                  child: Text(
+                    'CONSULTED',
+                    style: TextStyle(
+                      color: _isDone ? Colors.grey : Colors.black,
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    side: BorderSide(color: _isDone ? Colors.grey : Colors.black, width: 2), backgroundColor: Colors.white,
+                    padding: EdgeInsets.symmetric(horizontal: 60, vertical: 20),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    elevation: 5,
+                  ),
+                ),
+
               ),
             ],
           ),
@@ -101,8 +168,7 @@ class AppointmentDetails extends StatelessWidget {
         ),
         Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Text(value, style: TextStyle( fontSize: 18,
-              fontFamily: 'BodoniModa')),
+          child: Text(value, style: TextStyle( fontSize: 18, fontFamily: 'BodoniModa')),
         ),
       ],
     );

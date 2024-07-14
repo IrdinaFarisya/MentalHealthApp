@@ -4,20 +4,17 @@ class Admin {
   int? adminId;
   String? email;
   String? password;
-  int? roleId;
 
   Admin(
       this.adminId,
       this.email,
       this.password,
-      this.roleId,
       );
 
   Admin.empty()
       : adminId = 0,
         email = '',
-        password = '',
-        roleId = 0;
+        password = '';
 
   Admin.getId(
       this.email,
@@ -26,14 +23,12 @@ class Admin {
   Admin.fromJson(Map<String, dynamic> json)
       : adminId = json['adminId'] as int,
         email = json['email'] as String,
-        password = json['password'] as String,
-        roleId = json['roleId'] as int;
+        password = json['password'] as String;
 
   Map<String, dynamic> toJson() => {
     'adminId': adminId,
     'email': email,
     'password': password,
-    'roleId': roleId,
   };
 
   Future<bool> save() async {
@@ -55,7 +50,7 @@ class Admin {
   }
 
   Future<bool> checkAdminExistence(String email, String password) async {
-    RequestController req = RequestController(path: "/api/appUserCheckExistence.php");
+    RequestController req = RequestController(path: "/api/adminCheckExistence.php");
     Map<String, String> requestBody = {
       'email': email,
       'password': password,
@@ -68,7 +63,6 @@ class Admin {
       adminId = int.parse(result['adminId'].toString());
       this.email = result['email'].toString();
       this.password = result['password'].toString();
-      roleId = int.parse(result['roleId'].toString());
 
       print('Admin data: $result'); // Add this line for debugging
 
@@ -111,7 +105,6 @@ class Admin {
       "adminId": adminId,
       "email": email,
       "password": password,
-      "roleId": roleId,
     });
     await req.put();
     if (req.status() == 400) {

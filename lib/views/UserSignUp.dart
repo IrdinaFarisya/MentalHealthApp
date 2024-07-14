@@ -57,7 +57,6 @@ class _signUpState extends State<SignUp> {
     final String phoneNumber = phoneNumberController.text.trim();
     final String accessStatus = 'ACTIVE';
     int appUserId=0;
-    int roleId = 1;
 
     if (username.isNotEmpty && email.isNotEmpty && password.isNotEmpty
         && dateOfBirth.isNotEmpty && phoneNumber.isNotEmpty) {
@@ -70,7 +69,6 @@ class _signUpState extends State<SignUp> {
           dateOfBirth: dateOfBirth,
           phoneNumber: phoneNumber,
           accessStatus: accessStatus,
-          roleId: roleId
       );
 
       if (await user.save()) {

@@ -1,8 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:mentalhealthapp/views/UserLogin.dart'; // Replace with your actual UserLogin.dart path
 import 'package:mentalhealthapp/views/TherapistLogin.dart'; // Replace with your actual TherapistLogin.dart path
+import 'package:mentalhealthapp/views/TherapistRegister.dart'; // Replace with your actual TherapistRegister.dart path
+import 'package:mentalhealthapp/views/ThankYouPage.dart'; // Replace with your actual ThankYouPage.dart path
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Serene Soul',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const MainPage(),
+      routes: {
+        '/userlogin': (context) => UserLogin(),
+        '/therapistlogin': (context) => TherapistLogin(),
+        '/therapistregister': (context) => TherapistRegister(),
+        '/thankyou': (context) => ThankYouPage(),
+      },
+    );
+  }
+}
 
 class MainPage extends StatelessWidget {
+  const MainPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -11,7 +40,7 @@ class MainPage extends StatelessWidget {
         children: [
           // Background image or color
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('assets/front.jpg'), // Replace with your background image asset
                 fit: BoxFit.cover,
@@ -25,7 +54,7 @@ class MainPage extends StatelessWidget {
                 // Row for "Serene" and "Soul"
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
+                  children: const [
                     Text(
                       'Serene',
                       style: TextStyle(
@@ -82,14 +111,20 @@ class MainPage extends StatelessWidget {
                     style: TextButton.styleFrom(
                       backgroundColor: Colors.black, // Background color
                       foregroundColor: Colors.white, // Text and icon color
-                      padding: EdgeInsets.symmetric(horizontal: 30, vertical: 25),
+                      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 25),
                     ),
-                    icon: Icon(Icons.person),
-                    label: Text("Let's Get Started", style: TextStyle(fontSize: 18, color: Colors.white, fontFamily: 'BodoniModa'),
+                    icon: const Icon(Icons.person),
+                    label: const Text(
+                      "Let's Get Started",
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.white,
+                        fontFamily: 'BodoniModa',
+                      ),
                     ),
                   ),
                 ),
-                SizedBox(height: 20), // Spacer between buttons
+                const SizedBox(height: 20), // Spacer between buttons
                 // TherapistLogin button
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.8, // 80% of screen width
@@ -103,10 +138,16 @@ class MainPage extends StatelessWidget {
                     style: TextButton.styleFrom(
                       backgroundColor: Colors.black, // Background color
                       foregroundColor: Colors.white, // Text and icon color
-                      padding: EdgeInsets.symmetric(horizontal: 30, vertical: 25),
+                      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 25),
                     ),
-                    icon: Icon(Icons.group),
-                    label: Text('    Help Others    ', style: TextStyle(fontSize: 18, color: Colors.white, fontFamily: 'BodoniModa'),
+                    icon: const Icon(Icons.group),
+                    label: const Text(
+                      '    Help Others    ',
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.white,
+                        fontFamily: 'BodoniModa',
+                      ),
                     ),
                   ),
                 ),
@@ -117,11 +158,4 @@ class MainPage extends StatelessWidget {
       ),
     );
   }
-}
-
-void main() {
-  runApp(MaterialApp(
-    title: 'Serene Soul',
-    home: MainPage(),
-  ));
 }

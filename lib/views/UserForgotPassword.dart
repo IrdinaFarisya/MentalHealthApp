@@ -128,7 +128,7 @@ class _PasswordResetPageState extends State<PasswordResetPage> {
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 28, color: Colors.white,),
           ),
         ),
-        backgroundColor: Colors.lightGreen[800],
+        backgroundColor: Colors.black,
       ),
       body: SingleChildScrollView(
         child: Center(

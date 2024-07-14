@@ -177,7 +177,6 @@ class AppUser {
   String? dateOfBirth;
   String? phoneNumber;
   String? accessStatus;
-  int? roleId;
 
   AppUser({
     this.appUserId,
@@ -187,7 +186,6 @@ class AppUser {
     this.dateOfBirth,
     this.phoneNumber,
     this.accessStatus,
-    this.roleId,
   });
 
 
@@ -202,8 +200,7 @@ class AppUser {
         password = json['password'] as String?,
         dateOfBirth = json['dateOfBirth'] as String?,
         phoneNumber = json['phoneNumber'] as String?,
-        accessStatus = json['accessStatus'] as String?,
-        roleId = json['roleId'] as int?;
+        accessStatus = json['accessStatus'] as String?;
 
   Map<String, dynamic> toJson() => {
     'appUserId': appUserId,
@@ -213,7 +210,6 @@ class AppUser {
     'dateOfBirth': dateOfBirth,
     'phoneNumber': phoneNumber,
     'accessStatus': accessStatus,
-    'roleId': roleId,
   };
 
   Future<bool> checkUserExistence() async {
@@ -230,7 +226,6 @@ class AppUser {
       Map<String, dynamic> result = req.result();
 
       appUserId = int.parse(result['appUserId'].toString());
-      roleId = int.parse(result['roleId'].toString());
       username = result['username'].toString();
       email = result['email'].toString();
       password = result['password'].toString();
