@@ -6,6 +6,7 @@ import 'package:mentalhealthapp/views/AppointmentScreen.dart';
 import 'package:mentalhealthapp/model/appUser.dart';
 import 'package:mentalhealthapp/model/appointment.dart';
 import 'package:mentalhealthapp/views/UserAppointmentDetails.dart';
+import 'package:mentalhealthapp/views/UserProfile.dart';
 
 import 'MoodTrackerOverview.dart';
 import 'PastAppointmentDetails.dart';
@@ -190,18 +191,6 @@ class _UserHomePageState extends State<UserHomePage> with WidgetsBindingObserver
                     ),
                     const SizedBox(height: 16.0),
                     _buildAcceptedAppointmentsList(),
-                    const SizedBox(height: 32.0),
-                    Text(
-                      'Past Appointments',
-                      style: TextStyle(
-                        fontFamily: 'LibreBaskerville',
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                      ),
-                    ),
-                    const SizedBox(height: 16.0),
-                    _buildPastAppointmentsList(),
                   ],
                 ),
               ),
@@ -261,14 +250,22 @@ class _UserHomePageState extends State<UserHomePage> with WidgetsBindingObserver
                     ),
                   );
                   break;
-              /*case 3:
+                case 3:
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => updateProfilePage(user: widget.user),
+                        builder: (context) => UserProfilePage(),
                       ),
                     );
-                    break;*/
+                    break;
+                case 4:
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => UserProfilePage(),
+                    ),
+                  );
+                  break;
               }
             },
           ),
@@ -276,6 +273,7 @@ class _UserHomePageState extends State<UserHomePage> with WidgetsBindingObserver
       ],
     );
   }
+
   Widget _buildAcceptedAppointmentsList() {
     if (UserAcceptedAppointments.isEmpty) {
       return Text('No upcoming appointments');
@@ -296,7 +294,7 @@ class _UserHomePageState extends State<UserHomePage> with WidgetsBindingObserver
             trailing: Text(
               appointment.status ?? 'PENDING',
               style: TextStyle(
-                color: appointment.status == 'DONE' ? Colors.blue : Colors.green,
+                color: Colors.green,
                 fontWeight: FontWeight.bold,
               ),
             ),

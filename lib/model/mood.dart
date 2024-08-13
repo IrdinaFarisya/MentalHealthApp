@@ -153,4 +153,36 @@ class Mood {
 
     return result;
   }
+
+  static Future<List<Mood>> fetchPastMood() async {
+    List<Mood> result = [];
+
+    AppUser appUser = AppUser();
+    int? appUserId = await appUser.getUserId();
+
+    if (appUserId == null) {
+      print('Error: AppUser ID not found');
+      return result;
+    }
+
+    RequestController req = RequestController(
+        path: "/api/fetchPastMood.php?appUserId=$appUserId");
+    await req.get();
+
+    if (req.status() == 200 && req.result() != null) {
+      Map<String, dynamic> responseData = req.result();
+      if (responseData.containsKey('data') && responseData['data'] is List) {
+        List<dynamic> moodData = responseData['data'];
+        result =
+            moodData.map((json) => Mood.fromJson(json)).toList();
+      } else {
+        print('Response data is not in the expected format.');
+      }
+    } else {
+      print('Failed to fetch data.');
+      print('Server response: ${req.result()}');
+    }
+
+    return result;
+  }
 }

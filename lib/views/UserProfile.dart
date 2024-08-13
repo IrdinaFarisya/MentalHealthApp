@@ -1,0 +1,253 @@
+import 'package:flutter/material.dart';
+import 'package:mentalhealthapp/model/appUser.dart';
+import 'package:mentalhealthapp/model/appointment.dart';
+import 'package:mentalhealthapp/views/PastAppointmentList.dart';
+import 'package:mentalhealthapp/views/UserLogin.dart';
+import 'package:mentalhealthapp/views/MoodTrackerOverview.dart';
+import 'package:mentalhealthapp/views/AppointmentScreen.dart';
+import 'package:mentalhealthapp/views/UserHome.dart';
+
+class UserProfilePage extends StatefulWidget {
+  @override
+  _UserProfilePageState createState() => _UserProfilePageState();
+}
+
+class _UserProfilePageState extends State<UserProfilePage> {
+  AppUser? user;
+  List<Appointment> pastAppointments = [];
+  bool isLoading = true;
+  String errorMessage = '';
+  int _selectedIndex = 4; // Set the initial index to match the Profile tab
+
+  @override
+  void initState() {
+    super.initState();
+    _loadUserData();
+  }
+
+  Future<void> _loadUserData() async {
+    try {
+      user = AppUser();
+      List<AppUser> userDetails = await user!.fetchFullUserDetails();
+      if (userDetails.isNotEmpty) {
+        setState(() {
+          user = userDetails.first;
+        });
+      }
+      pastAppointments = await Appointment.fetchDoneAppointment();
+      pastAppointments.sort((a, b) => DateTime.parse('${b.appointmentDate} ${b.appointmentTime}')
+          .compareTo(DateTime.parse('${a.appointmentDate} ${a.appointmentTime}')));
+    } catch (e) {
+      setState(() {
+        errorMessage = "Error loading data: $e";
+      });
+    } finally {
+      setState(() {
+        isLoading = false;
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        title: const Text(
+          'SereneSoul',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 25,
+            color: Colors.black,
+            fontFamily: 'BodoniModa',
+          ),
+        ),
+        backgroundColor: Colors.white,
+        elevation: 0,
+        centerTitle: true,
+      ),
+      body: isLoading
+          ? Center(child: CircularProgressIndicator())
+          : errorMessage.isNotEmpty
+          ? Center(child: Text(errorMessage, style: TextStyle(color: Colors.red)))
+          : SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              if (user != null) _buildUserInfoSection(),
+              SizedBox(height: 32.0),
+              _buildMenuOptions(),
+              SizedBox(height: 20.0),
+              _buildLogoutOption(), // Add this to include the logout option at the bottom
+            ],
+          ),
+        ),
+      ),
+      bottomNavigationBar: _buildBottomNavigationBar(),
+    );
+  }
+
+  Widget _buildUserInfoSection() {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        CircleAvatar(
+          radius: 30.0,
+          backgroundImage: AssetImage('assets/profile_placeholder.png'),
+        ),
+        SizedBox(width: 10.0),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    user?.username ?? 'N/A',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.edit),
+                    color: Colors.black,
+                    onPressed: () {
+                      // Implement Edit Profile functionality
+                    },
+                  ),
+                ],
+              ),
+              Text(
+                user?.email ?? 'N/A',
+                style: TextStyle(fontSize: 16, color: Colors.grey),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildMenuOptions() {
+    return Column(
+      children: [
+        _buildPastAppointmentsOption(),
+        _buildMenuOption(Icons.help_outline, 'Help', () {}),
+        _buildMenuOption(Icons.notifications_none_outlined, 'Notification Setting', () {}),
+        _buildMenuOption(Icons.description_outlined, 'Terms of Services', () {}),
+        _buildMenuOption(Icons.privacy_tip_outlined, 'Privacy Policy', () {}),
+        _buildMenuOption(Icons.favorite_border, 'About SereneSoul', () {}),
+      ],
+    );
+  }
+
+  Widget _buildPastAppointmentsOption() {
+    return ListTile(
+      leading: Icon(Icons.playlist_add_check_outlined, color: Colors.black),
+      title: Text('Past Appointments'),
+      trailing: Icon(Icons.arrow_forward_ios, size: 16, color: Colors.grey),
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => PastAppointmentList(pastAppointments: pastAppointments),
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _buildMenuOption(IconData icon, String title, VoidCallback onTap) {
+    return ListTile(
+      leading: Icon(icon, color: Colors.black),
+      title: Text(title),
+      trailing: Icon(Icons.arrow_forward_ios, size: 16, color: Colors.grey),
+      onTap: onTap,
+    );
+  }
+
+  Widget _buildLogoutOption() {
+    return ListTile(
+      leading: Icon(Icons.logout, color: Colors.black),
+      title: Text('Logout'),
+      onTap: () {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => UserLogin()),
+        );
+      },
+    );
+  }
+
+  Widget _buildBottomNavigationBar() {
+    return BottomNavigationBar(
+      items: const <BottomNavigationBarItem>[
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home),
+          label: 'Home',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.mood),
+          label: 'Mood',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.group),
+          label: 'Therapists',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.file_copy),
+          label: 'Resources',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.person),
+          label: 'Profile',
+        ),
+      ],
+      currentIndex: _selectedIndex,
+      selectedItemColor: Colors.black,
+      unselectedItemColor: Colors.grey,
+      showUnselectedLabels: true,
+      onTap: _onItemTapped,
+    );
+  }
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+
+    switch (index) {
+      case 0:
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => UserHomePage(),
+          ),
+        );
+        break;
+      case 1:
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => MoodTrackerOverview(),
+          ),
+        );
+        break;
+      case 2:
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => AppointmentScreen(),
+          ),
+        );
+        break;
+      case 3:
+      // Handle navigation to Resources page
+        break;
+      case 4:
+      // Already on the Profile page
+        break;
+    }
+  }
+}

@@ -28,7 +28,7 @@ android {
     namespace "com.example.mentalhealthapp"
     compileSdk flutter.compileSdkVersion
     //compileSdk 31
-    compileSdkVersion 34
+    compileSdkVersion flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
 
     compileOptions {

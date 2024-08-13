@@ -77,21 +77,20 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
                         ),
                       );
                     },
-                    child: Container(
-                      margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 16.0),
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.brown, width: 2.0),
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      child: Card(
-                        elevation: 4.0,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Expanded(
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Container(
+                            margin: EdgeInsets.symmetric(vertical: 10.0),
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Colors.brown, width: 2.0),
+                              borderRadius: BorderRadius.circular(16),
+                            ),
+                            child: Card(
+                              elevation: 4.0,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8),
+                              ),
                               child: Padding(
                                 padding: EdgeInsets.all(8.0),
                                 child: Column(
@@ -116,9 +115,9 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
                                 ),
                               ),
                             ),
-                          ],
+                          ),
                         ),
-                      ),
+                      ],
                     ),
                   );
                 },

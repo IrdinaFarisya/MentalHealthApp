@@ -1,41 +1,36 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:1:1-44:12
-INJECTED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:1:1-44:12
-INJECTED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:1:1-44:12
-INJECTED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:1:1-44:12
-MERGED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:1:1-44:12
+ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:1:1-39:12
+INJECTED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:1:1-39:12
+INJECTED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:1:1-39:12
+INJECTED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:1:1-39:12
+MERGED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:1:1-39:12
 MERGED from [:shared_preferences_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\shared_preferences_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
-MERGED from [:firebase_auth] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-17:12
-MERGED from [:firebase_core] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-17:12
 MERGED from [:flutter_barcode_scanner] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-21:12
 MERGED from [:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-36:12
 MERGED from [:flutter_plugin_android_lifecycle] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\flutter_plugin_android_lifecycle\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
+MERGED from [:url_launcher_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-16:12
 MERGED from [:path_provider_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\path_provider_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
-MERGED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\a6bd6391ef21328897caf6e03a97abbd\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:17:1-75:12
-MERGED from [com.google.firebase:firebase-common-ktx:20.4.3] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\2acaae8c7b458348fda3ee338b8132e2\transformed\jetified-firebase-common-ktx-20.4.3\AndroidManifest.xml:2:1-18:12
+MERGED from [:android_intent_plus] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\android_intent_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
+MERGED from [:webview_flutter_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\webview_flutter_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.android.material:material:1.3.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\189cdb2f713486de02ee1809192d26f7\transformed\material-1.3.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\6798b41b76d4ce1080e881ffb02dc3eb\transformed\constraintlayout-2.0.1\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.appcompat:appcompat:1.2.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\9a5742a8ae24d1f6cb062dbab491d07a\transformed\appcompat-1.2.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\6dac45e6a763a13511a7971623cd5487\transformed\legacy-support-v4-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\2e4a2a7cd82488f978a5a7f9a6af0979\transformed\jetified-viewpager2-1.0.0\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.gms:play-services-vision:20.1.3] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\1f30df9a59624d053588b43f1bb5c34c\transformed\jetified-play-services-vision-20.1.3\AndroidManifest.xml:2:1-9:12
-MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\c6a02f983a15746f43bf8039f758a00b\transformed\jetified-firebase-auth-interop-20.0.0\AndroidManifest.xml:2:1-10:12
-MERGED from [com.google.firebase:firebase-common:20.4.3] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\8d4ee856b0501bd4e2deb987ae70e355\transformed\jetified-firebase-common-20.4.3\AndroidManifest.xml:15:1-41:12
 MERGED from [com.google.android.gms:play-services-vision-common:19.1.3] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\70d0db59d6dbd86dd69233925f3f86a3\transformed\jetified-play-services-vision-common-19.1.3\AndroidManifest.xml:2:1-9:12
-MERGED from [com.google.android.gms:play-services-auth-api-phone:17.4.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\b43c9aaed4ca2272e9703d6ddcc124c1\transformed\jetified-play-services-auth-api-phone-17.4.0\AndroidManifest.xml:2:1-7:12
-MERGED from [com.google.android.recaptcha:recaptcha:18.4.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\e692383bc856ae0bb0d1d640054d2ace\transformed\jetified-recaptcha-18.4.0\AndroidManifest.xml:2:1-11:12
-MERGED from [com.google.android.play:integrity:1.2.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\6bad7846deb81c7c62cfaa0fd60febef\transformed\jetified-integrity-1.2.0\AndroidManifest.xml:2:1-7:12
-MERGED from [com.google.firebase:firebase-appcheck-interop:17.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\f8a9e84e171ff2c62cdf9e48d4d99e1a\transformed\jetified-firebase-appcheck-interop-17.0.0\AndroidManifest.xml:15:1-25:12
 MERGED from [com.google.android.gms:play-services-clearcut:17.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\48c95aa69025010a000ba5fa78dbdf63\transformed\jetified-play-services-clearcut-17.0.0\AndroidManifest.xml:17:1-24:12
-MERGED from [com.google.android.gms:play-services-phenotype:17.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\d8077b3ea23d55937baed42f0889acc2\transformed\jetified-play-services-phenotype-17.0.0\AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\142c24f2530665bb6deb4123ab140714\transformed\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:17:1-23:12
 MERGED from [com.google.android.gms:play-services-flags:17.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\a61485357b1b26dfa34dc00a12edab5c\transformed\jetified-play-services-flags-17.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [com.google.android.gms:play-services-base:18.0.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\456feef7530341a2c919967cc4dde951\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:16:1-24:12
-MERGED from [com.google.android.gms:play-services-tasks:18.1.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\dd8a2bf1c10ec55fe6eff843bfdb2b0a\transformed\jetified-play-services-tasks-18.1.0\AndroidManifest.xml:2:1-6:12
-MERGED from [com.google.android.gms:play-services-basement:18.3.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\c3e05c9fbf3e6c63974105ad6d97e1f5\transformed\jetified-play-services-basement-18.3.0\AndroidManifest.xml:16:1-26:12
+MERGED from [com.google.android.gms:play-services-phenotype:17.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\d8077b3ea23d55937baed42f0889acc2\transformed\jetified-play-services-phenotype-17.0.0\AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.gms:play-services-base:17.4.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\b75d8eab5aaf20ab8c6c92d3b9e95bd4\transformed\jetified-play-services-base-17.4.0\AndroidManifest.xml:17:1-29:12
+MERGED from [com.google.android.gms:play-services-tasks:17.2.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\86b4dc0c9566a2b80ceec1a6bd3cfb50\transformed\jetified-play-services-tasks-17.2.0\AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-basement:17.4.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\74a8aaacdb70078f16d5628f59e8acf1\transformed\jetified-play-services-basement-17.4.0\AndroidManifest.xml:17:1-28:12
 MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\d16d53746166143fe30054cbfe559e31\transformed\fragment-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.activity:activity:1.7.2] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\7e30f4b09ad63b0fe951adc42de2658a\transformed\jetified-activity-1.7.2\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.browser:browser:1.5.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\a3fbb37dd5ef93c98bc80ddf0289d0af\transformed\browser-1.5.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.webkit:webkit:1.11.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\e90da3588a13b13ba919f8d1fed2feb8\transformed\webkit-1.11.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\142c24f2530665bb6deb4123ab140714\transformed\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:17:1-23:12
 MERGED from [androidx.appcompat:appcompat-resources:1.2.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\cda85958ce6d377d9f6c59d0c32e4a73\transformed\jetified-appcompat-resources-1.2.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\26a3b2283821a0ba4f43c3f27e0860c6\transformed\legacy-support-core-ui-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\5fb7165b46191df0789279565db6553e\transformed\drawerlayout-1.0.0\AndroidManifest.xml:17:1-22:12
@@ -49,7 +44,6 @@ MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\Irdina Faris
 MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\aa3cbedcef3ee23bf0d03abede347041\transformed\viewpager-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.loader:loader:1.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\73e9214f5c1a2878cad8e78e78318741\transformed\loader-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\032f4dff274e516110d9363a9793a3e3\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:17:1-33:12
-MERGED from [androidx.browser:browser:1.4.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\9186a72439cdfe13d23082d88530cc56\transformed\browser-1.4.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\c8e618582b5afa42cf83fb37d37fe0cb\transformed\slidingpanelayout-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.recyclerview:recyclerview:1.1.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\1785142d0f9c68a72cbca825b530cc2c\transformed\recyclerview-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.customview:customview:1.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\9addb396269c3fa35a089f701280c3bf\transformed\customview-1.0.0\AndroidManifest.xml:17:1-22:12
@@ -68,13 +62,12 @@ MERGED from [androidx.exifinterface:exifinterface:1.3.7] C:\Users\Irdina Farisya
 MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\a0ecce03964d1d4dc26ffab32b08b16e\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:17:1-55:12
 MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\f5fcd9d21efbf86a0ac70e1d2cc111ed\transformed\jetified-startup-runtime-1.1.1\AndroidManifest.xml:17:1-33:12
 MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\fcf486669bd3283ac86e13b69736f6ad\transformed\jetified-tracing-1.0.0\AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\84288ad1fa78cf3fb8fb9e63aa8bd3b9\transformed\cursoradapter-1.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\d9da5155600720598049711def8f09d5\transformed\cardview-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\ba5cbacca9596aa589f17f054708aaf8\transformed\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\6668cc85eff5929d44d91f927ab7e655\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:17:1-27:12
-MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\1a6cc2d588b81004db4ec65eed3a723d\transformed\localbroadcastmanager-1.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [com.google.firebase:firebase-components:17.1.5] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\e4883182308f82efeff8244125c4e99c\transformed\jetified-firebase-components-17.1.5\AndroidManifest.xml:15:1-20:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\84288ad1fa78cf3fb8fb9e63aa8bd3b9\transformed\cursoradapter-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\d9da5155600720598049711def8f09d5\transformed\cardview-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\6511295f879fe38787a2a783248db52b\transformed\documentfile-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\1a6cc2d588b81004db4ec65eed3a723d\transformed\localbroadcastmanager-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.print:print:1.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\2d7b2a20f14a47bef3578fe37c2b1445\transformed\print-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\3d3a17a299379e3d54a62db038deb3a7\transformed\core-runtime-2.2.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.annotation:annotation-experimental:1.3.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\ae329bc8a0eb87982c4fe41e3ec5da7f\transformed\jetified-annotation-experimental-1.3.0\AndroidManifest.xml:17:1-22:12
@@ -83,58 +76,54 @@ INJECTED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app
 INJECTED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\debug\AndroidManifest.xml:1:1-7:12
 	package
 		INJECTED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:1:1-44:12
+		ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:1:1-39:12
 		INJECTED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\debug\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:1:1-44:12
+		ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:1:1-39:12
 		INJECTED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\debug\AndroidManifest.xml
 	android:versionCode
 		INJECTED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:1:1-44:12
+		ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:1:1-39:12
 		INJECTED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\debug\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:1:11-69
+uses-permission#android.permission.INTERNET
+ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:2:5-67
+MERGED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:2:5-67
+MERGED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:2:5-67
+	android:name
+		ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:2:22-64
+uses-permission#android.permission.QUERY_ALL_PACKAGES
+ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:3:5-77
+	android:name
+		ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:3:22-74
 application
-ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:2:5-32:19
-MERGED from [:firebase_auth] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-15:19
-MERGED from [:firebase_auth] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-15:19
-MERGED from [:firebase_core] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-15:19
-MERGED from [:firebase_core] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-15:19
+ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:5:5-28:19
 MERGED from [:flutter_barcode_scanner] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:15:5-19:19
 MERGED from [:flutter_barcode_scanner] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:15:5-19:19
 MERGED from [:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:10:5-34:19
 MERGED from [:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:10:5-34:19
-MERGED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\a6bd6391ef21328897caf6e03a97abbd\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:28:5-73:19
-MERGED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\a6bd6391ef21328897caf6e03a97abbd\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:28:5-73:19
-MERGED from [com.google.firebase:firebase-common-ktx:20.4.3] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\2acaae8c7b458348fda3ee338b8132e2\transformed\jetified-firebase-common-ktx-20.4.3\AndroidManifest.xml:8:5-16:19
-MERGED from [com.google.firebase:firebase-common-ktx:20.4.3] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\2acaae8c7b458348fda3ee338b8132e2\transformed\jetified-firebase-common-ktx-20.4.3\AndroidManifest.xml:8:5-16:19
+MERGED from [:url_launcher_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-14:19
+MERGED from [:url_launcher_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-14:19
 MERGED from [com.google.android.material:material:1.3.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\189cdb2f713486de02ee1809192d26f7\transformed\material-1.3.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.3.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\189cdb2f713486de02ee1809192d26f7\transformed\material-1.3.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\6798b41b76d4ce1080e881ffb02dc3eb\transformed\constraintlayout-2.0.1\AndroidManifest.xml:9:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\6798b41b76d4ce1080e881ffb02dc3eb\transformed\constraintlayout-2.0.1\AndroidManifest.xml:9:5-20
 MERGED from [com.google.android.gms:play-services-vision:20.1.3] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\1f30df9a59624d053588b43f1bb5c34c\transformed\jetified-play-services-vision-20.1.3\AndroidManifest.xml:7:5-20
 MERGED from [com.google.android.gms:play-services-vision:20.1.3] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\1f30df9a59624d053588b43f1bb5c34c\transformed\jetified-play-services-vision-20.1.3\AndroidManifest.xml:7:5-20
-MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\c6a02f983a15746f43bf8039f758a00b\transformed\jetified-firebase-auth-interop-20.0.0\AndroidManifest.xml:7:5-8:19
-MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\c6a02f983a15746f43bf8039f758a00b\transformed\jetified-firebase-auth-interop-20.0.0\AndroidManifest.xml:7:5-8:19
-MERGED from [com.google.firebase:firebase-common:20.4.3] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\8d4ee856b0501bd4e2deb987ae70e355\transformed\jetified-firebase-common-20.4.3\AndroidManifest.xml:22:5-39:19
-MERGED from [com.google.firebase:firebase-common:20.4.3] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\8d4ee856b0501bd4e2deb987ae70e355\transformed\jetified-firebase-common-20.4.3\AndroidManifest.xml:22:5-39:19
 MERGED from [com.google.android.gms:play-services-vision-common:19.1.3] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\70d0db59d6dbd86dd69233925f3f86a3\transformed\jetified-play-services-vision-common-19.1.3\AndroidManifest.xml:7:5-20
 MERGED from [com.google.android.gms:play-services-vision-common:19.1.3] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\70d0db59d6dbd86dd69233925f3f86a3\transformed\jetified-play-services-vision-common-19.1.3\AndroidManifest.xml:7:5-20
-MERGED from [com.google.android.play:integrity:1.2.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\6bad7846deb81c7c62cfaa0fd60febef\transformed\jetified-integrity-1.2.0\AndroidManifest.xml:5:5-6:19
-MERGED from [com.google.android.play:integrity:1.2.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\6bad7846deb81c7c62cfaa0fd60febef\transformed\jetified-integrity-1.2.0\AndroidManifest.xml:5:5-6:19
-MERGED from [com.google.firebase:firebase-appcheck-interop:17.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\f8a9e84e171ff2c62cdf9e48d4d99e1a\transformed\jetified-firebase-appcheck-interop-17.0.0\AndroidManifest.xml:23:5-20
-MERGED from [com.google.firebase:firebase-appcheck-interop:17.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\f8a9e84e171ff2c62cdf9e48d4d99e1a\transformed\jetified-firebase-appcheck-interop-17.0.0\AndroidManifest.xml:23:5-20
 MERGED from [com.google.android.gms:play-services-clearcut:17.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\48c95aa69025010a000ba5fa78dbdf63\transformed\jetified-play-services-clearcut-17.0.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.gms:play-services-clearcut:17.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\48c95aa69025010a000ba5fa78dbdf63\transformed\jetified-play-services-clearcut-17.0.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.gms:play-services-phenotype:17.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\d8077b3ea23d55937baed42f0889acc2\transformed\jetified-play-services-phenotype-17.0.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.gms:play-services-phenotype:17.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\d8077b3ea23d55937baed42f0889acc2\transformed\jetified-play-services-phenotype-17.0.0\AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.gms:play-services-base:18.0.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\456feef7530341a2c919967cc4dde951\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:19:5-23:19
-MERGED from [com.google.android.gms:play-services-base:18.0.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\456feef7530341a2c919967cc4dde951\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:19:5-23:19
-MERGED from [com.google.android.gms:play-services-tasks:18.1.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\dd8a2bf1c10ec55fe6eff843bfdb2b0a\transformed\jetified-play-services-tasks-18.1.0\AndroidManifest.xml:5:5-20
-MERGED from [com.google.android.gms:play-services-tasks:18.1.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\dd8a2bf1c10ec55fe6eff843bfdb2b0a\transformed\jetified-play-services-tasks-18.1.0\AndroidManifest.xml:5:5-20
-MERGED from [com.google.android.gms:play-services-basement:18.3.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\c3e05c9fbf3e6c63974105ad6d97e1f5\transformed\jetified-play-services-basement-18.3.0\AndroidManifest.xml:20:5-24:19
-MERGED from [com.google.android.gms:play-services-basement:18.3.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\c3e05c9fbf3e6c63974105ad6d97e1f5\transformed\jetified-play-services-basement-18.3.0\AndroidManifest.xml:20:5-24:19
+MERGED from [com.google.android.gms:play-services-base:17.4.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\b75d8eab5aaf20ab8c6c92d3b9e95bd4\transformed\jetified-play-services-base-17.4.0\AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-base:17.4.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\b75d8eab5aaf20ab8c6c92d3b9e95bd4\transformed\jetified-play-services-base-17.4.0\AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-tasks:17.2.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\86b4dc0c9566a2b80ceec1a6bd3cfb50\transformed\jetified-play-services-tasks-17.2.0\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-tasks:17.2.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\86b4dc0c9566a2b80ceec1a6bd3cfb50\transformed\jetified-play-services-tasks-17.2.0\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-basement:17.4.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\74a8aaacdb70078f16d5628f59e8acf1\transformed\jetified-play-services-basement-17.4.0\AndroidManifest.xml:22:5-26:19
+MERGED from [com.google.android.gms:play-services-basement:17.4.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\74a8aaacdb70078f16d5628f59e8acf1\transformed\jetified-play-services-basement-17.4.0\AndroidManifest.xml:22:5-26:19
 MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\032f4dff274e516110d9363a9793a3e3\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:24:5-31:19
 MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\032f4dff274e516110d9363a9793a3e3\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:24:5-31:19
 MERGED from [androidx.core:core:1.10.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\0b9c903fef8d2eb2a269c36999ef4a74\transformed\core-1.10.1\AndroidManifest.xml:28:5-89
@@ -148,87 +137,83 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\Ir
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.10.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\0b9c903fef8d2eb2a269c36999ef4a74\transformed\core-1.10.1\AndroidManifest.xml:28:18-86
 	android:label
-		ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:4:9-42
+		ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:6:9-42
 	android:largeHeap
 		ADDED from [:flutter_barcode_scanner] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:16:9-33
 	android:icon
-		ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:5:9-43
+		ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:7:9-43
 	android:theme
 		ADDED from [:flutter_barcode_scanner] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:17:9-59
-	android:name
-		ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:3:9-51
 activity#com.example.mentalhealthapp.MainActivity
-ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:6:9-26:20
+ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:8:9-24:20
 	android:launchMode
-		ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:9:13-43
+		ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:11:13-43
 	android:hardwareAccelerated
-		ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:12:13-47
+		ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:14:13-47
 	android:windowSoftInputMode
-		ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:13:13-55
+		ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:15:13-55
 	android:exported
-		ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:8:13-36
+		ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:10:13-36
 	android:configChanges
-		ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:11:13-163
+		ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:13:13-163
 	android:theme
-		ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:10:13-47
+		ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:12:13-47
 	android:name
-		ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:7:13-41
+		ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:9:13-41
 meta-data#io.flutter.embedding.android.NormalTheme
-ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:18:13-21:17
+ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:16:13-19:19
 	android:resource
-		ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:20:15-52
+		ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:18:17-54
 	android:name
-		ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:19:15-70
+		ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:17:17-72
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:22:13-25:29
+ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:20:13-23:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:23:17-68
+ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:21:17-68
 	android:name
-		ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:23:25-66
+		ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:21:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:24:17-76
+ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:22:17-76
 	android:name
-		ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:24:27-74
+		ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:22:27-74
 meta-data#flutterEmbedding
-ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:29:9-31:33
+ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:25:9-27:33
 	android:value
-		ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:31:13-30
+		ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:27:13-30
 	android:name
-		ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:30:13-44
+		ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:26:13-44
 queries
-ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:38:5-43:15
+ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:29:5-38:15
 intent#action:name:android.intent.action.PROCESS_TEXT+data:mimeType:text/plain
-ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:39:9-42:18
+ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:30:9-33:18
 action#android.intent.action.PROCESS_TEXT
-ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:40:13-72
+ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:31:13-72
 	android:name
-		ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:40:21-70
+		ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:31:21-70
 data
-ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:41:13-50
+ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:32:13-50
 	android:mimeType
-		ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:41:19-48
+		ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:32:19-48
 uses-sdk
 INJECTED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml
 INJECTED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml
 MERGED from [:shared_preferences_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\shared_preferences_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:shared_preferences_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\shared_preferences_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
-MERGED from [:firebase_auth] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
-MERGED from [:firebase_auth] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
-MERGED from [:firebase_core] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
-MERGED from [:firebase_core] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:flutter_barcode_scanner] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:flutter_barcode_scanner] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:6:5-8:41
 MERGED from [:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:6:5-8:41
 MERGED from [:flutter_plugin_android_lifecycle] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\flutter_plugin_android_lifecycle\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:flutter_plugin_android_lifecycle] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\flutter_plugin_android_lifecycle\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:url_launcher_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:url_launcher_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:path_provider_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\path_provider_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:path_provider_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\path_provider_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
-MERGED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\a6bd6391ef21328897caf6e03a97abbd\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:21:5-23:64
-MERGED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\a6bd6391ef21328897caf6e03a97abbd\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:21:5-23:64
-MERGED from [com.google.firebase:firebase-common-ktx:20.4.3] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\2acaae8c7b458348fda3ee338b8132e2\transformed\jetified-firebase-common-ktx-20.4.3\AndroidManifest.xml:5:5-44
-MERGED from [com.google.firebase:firebase-common-ktx:20.4.3] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\2acaae8c7b458348fda3ee338b8132e2\transformed\jetified-firebase-common-ktx-20.4.3\AndroidManifest.xml:5:5-44
+MERGED from [:android_intent_plus] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\android_intent_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:android_intent_plus] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\android_intent_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:webview_flutter_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\webview_flutter_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:webview_flutter_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\webview_flutter_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [com.google.android.material:material:1.3.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\189cdb2f713486de02ee1809192d26f7\transformed\material-1.3.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.material:material:1.3.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\189cdb2f713486de02ee1809192d26f7\transformed\material-1.3.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\6798b41b76d4ce1080e881ffb02dc3eb\transformed\constraintlayout-2.0.1\AndroidManifest.xml:5:5-7:41
@@ -241,38 +226,30 @@ MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\Irdina Farisya\.grad
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\2e4a2a7cd82488f978a5a7f9a6af0979\transformed\jetified-viewpager2-1.0.0\AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.android.gms:play-services-vision:20.1.3] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\1f30df9a59624d053588b43f1bb5c34c\transformed\jetified-play-services-vision-20.1.3\AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-vision:20.1.3] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\1f30df9a59624d053588b43f1bb5c34c\transformed\jetified-play-services-vision-20.1.3\AndroidManifest.xml:5:5-44
-MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\c6a02f983a15746f43bf8039f758a00b\transformed\jetified-firebase-auth-interop-20.0.0\AndroidManifest.xml:5:5-44
-MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\c6a02f983a15746f43bf8039f758a00b\transformed\jetified-firebase-auth-interop-20.0.0\AndroidManifest.xml:5:5-44
-MERGED from [com.google.firebase:firebase-common:20.4.3] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\8d4ee856b0501bd4e2deb987ae70e355\transformed\jetified-firebase-common-20.4.3\AndroidManifest.xml:19:5-44
-MERGED from [com.google.firebase:firebase-common:20.4.3] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\8d4ee856b0501bd4e2deb987ae70e355\transformed\jetified-firebase-common-20.4.3\AndroidManifest.xml:19:5-44
 MERGED from [com.google.android.gms:play-services-vision-common:19.1.3] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\70d0db59d6dbd86dd69233925f3f86a3\transformed\jetified-play-services-vision-common-19.1.3\AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-vision-common:19.1.3] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\70d0db59d6dbd86dd69233925f3f86a3\transformed\jetified-play-services-vision-common-19.1.3\AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.gms:play-services-auth-api-phone:17.4.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\b43c9aaed4ca2272e9703d6ddcc124c1\transformed\jetified-play-services-auth-api-phone-17.4.0\AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.gms:play-services-auth-api-phone:17.4.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\b43c9aaed4ca2272e9703d6ddcc124c1\transformed\jetified-play-services-auth-api-phone-17.4.0\AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.recaptcha:recaptcha:18.4.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\e692383bc856ae0bb0d1d640054d2ace\transformed\jetified-recaptcha-18.4.0\AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.recaptcha:recaptcha:18.4.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\e692383bc856ae0bb0d1d640054d2ace\transformed\jetified-recaptcha-18.4.0\AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.play:integrity:1.2.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\6bad7846deb81c7c62cfaa0fd60febef\transformed\jetified-integrity-1.2.0\AndroidManifest.xml:4:5-44
-MERGED from [com.google.android.play:integrity:1.2.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\6bad7846deb81c7c62cfaa0fd60febef\transformed\jetified-integrity-1.2.0\AndroidManifest.xml:4:5-44
-MERGED from [com.google.firebase:firebase-appcheck-interop:17.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\f8a9e84e171ff2c62cdf9e48d4d99e1a\transformed\jetified-firebase-appcheck-interop-17.0.0\AndroidManifest.xml:18:5-20:41
-MERGED from [com.google.firebase:firebase-appcheck-interop:17.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\f8a9e84e171ff2c62cdf9e48d4d99e1a\transformed\jetified-firebase-appcheck-interop-17.0.0\AndroidManifest.xml:18:5-20:41
 MERGED from [com.google.android.gms:play-services-clearcut:17.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\48c95aa69025010a000ba5fa78dbdf63\transformed\jetified-play-services-clearcut-17.0.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-clearcut:17.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\48c95aa69025010a000ba5fa78dbdf63\transformed\jetified-play-services-clearcut-17.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.gms:play-services-phenotype:17.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\d8077b3ea23d55937baed42f0889acc2\transformed\jetified-play-services-phenotype-17.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.gms:play-services-phenotype:17.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\d8077b3ea23d55937baed42f0889acc2\transformed\jetified-play-services-phenotype-17.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\142c24f2530665bb6deb4123ab140714\transformed\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:19:5-21:41
-MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\142c24f2530665bb6deb4123ab140714\transformed\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:19:5-21:41
 MERGED from [com.google.android.gms:play-services-flags:17.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\a61485357b1b26dfa34dc00a12edab5c\transformed\jetified-play-services-flags-17.0.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-flags:17.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\a61485357b1b26dfa34dc00a12edab5c\transformed\jetified-play-services-flags-17.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.gms:play-services-base:18.0.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\456feef7530341a2c919967cc4dde951\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:18:5-43
-MERGED from [com.google.android.gms:play-services-base:18.0.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\456feef7530341a2c919967cc4dde951\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:18:5-43
-MERGED from [com.google.android.gms:play-services-tasks:18.1.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\dd8a2bf1c10ec55fe6eff843bfdb2b0a\transformed\jetified-play-services-tasks-18.1.0\AndroidManifest.xml:4:5-43
-MERGED from [com.google.android.gms:play-services-tasks:18.1.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\dd8a2bf1c10ec55fe6eff843bfdb2b0a\transformed\jetified-play-services-tasks-18.1.0\AndroidManifest.xml:4:5-43
-MERGED from [com.google.android.gms:play-services-basement:18.3.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\c3e05c9fbf3e6c63974105ad6d97e1f5\transformed\jetified-play-services-basement-18.3.0\AndroidManifest.xml:18:5-43
-MERGED from [com.google.android.gms:play-services-basement:18.3.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\c3e05c9fbf3e6c63974105ad6d97e1f5\transformed\jetified-play-services-basement-18.3.0\AndroidManifest.xml:18:5-43
+MERGED from [com.google.android.gms:play-services-phenotype:17.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\d8077b3ea23d55937baed42f0889acc2\transformed\jetified-play-services-phenotype-17.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-phenotype:17.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\d8077b3ea23d55937baed42f0889acc2\transformed\jetified-play-services-phenotype-17.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-base:17.4.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\b75d8eab5aaf20ab8c6c92d3b9e95bd4\transformed\jetified-play-services-base-17.4.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-base:17.4.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\b75d8eab5aaf20ab8c6c92d3b9e95bd4\transformed\jetified-play-services-base-17.4.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-tasks:17.2.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\86b4dc0c9566a2b80ceec1a6bd3cfb50\transformed\jetified-play-services-tasks-17.2.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-tasks:17.2.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\86b4dc0c9566a2b80ceec1a6bd3cfb50\transformed\jetified-play-services-tasks-17.2.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-basement:17.4.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\74a8aaacdb70078f16d5628f59e8acf1\transformed\jetified-play-services-basement-17.4.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-basement:17.4.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\74a8aaacdb70078f16d5628f59e8acf1\transformed\jetified-play-services-basement-17.4.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\d16d53746166143fe30054cbfe559e31\transformed\fragment-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\d16d53746166143fe30054cbfe559e31\transformed\fragment-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.activity:activity:1.7.2] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\7e30f4b09ad63b0fe951adc42de2658a\transformed\jetified-activity-1.7.2\AndroidManifest.xml:20:5-44
 MERGED from [androidx.activity:activity:1.7.2] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\7e30f4b09ad63b0fe951adc42de2658a\transformed\jetified-activity-1.7.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.browser:browser:1.5.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\a3fbb37dd5ef93c98bc80ddf0289d0af\transformed\browser-1.5.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.browser:browser:1.5.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\a3fbb37dd5ef93c98bc80ddf0289d0af\transformed\browser-1.5.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.webkit:webkit:1.11.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\e90da3588a13b13ba919f8d1fed2feb8\transformed\webkit-1.11.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.webkit:webkit:1.11.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\e90da3588a13b13ba919f8d1fed2feb8\transformed\webkit-1.11.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\142c24f2530665bb6deb4123ab140714\transformed\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:19:5-21:41
+MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\142c24f2530665bb6deb4123ab140714\transformed\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:19:5-21:41
 MERGED from [androidx.appcompat:appcompat-resources:1.2.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\cda85958ce6d377d9f6c59d0c32e4a73\transformed\jetified-appcompat-resources-1.2.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.appcompat:appcompat-resources:1.2.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\cda85958ce6d377d9f6c59d0c32e4a73\transformed\jetified-appcompat-resources-1.2.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\26a3b2283821a0ba4f43c3f27e0860c6\transformed\legacy-support-core-ui-1.0.0\AndroidManifest.xml:20:5-44
@@ -299,8 +276,6 @@ MERGED from [androidx.loader:loader:1.0.0] C:\Users\Irdina Farisya\.gradle\cache
 MERGED from [androidx.loader:loader:1.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\73e9214f5c1a2878cad8e78e78318741\transformed\loader-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\032f4dff274e516110d9363a9793a3e3\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\032f4dff274e516110d9363a9793a3e3\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.browser:browser:1.4.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\9186a72439cdfe13d23082d88530cc56\transformed\browser-1.4.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.browser:browser:1.4.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\9186a72439cdfe13d23082d88530cc56\transformed\browser-1.4.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\c8e618582b5afa42cf83fb37d37fe0cb\transformed\slidingpanelayout-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\c8e618582b5afa42cf83fb37d37fe0cb\transformed\slidingpanelayout-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.recyclerview:recyclerview:1.1.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\1785142d0f9c68a72cbca825b530cc2c\transformed\recyclerview-1.1.0\AndroidManifest.xml:20:5-22:41
@@ -337,20 +312,18 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\Irdina Farisya\.gr
 MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\f5fcd9d21efbf86a0ac70e1d2cc111ed\transformed\jetified-startup-runtime-1.1.1\AndroidManifest.xml:21:5-23:41
 MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\fcf486669bd3283ac86e13b69736f6ad\transformed\jetified-tracing-1.0.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\fcf486669bd3283ac86e13b69736f6ad\transformed\jetified-tracing-1.0.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\84288ad1fa78cf3fb8fb9e63aa8bd3b9\transformed\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\84288ad1fa78cf3fb8fb9e63aa8bd3b9\transformed\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\d9da5155600720598049711def8f09d5\transformed\cardview-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\d9da5155600720598049711def8f09d5\transformed\cardview-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\ba5cbacca9596aa589f17f054708aaf8\transformed\interpolator-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\ba5cbacca9596aa589f17f054708aaf8\transformed\interpolator-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\6668cc85eff5929d44d91f927ab7e655\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\6668cc85eff5929d44d91f927ab7e655\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\1a6cc2d588b81004db4ec65eed3a723d\transformed\localbroadcastmanager-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\1a6cc2d588b81004db4ec65eed3a723d\transformed\localbroadcastmanager-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.google.firebase:firebase-components:17.1.5] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\e4883182308f82efeff8244125c4e99c\transformed\jetified-firebase-components-17.1.5\AndroidManifest.xml:18:5-44
-MERGED from [com.google.firebase:firebase-components:17.1.5] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\e4883182308f82efeff8244125c4e99c\transformed\jetified-firebase-components-17.1.5\AndroidManifest.xml:18:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\84288ad1fa78cf3fb8fb9e63aa8bd3b9\transformed\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\84288ad1fa78cf3fb8fb9e63aa8bd3b9\transformed\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\d9da5155600720598049711def8f09d5\transformed\cardview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\d9da5155600720598049711def8f09d5\transformed\cardview-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\6511295f879fe38787a2a783248db52b\transformed\documentfile-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\6511295f879fe38787a2a783248db52b\transformed\documentfile-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\1a6cc2d588b81004db4ec65eed3a723d\transformed\localbroadcastmanager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\1a6cc2d588b81004db4ec65eed3a723d\transformed\localbroadcastmanager-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.print:print:1.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\2d7b2a20f14a47bef3578fe37c2b1445\transformed\print-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.print:print:1.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\2d7b2a20f14a47bef3578fe37c2b1445\transformed\print-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\3d3a17a299379e3d54a62db038deb3a7\transformed\core-runtime-2.2.0\AndroidManifest.xml:20:5-44
@@ -359,52 +332,12 @@ MERGED from [androidx.annotation:annotation-experimental:1.3.0] C:\Users\Irdina 
 MERGED from [androidx.annotation:annotation-experimental:1.3.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\ae329bc8a0eb87982c4fe41e3ec5da7f\transformed\jetified-annotation-experimental-1.3.0\AndroidManifest.xml:20:5-44
 INJECTED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\debug\AndroidManifest.xml
 INJECTED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\debug\AndroidManifest.xml
-	tools:overrideLibrary
-		ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\a6bd6391ef21328897caf6e03a97abbd\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:23:9-61
 	android:targetSdkVersion
 		INJECTED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\debug\AndroidManifest.xml
 	android:minSdkVersion
 		INJECTED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\debug\AndroidManifest.xml
-uses-permission#android.permission.INTERNET
-ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\debug\AndroidManifest.xml:6:5-66
-MERGED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\a6bd6391ef21328897caf6e03a97abbd\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:25:5-67
-MERGED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\a6bd6391ef21328897caf6e03a97abbd\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:25:5-67
-MERGED from [com.google.android.recaptcha:recaptcha:18.4.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\e692383bc856ae0bb0d1d640054d2ace\transformed\jetified-recaptcha-18.4.0\AndroidManifest.xml:7:5-67
-MERGED from [com.google.android.recaptcha:recaptcha:18.4.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\e692383bc856ae0bb0d1d640054d2ace\transformed\jetified-recaptcha-18.4.0\AndroidManifest.xml:7:5-67
-	android:name
-		ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\debug\AndroidManifest.xml:6:22-64
-service#com.google.firebase.components.ComponentDiscoveryService
-ADDED from [:firebase_auth] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-14:19
-MERGED from [:firebase_core] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-14:19
-MERGED from [:firebase_core] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-14:19
-MERGED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\a6bd6391ef21328897caf6e03a97abbd\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:66:9-72:19
-MERGED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\a6bd6391ef21328897caf6e03a97abbd\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:66:9-72:19
-MERGED from [com.google.firebase:firebase-common-ktx:20.4.3] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\2acaae8c7b458348fda3ee338b8132e2\transformed\jetified-firebase-common-ktx-20.4.3\AndroidManifest.xml:9:9-15:19
-MERGED from [com.google.firebase:firebase-common-ktx:20.4.3] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\2acaae8c7b458348fda3ee338b8132e2\transformed\jetified-firebase-common-ktx-20.4.3\AndroidManifest.xml:9:9-15:19
-MERGED from [com.google.firebase:firebase-common:20.4.3] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\8d4ee856b0501bd4e2deb987ae70e355\transformed\jetified-firebase-common-20.4.3\AndroidManifest.xml:30:9-38:19
-MERGED from [com.google.firebase:firebase-common:20.4.3] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\8d4ee856b0501bd4e2deb987ae70e355\transformed\jetified-firebase-common-20.4.3\AndroidManifest.xml:30:9-38:19
-	android:exported
-		ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\a6bd6391ef21328897caf6e03a97abbd\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:68:13-37
-	tools:targetApi
-		ADDED from [com.google.firebase:firebase-common:20.4.3] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\8d4ee856b0501bd4e2deb987ae70e355\transformed\jetified-firebase-common-20.4.3\AndroidManifest.xml:34:13-32
-	android:directBootAware
-		ADDED from [com.google.firebase:firebase-common:20.4.3] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\8d4ee856b0501bd4e2deb987ae70e355\transformed\jetified-firebase-common-20.4.3\AndroidManifest.xml:32:13-43
-	android:name
-		ADDED from [:firebase_auth] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:10:18-89
-meta-data#com.google.firebase.components:io.flutter.plugins.firebase.auth.FlutterFirebaseAuthRegistrar
-ADDED from [:firebase_auth] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-13:85
-	android:value
-		ADDED from [:firebase_auth] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:13:17-82
-	android:name
-		ADDED from [:firebase_auth] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:12:17-124
-meta-data#com.google.firebase.components:io.flutter.plugins.firebase.core.FlutterFirebaseCoreRegistrar
-ADDED from [:firebase_core] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-13:85
-	android:value
-		ADDED from [:firebase_core] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:13:17-82
-	android:name
-		ADDED from [:firebase_core] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:12:17-124
 uses-permission#android.permission.CAMERA
 ADDED from [:flutter_barcode_scanner] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-65
 	android:name
@@ -459,100 +392,28 @@ ADDED from [:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\Mental
 		ADDED from [:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:32:17-33
 	android:name
 		ADDED from [:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:31:17-63
-uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\a6bd6391ef21328897caf6e03a97abbd\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:26:5-79
-MERGED from [com.google.android.recaptcha:recaptcha:18.4.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\e692383bc856ae0bb0d1d640054d2ace\transformed\jetified-recaptcha-18.4.0\AndroidManifest.xml:8:5-79
-MERGED from [com.google.android.recaptcha:recaptcha:18.4.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\e692383bc856ae0bb0d1d640054d2ace\transformed\jetified-recaptcha-18.4.0\AndroidManifest.xml:8:5-79
-	android:name
-		ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\a6bd6391ef21328897caf6e03a97abbd\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:26:22-76
-activity#com.google.firebase.auth.internal.GenericIdpActivity
-ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\a6bd6391ef21328897caf6e03a97abbd\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:29:9-46:20
-	android:excludeFromRecents
-		ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\a6bd6391ef21328897caf6e03a97abbd\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:31:13-46
-	android:launchMode
-		ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\a6bd6391ef21328897caf6e03a97abbd\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:33:13-44
+activity#io.flutter.plugins.urllauncher.WebViewActivity
+ADDED from [:url_launcher_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-13:74
 	android:exported
-		ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\a6bd6391ef21328897caf6e03a97abbd\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:32:13-36
+		ADDED from [:url_launcher_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-37
 	android:theme
-		ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\a6bd6391ef21328897caf6e03a97abbd\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:34:13-72
+		ADDED from [:url_launcher_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-71
 	android:name
-		ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\a6bd6391ef21328897caf6e03a97abbd\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:30:13-80
-intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:host:firebase.auth+data:path:/+data:scheme:genericidp
-ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\a6bd6391ef21328897caf6e03a97abbd\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:35:13-45:29
-action#android.intent.action.VIEW
-ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\a6bd6391ef21328897caf6e03a97abbd\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:36:17-69
-	android:name
-		ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\a6bd6391ef21328897caf6e03a97abbd\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:36:25-66
-category#android.intent.category.DEFAULT
-ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\a6bd6391ef21328897caf6e03a97abbd\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:38:17-76
-	android:name
-		ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\a6bd6391ef21328897caf6e03a97abbd\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:38:27-73
-category#android.intent.category.BROWSABLE
-ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\a6bd6391ef21328897caf6e03a97abbd\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:39:17-78
-	android:name
-		ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\a6bd6391ef21328897caf6e03a97abbd\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:39:27-75
-activity#com.google.firebase.auth.internal.RecaptchaActivity
-ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\a6bd6391ef21328897caf6e03a97abbd\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:47:9-64:20
-	android:excludeFromRecents
-		ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\a6bd6391ef21328897caf6e03a97abbd\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:49:13-46
-	android:launchMode
-		ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\a6bd6391ef21328897caf6e03a97abbd\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:51:13-44
-	android:exported
-		ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\a6bd6391ef21328897caf6e03a97abbd\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:50:13-36
-	android:theme
-		ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\a6bd6391ef21328897caf6e03a97abbd\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:52:13-72
-	android:name
-		ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\a6bd6391ef21328897caf6e03a97abbd\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:48:13-79
-intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:host:firebase.auth+data:path:/+data:scheme:recaptcha
-ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\a6bd6391ef21328897caf6e03a97abbd\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:53:13-63:29
-meta-data#com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar
-ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\a6bd6391ef21328897caf6e03a97abbd\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:69:13-71:85
-	android:value
-		ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\a6bd6391ef21328897caf6e03a97abbd\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:71:17-82
-	android:name
-		ADDED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\a6bd6391ef21328897caf6e03a97abbd\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:70:17-109
-meta-data#com.google.firebase.components:com.google.firebase.ktx.FirebaseCommonLegacyRegistrar
-ADDED from [com.google.firebase:firebase-common-ktx:20.4.3] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\2acaae8c7b458348fda3ee338b8132e2\transformed\jetified-firebase-common-ktx-20.4.3\AndroidManifest.xml:12:13-14:85
-	android:value
-		ADDED from [com.google.firebase:firebase-common-ktx:20.4.3] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\2acaae8c7b458348fda3ee338b8132e2\transformed\jetified-firebase-common-ktx-20.4.3\AndroidManifest.xml:14:17-82
-	android:name
-		ADDED from [com.google.firebase:firebase-common-ktx:20.4.3] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\2acaae8c7b458348fda3ee338b8132e2\transformed\jetified-firebase-common-ktx-20.4.3\AndroidManifest.xml:13:17-116
-provider#com.google.firebase.provider.FirebaseInitProvider
-ADDED from [com.google.firebase:firebase-common:20.4.3] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\8d4ee856b0501bd4e2deb987ae70e355\transformed\jetified-firebase-common-20.4.3\AndroidManifest.xml:23:9-28:39
-	android:authorities
-		ADDED from [com.google.firebase:firebase-common:20.4.3] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\8d4ee856b0501bd4e2deb987ae70e355\transformed\jetified-firebase-common-20.4.3\AndroidManifest.xml:25:13-72
-	android:exported
-		ADDED from [com.google.firebase:firebase-common:20.4.3] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\8d4ee856b0501bd4e2deb987ae70e355\transformed\jetified-firebase-common-20.4.3\AndroidManifest.xml:27:13-37
-	android:directBootAware
-		ADDED from [com.google.firebase:firebase-common:20.4.3] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\8d4ee856b0501bd4e2deb987ae70e355\transformed\jetified-firebase-common-20.4.3\AndroidManifest.xml:26:13-43
-	android:initOrder
-		ADDED from [com.google.firebase:firebase-common:20.4.3] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\8d4ee856b0501bd4e2deb987ae70e355\transformed\jetified-firebase-common-20.4.3\AndroidManifest.xml:28:13-36
-	android:name
-		ADDED from [com.google.firebase:firebase-common:20.4.3] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\8d4ee856b0501bd4e2deb987ae70e355\transformed\jetified-firebase-common-20.4.3\AndroidManifest.xml:24:13-77
-meta-data#com.google.firebase.components:com.google.firebase.FirebaseCommonKtxRegistrar
-ADDED from [com.google.firebase:firebase-common:20.4.3] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\8d4ee856b0501bd4e2deb987ae70e355\transformed\jetified-firebase-common-20.4.3\AndroidManifest.xml:35:13-37:85
-	android:value
-		ADDED from [com.google.firebase:firebase-common:20.4.3] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\8d4ee856b0501bd4e2deb987ae70e355\transformed\jetified-firebase-common-20.4.3\AndroidManifest.xml:37:17-82
-	android:name
-		ADDED from [com.google.firebase:firebase-common:20.4.3] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\8d4ee856b0501bd4e2deb987ae70e355\transformed\jetified-firebase-common-20.4.3\AndroidManifest.xml:36:17-109
-uses-permission#com.google.android.providers.gsf.permission.READ_GSERVICES
-ADDED from [com.google.android.recaptcha:recaptcha:18.4.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\e692383bc856ae0bb0d1d640054d2ace\transformed\jetified-recaptcha-18.4.0\AndroidManifest.xml:9:5-98
-	android:name
-		ADDED from [com.google.android.recaptcha:recaptcha:18.4.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\e692383bc856ae0bb0d1d640054d2ace\transformed\jetified-recaptcha-18.4.0\AndroidManifest.xml:9:22-95
+		ADDED from [:url_launcher_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-74
 activity#com.google.android.gms.common.api.GoogleApiActivity
-ADDED from [com.google.android.gms:play-services-base:18.0.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\456feef7530341a2c919967cc4dde951\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:20:9-22:45
+ADDED from [com.google.android.gms:play-services-base:17.4.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\b75d8eab5aaf20ab8c6c92d3b9e95bd4\transformed\jetified-play-services-base-17.4.0\AndroidManifest.xml:23:9-26:75
 	android:exported
-		ADDED from [com.google.android.gms:play-services-base:18.0.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\456feef7530341a2c919967cc4dde951\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:22:19-43
+		ADDED from [com.google.android.gms:play-services-base:17.4.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\b75d8eab5aaf20ab8c6c92d3b9e95bd4\transformed\jetified-play-services-base-17.4.0\AndroidManifest.xml:25:13-37
 	android:theme
-		ADDED from [com.google.android.gms:play-services-base:18.0.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\456feef7530341a2c919967cc4dde951\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:21:19-78
+		ADDED from [com.google.android.gms:play-services-base:17.4.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\b75d8eab5aaf20ab8c6c92d3b9e95bd4\transformed\jetified-play-services-base-17.4.0\AndroidManifest.xml:26:13-72
 	android:name
-		ADDED from [com.google.android.gms:play-services-base:18.0.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\456feef7530341a2c919967cc4dde951\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:20:19-85
+		ADDED from [com.google.android.gms:play-services-base:17.4.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\b75d8eab5aaf20ab8c6c92d3b9e95bd4\transformed\jetified-play-services-base-17.4.0\AndroidManifest.xml:24:13-79
 meta-data#com.google.android.gms.version
-ADDED from [com.google.android.gms:play-services-basement:18.3.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\c3e05c9fbf3e6c63974105ad6d97e1f5\transformed\jetified-play-services-basement-18.3.0\AndroidManifest.xml:21:9-23:69
+ADDED from [com.google.android.gms:play-services-basement:17.4.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\74a8aaacdb70078f16d5628f59e8acf1\transformed\jetified-play-services-basement-17.4.0\AndroidManifest.xml:23:9-25:69
 	android:value
-		ADDED from [com.google.android.gms:play-services-basement:18.3.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\c3e05c9fbf3e6c63974105ad6d97e1f5\transformed\jetified-play-services-basement-18.3.0\AndroidManifest.xml:23:13-66
+		ADDED from [com.google.android.gms:play-services-basement:17.4.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\74a8aaacdb70078f16d5628f59e8acf1\transformed\jetified-play-services-basement-17.4.0\AndroidManifest.xml:25:13-66
 	android:name
-		ADDED from [com.google.android.gms:play-services-basement:18.3.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\c3e05c9fbf3e6c63974105ad6d97e1f5\transformed\jetified-play-services-basement-18.3.0\AndroidManifest.xml:22:13-58
+		ADDED from [com.google.android.gms:play-services-basement:17.4.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\74a8aaacdb70078f16d5628f59e8acf1\transformed\jetified-play-services-basement-17.4.0\AndroidManifest.xml:24:13-58
 uses-library#androidx.window.extensions
 ADDED from [androidx.window:window:1.0.0-beta04] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\032f4dff274e516110d9363a9793a3e3\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
 	android:required
