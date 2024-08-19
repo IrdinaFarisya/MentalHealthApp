@@ -11,7 +11,6 @@ class UserProfilePage extends StatefulWidget {
   @override
   _UserProfilePageState createState() => _UserProfilePageState();
 }
-//hello
 
 class _UserProfilePageState extends State<UserProfilePage> {
   AppUser? user;
