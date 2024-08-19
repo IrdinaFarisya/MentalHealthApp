@@ -13,47 +13,47 @@
 13         to allow setting breakpoints, to provide hot reload, etc.
 14    -->
 15    <uses-permission android:name="android.permission.INTERNET" />
-15-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:2:5-67
-15-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:2:22-64
+15-->C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\android\app\src\main\AndroidManifest.xml:2:5-67
+15-->C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\android\app\src\main\AndroidManifest.xml:2:22-64
 16    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
-16-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:3:5-77
-16-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:3:22-74
+16-->C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\android\app\src\main\AndroidManifest.xml:3:5-77
+16-->C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\android\app\src\main\AndroidManifest.xml:3:22-74
 17
 18    <queries>
-18-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:29:5-38:15
+18-->C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\android\app\src\main\AndroidManifest.xml:29:5-38:15
 19        <intent>
-19-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:30:9-33:18
+19-->C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\android\app\src\main\AndroidManifest.xml:30:9-33:18
 20            <action android:name="android.intent.action.PROCESS_TEXT" />
-20-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:31:13-72
-20-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:31:21-70
+20-->C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\android\app\src\main\AndroidManifest.xml:31:13-72
+20-->C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\android\app\src\main\AndroidManifest.xml:31:21-70
 21
 22            <data android:mimeType="text/plain" />
-22-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:32:13-50
-22-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:32:19-48
+22-->C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\android\app\src\main\AndroidManifest.xml:32:13-50
+22-->C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\android\app\src\main\AndroidManifest.xml:32:19-48
 23        </intent>
 24        <intent>
-24-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:30:9-33:18
+24-->C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\android\app\src\main\AndroidManifest.xml:30:9-33:18
 25            <action android:name="android.intent.action.PROCESS_TEXT" />
-25-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:31:13-72
-25-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:31:21-70
+25-->C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\android\app\src\main\AndroidManifest.xml:31:13-72
+25-->C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\android\app\src\main\AndroidManifest.xml:31:21-70
 26
 27            <data android:mimeType="text/plain" />
-27-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:32:13-50
-27-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:32:19-48
+27-->C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\android\app\src\main\AndroidManifest.xml:32:13-50
+27-->C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\android\app\src\main\AndroidManifest.xml:32:19-48
 28        </intent>
 29    </queries>
 30
 31    <uses-permission android:name="android.permission.CAMERA" />
-31-->[:flutter_barcode_scanner] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-65
-31-->[:flutter_barcode_scanner] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:9:22-62
+31-->[:flutter_barcode_scanner] C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-65
+31-->[:flutter_barcode_scanner] C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:9:22-62
 32
 33    <uses-feature android:name="android.hardware.camera" />
-33-->[:flutter_barcode_scanner] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:11:5-60
-33-->[:flutter_barcode_scanner] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:11:19-57
+33-->[:flutter_barcode_scanner] C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:11:5-60
+33-->[:flutter_barcode_scanner] C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:11:19-57
 34
 35    <uses-permission android:name="android.permission.FLASHLIGHT" />
-35-->[:flutter_barcode_scanner] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:13:5-69
-35-->[:flutter_barcode_scanner] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:13:22-66
+35-->[:flutter_barcode_scanner] C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:13:5-69
+35-->[:flutter_barcode_scanner] C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:13:22-66
 36
 37    <permission
 37-->[androidx.core:core:1.13.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\a73a9bba78b2e3f48906b9417624ec5b\transformed\core-1.13.1\AndroidManifest.xml:22:5-24:47
@@ -67,112 +67,112 @@
 41-->[androidx.core:core:1.13.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\a73a9bba78b2e3f48906b9417624ec5b\transformed\core-1.13.1\AndroidManifest.xml:26:22-94
 42
 43    <application
-43-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:5:5-28:19
+43-->C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\android\app\src\main\AndroidManifest.xml:5:5-28:19
 44        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 44-->[androidx.core:core:1.13.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\a73a9bba78b2e3f48906b9417624ec5b\transformed\core-1.13.1\AndroidManifest.xml:28:18-86
 45        android:debuggable="true"
 46        android:icon="@mipmap/ic_launcher"
-46-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:7:9-43
+46-->C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\android\app\src\main\AndroidManifest.xml:7:9-43
 47        android:label="mental_health_app"
-47-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:6:9-42
+47-->C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\android\app\src\main\AndroidManifest.xml:6:9-42
 48        android:largeHeap="true"
-48-->[:flutter_barcode_scanner] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:16:9-33
+48-->[:flutter_barcode_scanner] C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:16:9-33
 49        android:theme="@style/Theme.AppCompat.NoActionBar" >
-49-->[:flutter_barcode_scanner] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:17:9-59
+49-->[:flutter_barcode_scanner] C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:17:9-59
 50        <activity
-50-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:8:9-24:20
+50-->C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\android\app\src\main\AndroidManifest.xml:8:9-24:20
 51            android:name="com.example.mentalhealthapp.MainActivity"
-51-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:9:13-41
+51-->C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\android\app\src\main\AndroidManifest.xml:9:13-41
 52            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
-52-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:13:13-163
+52-->C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\android\app\src\main\AndroidManifest.xml:13:13-163
 53            android:exported="true"
-53-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:10:13-36
+53-->C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\android\app\src\main\AndroidManifest.xml:10:13-36
 54            android:hardwareAccelerated="true"
-54-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:14:13-47
+54-->C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\android\app\src\main\AndroidManifest.xml:14:13-47
 55            android:launchMode="singleTop"
-55-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:11:13-43
+55-->C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\android\app\src\main\AndroidManifest.xml:11:13-43
 56            android:theme="@style/LaunchTheme"
-56-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:12:13-47
+56-->C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\android\app\src\main\AndroidManifest.xml:12:13-47
 57            android:windowSoftInputMode="adjustResize" >
-57-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:15:13-55
+57-->C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\android\app\src\main\AndroidManifest.xml:15:13-55
 58            <meta-data
-58-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:16:13-19:19
+58-->C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\android\app\src\main\AndroidManifest.xml:16:13-19:19
 59                android:name="io.flutter.embedding.android.NormalTheme"
-59-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:17:17-72
+59-->C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\android\app\src\main\AndroidManifest.xml:17:17-72
 60                android:resource="@style/NormalTheme" />
-60-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:18:17-54
+60-->C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\android\app\src\main\AndroidManifest.xml:18:17-54
 61
 62            <intent-filter>
-62-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:20:13-23:29
+62-->C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\android\app\src\main\AndroidManifest.xml:20:13-23:29
 63                <action android:name="android.intent.action.MAIN" />
-63-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:21:17-68
-63-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:21:25-66
+63-->C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\android\app\src\main\AndroidManifest.xml:21:17-68
+63-->C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\android\app\src\main\AndroidManifest.xml:21:25-66
 64
 65                <category android:name="android.intent.category.LAUNCHER" />
-65-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:22:17-76
-65-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:22:27-74
+65-->C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\android\app\src\main\AndroidManifest.xml:22:17-76
+65-->C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\android\app\src\main\AndroidManifest.xml:22:27-74
 66            </intent-filter>
 67        </activity>
 68
 69        <meta-data
-69-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:25:9-27:33
+69-->C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\android\app\src\main\AndroidManifest.xml:25:9-27:33
 70            android:name="flutterEmbedding"
-70-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:26:13-44
+70-->C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\android\app\src\main\AndroidManifest.xml:26:13-44
 71            android:value="2" />
-71-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:27:13-30
+71-->C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\android\app\src\main\AndroidManifest.xml:27:13-30
 72
 73        <activity android:name="com.amolg.flutterbarcodescanner.BarcodeCaptureActivity" />
-73-->[:flutter_barcode_scanner] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:18:9-91
-73-->[:flutter_barcode_scanner] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:18:19-88
+73-->[:flutter_barcode_scanner] C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:18:9-91
+73-->[:flutter_barcode_scanner] C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:18:19-88
 74
 75        <provider
-75-->[:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:11:9-19:20
+75-->[:image_picker_android] C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:11:9-19:20
 76            android:name="io.flutter.plugins.imagepicker.ImagePickerFileProvider"
-76-->[:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-82
+76-->[:image_picker_android] C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-82
 77            android:authorities="com.example.mentalhealthapp.flutter.image_provider"
-77-->[:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-74
+77-->[:image_picker_android] C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-74
 78            android:exported="false"
-78-->[:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:14:13-37
+78-->[:image_picker_android] C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:14:13-37
 79            android:grantUriPermissions="true" >
-79-->[:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:15:13-47
+79-->[:image_picker_android] C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:15:13-47
 80            <meta-data
-80-->[:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:16:13-18:75
+80-->[:image_picker_android] C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:16:13-18:75
 81                android:name="android.support.FILE_PROVIDER_PATHS"
-81-->[:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:17:17-67
+81-->[:image_picker_android] C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:17:17-67
 82                android:resource="@xml/flutter_image_picker_file_paths" />
-82-->[:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:18:17-72
+82-->[:image_picker_android] C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:18:17-72
 83        </provider> <!-- Trigger Google Play services to install the backported photo picker module. -->
 84        <service
-84-->[:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:21:9-33:19
+84-->[:image_picker_android] C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:21:9-33:19
 85            android:name="com.google.android.gms.metadata.ModuleDependencies"
-85-->[:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:22:13-78
+85-->[:image_picker_android] C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:22:13-78
 86            android:enabled="false"
-86-->[:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:23:13-36
+86-->[:image_picker_android] C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:23:13-36
 87            android:exported="false" >
-87-->[:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:24:13-37
+87-->[:image_picker_android] C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:24:13-37
 88            <intent-filter>
-88-->[:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:26:13-28:29
+88-->[:image_picker_android] C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:26:13-28:29
 89                <action android:name="com.google.android.gms.metadata.MODULE_DEPENDENCIES" />
-89-->[:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:27:17-94
-89-->[:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:27:25-91
+89-->[:image_picker_android] C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:27:17-94
+89-->[:image_picker_android] C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:27:25-91
 90            </intent-filter>
 91
 92            <meta-data
-92-->[:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:30:13-32:36
+92-->[:image_picker_android] C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:30:13-32:36
 93                android:name="photopicker_activity:0:required"
-93-->[:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:31:17-63
+93-->[:image_picker_android] C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:31:17-63
 94                android:value="" />
-94-->[:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:32:17-33
+94-->[:image_picker_android] C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:32:17-33
 95        </service>
 96
 97        <activity
-97-->[:url_launcher_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-13:74
+97-->[:url_launcher_android] C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-13:74
 98            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
-98-->[:url_launcher_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-74
+98-->[:url_launcher_android] C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-74
 99            android:exported="false"
-99-->[:url_launcher_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-37
+99-->[:url_launcher_android] C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-37
 100            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
-100-->[:url_launcher_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-71
+100-->[:url_launcher_android] C:\Users\Irdina Farisya\Documents\GitHub\MentalHealthApp\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-71
 101
 102        <uses-library
 102-->[androidx.window:window:1.2.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\80fb5b79871802f1b506ab3b0dc635cd\transformed\jetified-window-1.2.0\AndroidManifest.xml:23:9-25:40
