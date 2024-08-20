@@ -34,8 +34,19 @@ class Therapist {
   });
 
   factory Therapist.fromJson(Map<String, dynamic> json) {
+    Uint8List? decodedDocument;
+    if (json['supportingDocument'] != null) {
+      try {
+        decodedDocument = base64Decode(json['supportingDocument']);
+        print('Successfully decoded supportingDocument. Length: ${decodedDocument.length}');
+      } catch (e) {
+        print('Error decoding supportingDocument: $e');
+        print('Raw supportingDocument data: ${json['supportingDocument']}');
+      }
+    }
+
     return Therapist(
-      therapistId: json['therapistId'],
+      therapistId: json['therapistId'] != null ? int.parse(json['therapistId'].toString()) : null,
       name: json['name'],
       email: json['email'],
       password: json['password'],
@@ -46,9 +57,7 @@ class Therapist {
       TherapistImage: json['therapistImage'] != null
           ? therapistImage.fromJson(json['therapistImage'])
           : null,
-      supportingDocument: json['supportingDocument'] != null
-          ? base64Decode(json['supportingDocument'])
-          : null,  // Decode the base64 string to Uint8List
+      supportingDocument: decodedDocument,
       approvalStatus: json['approvalStatus'],
 
     );
@@ -75,15 +84,12 @@ class Therapist {
     req.setBody(toJson());
     await req.post();
     if (req.status() == 400) {
+      print("Error: ${req.result()}");
       return false;
     } else if (req.status() == 200) {
-      String data = req.result().toString();
-      if (data.contains('Email is already registered')) {
-        return false;
-      } else {
-        return true;
-      }
+      return true;
     } else {
+      print("Unexpected status code: ${req.status()}");
       return false;
     }
   }

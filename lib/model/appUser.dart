@@ -11,6 +11,7 @@ class AppUser {
   String? dateOfBirth;
   String? phoneNumber;
   String? accessStatus;
+  String? lastError;
 
   AppUser({
     this.appUserId,
@@ -110,13 +111,11 @@ class AppUser {
     RequestController req = RequestController(path: "/api/appuser.php");
     req.setBody(toJson());
     await req.post();
-    if (req.status() == 400) {
-      return true; // Assume this means some form of error that can be handled
-    } else if (req.status() == 200) {
-      String data = req.result().toString();
-      return data != '{error: Email is already registered}';
+    if (req.status() == 200) {
+      return true;
     } else {
-      return false; // Assume this means some form of error
+      lastError = req.result().toString();
+      return false;
     }
   }
 

@@ -85,7 +85,8 @@ class _signUpState extends State<SignUp> {
           Navigator.push(context, MaterialPageRoute(builder: (context) => UserLogin()));
         });
       } else {
-        _AlertMessage("SIGNUP UNSUCCESSFUL: Email has been registered");
+        _AlertMessage("Sign up unsuccessful. Please try again.");
+        print("Error during sign up: ${user.lastError}");
       }
     } else {
       _AlertMessage("Please Insert All The Information Needed");

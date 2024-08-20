@@ -17,10 +17,35 @@ class _TherapistRegisterState extends State<TherapistRegister> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final TextEditingController specializationController = TextEditingController();
+  final TextEditingController otherSpecializationController = TextEditingController();
 
+  String? selectedSpecialization;
   String? selectedLocation;
   File? supportingDocument;
+
+  final List<String> specializations = [
+    'Clinical Psychologist',
+    'Counseling Psychologist',
+    'Child and Adolescent Therapist',
+    'Marriage and Family Therapist',
+    'Cognitive Behavioral Therapist (CBT)',
+    'Dialectical Behavior Therapist (DBT)',
+    'Trauma Therapist',
+    'Addiction Therapist',
+    'Grief Counselor',
+    'Anger Management Counselor',
+    'Anxiety Specialist',
+    'Depression Specialist',
+    'Eating Disorder Specialist',
+    'Stress Management Counselor',
+    'Workplace Mental Health Counselor',
+    'Psychoanalyst',
+    'Neuropsychologist',
+    'Behavioral Therapist',
+    'Psychiatrist',
+    'Mindfulness-Based Therapist',
+    'Other', // Add the "Other" option
+  ];
 
   final List<String> location = [
     'PAHANG', 'PERAK', 'TERENGGANU', 'PERLIS', 'SELANGOR',
@@ -43,7 +68,9 @@ class _TherapistRegisterState extends State<TherapistRegister> {
     final String name = nameController.text.trim();
     final String email = emailController.text.trim();
     final String password = passwordController.text.trim();
-    final String specialization = specializationController.text.trim();
+    final String specialization = selectedSpecialization == 'Other'
+        ? otherSpecializationController.text.trim()
+        : selectedSpecialization ?? '';
 
     if (name.isNotEmpty && email.isNotEmpty && password.isNotEmpty &&
         specialization.isNotEmpty && supportingDocument != null && selectedLocation != null) {
@@ -51,17 +78,16 @@ class _TherapistRegisterState extends State<TherapistRegister> {
       Uint8List supportingDocumentBytes = await supportingDocument!.readAsBytes();
 
       Therapist therapist = Therapist(
-          therapistId: 0,
-          name: name,
-          email: email,
-          password: password,
-          specialization: specialization,
-          location: selectedLocation,
-          supportingDocument: supportingDocumentBytes,
-          availability: "", // Add this line
-          accessStatus: 'ACTIVE',
-          approvalStatus: 'PENDING',
-
+        therapistId: 0,
+        name: name,
+        email: email,
+        password: password,
+        specialization: specialization,
+        location: selectedLocation,
+        supportingDocument: supportingDocumentBytes,
+        availability: "", // Add this line
+        accessStatus: 'ACTIVE',
+        approvalStatus: 'PENDING',
       );
 
       // Print the data being sent
@@ -87,7 +113,8 @@ class _TherapistRegisterState extends State<TherapistRegister> {
       nameController.clear();
       emailController.clear();
       passwordController.clear();
-      specializationController.clear();
+      otherSpecializationController.clear();
+      selectedSpecialization = null;
       supportingDocument = null;
       selectedLocation = null;
     });
@@ -151,13 +178,32 @@ class _TherapistRegisterState extends State<TherapistRegister> {
                 ),
                 obscureText: true,
               ),
-              TextField(
-                controller: specializationController,
+              DropdownButtonFormField<String>(
+                value: selectedSpecialization,
+                onChanged: (newValue) {
+                  setState(() {
+                    selectedSpecialization = newValue;
+                  });
+                },
+                items: specializations.map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
                 decoration: const InputDecoration(
                   labelText: 'Specialization',
                   prefixIcon: Icon(Icons.work),
                 ),
               ),
+              if (selectedSpecialization == 'Other')
+                TextField(
+                  controller: otherSpecializationController,
+                  decoration: const InputDecoration(
+                    labelText: 'Please specify your specialization',
+                    prefixIcon: Icon(Icons.edit),
+                  ),
+                ),
               DropdownButtonFormField<String>(
                 value: selectedLocation,
                 onChanged: (newValue) {
