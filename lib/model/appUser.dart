@@ -24,7 +24,7 @@ class AppUser {
   });
 
   AppUser.fromJson(Map<String, dynamic> json)
-      : appUserId = json['appUserId'] as int?,
+      : appUserId = int.tryParse(json['appUserId'].toString()),
         username = json['username'] as String?,
         email = json['email'] as String?,
         password = json['password'] as String?,
@@ -83,7 +83,7 @@ class AppUser {
     if (req.status() == 200) {
       Map<String, dynamic> result = req.result();
       if (result.containsKey('appUserId')) {
-        appUserId = result['appUserId'];
+        appUserId = int.tryParse(result['appUserId'].toString());
         return appUserId;
       } else {
         print("appUserId not found in response");
@@ -94,6 +94,8 @@ class AppUser {
       return null;
     }
   }
+
+
 
   Future<bool> resetPassword() async {
     if (appUserId == null || password == null) {
@@ -145,12 +147,20 @@ class AppUser {
     await req.get();
 
     if (req.status() == 200 && req.result() != null) {
-      Map<String, dynamic> responseData = req.result();
-      if (responseData.containsKey('data') && responseData['data'] is List) {
-        List<dynamic> appuserData = responseData['data'];
-        result = appuserData.map((json) => AppUser.fromJson(json)).toList();
+      var responseData = req.result();
+
+      if (responseData is Map<String, dynamic>) {
+        var data = responseData['data'];
+        if (data is List) {
+          result = data.map((json) => AppUser.fromJson(json as Map<String, dynamic>)).toList();
+        } else if (data is Map<String, dynamic>) {
+          // Handle the case where 'data' is a single object
+          result = [AppUser.fromJson(data)];
+        } else {
+          print('Unexpected data format: $data');
+        }
       } else {
-        print('Response data is not in the expected format.');
+        print('Response is not a Map<String, dynamic>: $responseData');
       }
     } else {
       print('Failed to fetch data.');
@@ -158,4 +168,5 @@ class AppUser {
 
     return result;
   }
+
 }

@@ -37,13 +37,14 @@ class Mood {
 
   factory Mood.fromJson(Map<String, dynamic> json) {
     return Mood(
-      entryId: json['entryId'],
-      appUserId: json['appuserId'],
+      entryId: int.tryParse(json['entryId'].toString()), // Ensure entryId is an int
+      appUserId: int.tryParse(json['appUserId'].toString()), // Ensure appUserId is an int
       mood: json['mood'],
       date: json['date'],
       details: json['details'],
     );
   }
+
 
   Map<String, dynamic> toJson() => {
     'entryId': entryId,
