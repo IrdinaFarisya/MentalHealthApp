@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:typed_data';
 import '../Controller/request_controller.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:mentalhealthapp/model/appUserImage.dart';
 
 class AppUser {
   int? appUserId;
@@ -127,10 +128,28 @@ class AppUser {
       return false;
     }
 
-    RequestController req = RequestController(path: "/api/updateprofile.php");
-    req.setBody(toJson());
+    Map<String, dynamic> body = {
+      'appUserId': appUserId,
+      'username': username,
+      'email': email,
+      'phoneNumber': phoneNumber,
+    };
+
+    // Only include password if it's not null or empty
+    if (password != null && password!.isNotEmpty) {
+      body['password'] = password;
+    }
+
+    RequestController req = RequestController(path: "/api/updateProfile.php");
+    req.setBody(body);
     await req.put();
-    return req.status() == 200;
+
+    if (req.status() == 200) {
+      return true;
+    } else {
+      print("Update failed: ${req.result()}");
+      return false;
+    }
   }
 
   Future<List<AppUser>> fetchFullUserDetails() async {
@@ -167,6 +186,44 @@ class AppUser {
     }
 
     return result;
+  }
+
+  Future<bool> saveProfilePicture(AppUserImage userImage) async {
+    RequestController req = RequestController(path: "/api/saveUserImage.php");
+    req.setBody(userImage.toJson());
+
+    await req.post();
+
+    if (req.status() == 200) {
+      print("Profile picture saved successfully");
+      return true;
+    } else {
+      print("Failed to save profile picture: ${req.result()}");
+      return false;
+    }
+  }
+
+  Future<String?> getProfilePicture() async {
+    if (appUserId == null) {
+      print("Error: AppUserId is not set");
+      return null;
+    }
+
+    RequestController req = RequestController(path: "/api/getUserImage.php?appUserId=$appUserId");
+    await req.get(); // Changed from post() to get()
+
+    if (req.status() == 200) {
+      Map<String, dynamic> result = req.result();
+      if (result.containsKey('image')) {
+        return result['image'] as String?;
+      } else {
+        print("No profile picture found.");
+        return null;
+      }
+    } else {
+      print("Failed to fetch profile picture: ${req.result()}");
+      return null;
+    }
   }
 
 }

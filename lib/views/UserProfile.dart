@@ -1,4 +1,6 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'package:mentalhealthapp/model/appUser.dart';
 import 'package:mentalhealthapp/model/appointment.dart';
 import 'package:mentalhealthapp/views/PastAppointmentList.dart';
@@ -6,6 +8,7 @@ import 'package:mentalhealthapp/views/UserLogin.dart';
 import 'package:mentalhealthapp/views/MoodTrackerOverview.dart';
 import 'package:mentalhealthapp/views/AppointmentScreen.dart';
 import 'package:mentalhealthapp/views/UserHome.dart';
+import 'package:mentalhealthapp/views/UserEditProfile.dart';
 
 class UserProfilePage extends StatefulWidget {
   @override
@@ -17,6 +20,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
   List<Appointment> pastAppointments = [];
   bool isLoading = true;
   String errorMessage = '';
+  String? profilePictureBase64;
   int _selectedIndex = 4; // Set the initial index to match the Profile tab
 
   @override
@@ -33,6 +37,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
         setState(() {
           user = userDetails.first;
         });
+        profilePictureBase64 = await user!.getProfilePicture(); // Ensure this is a String
       }
       pastAppointments = await Appointment.fetchDoneAppointment();
       pastAppointments.sort((a, b) => DateTime.parse('${b.appointmentDate} ${b.appointmentTime}')
@@ -47,6 +52,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
       });
     }
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -95,7 +101,17 @@ class _UserProfilePageState extends State<UserProfilePage> {
       children: [
         CircleAvatar(
           radius: 30.0,
-          backgroundImage: AssetImage('assets/profile_placeholder.png'),
+          backgroundColor: Colors.grey[200], // Light grey background
+          backgroundImage: profilePictureBase64 != null
+              ? MemoryImage(base64Decode(profilePictureBase64!))
+              : null,
+          child: profilePictureBase64 == null
+              ? Icon(
+            Icons.person,
+            size: 40,
+            color: Colors.grey[600], // Darker grey for the icon
+          )
+              : null,
         ),
         SizedBox(width: 10.0),
         Expanded(
@@ -113,7 +129,18 @@ class _UserProfilePageState extends State<UserProfilePage> {
                     icon: Icon(Icons.edit),
                     color: Colors.black,
                     onPressed: () {
-                      // Implement Edit Profile functionality
+                      if (user != null) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => EditProfilePage(user: user!),
+                          ),
+                        );
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text('User data is not available.')),
+                        );
+                      }
                     },
                   ),
                 ],
