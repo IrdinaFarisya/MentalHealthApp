@@ -125,6 +125,7 @@ class _SignInState extends State<UserLogin> {
         backgroundColor: Colors.transparent, // Set the background color to transparent
         //automaticallyImplyLeading: false,
       ),
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Center(
           child: Column(

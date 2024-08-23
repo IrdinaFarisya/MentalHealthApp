@@ -13,10 +13,10 @@ class PastAppointmentList extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'SereneSoul',
+          'Past Appointments',
           style: TextStyle(
             fontWeight: FontWeight.bold,
-            fontSize: 25,
+            fontSize: 20,
             color: Colors.black,
             fontFamily: 'BodoniModa',
           ),
@@ -26,20 +26,10 @@ class PastAppointmentList extends StatelessWidget {
         centerTitle: true,
         iconTheme: IconThemeData(color: Colors.black),
       ),
+      backgroundColor: Colors.white,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Text(
-              'Past Appointments',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 24,
-                fontFamily: 'BodoniModa',
-              ),
-            ),
-          ),
           Expanded(
             child: pastAppointments.isEmpty
                 ? Center(child: Text('No past appointments'))

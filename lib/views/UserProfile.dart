@@ -3,12 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:mentalhealthapp/model/appUser.dart';
 import 'package:mentalhealthapp/model/appointment.dart';
+import 'package:mentalhealthapp/views/AboutSereneSoul.dart';
 import 'package:mentalhealthapp/views/PastAppointmentList.dart';
-import 'package:mentalhealthapp/views/UserLogin.dart';
+import 'package:mentalhealthapp/views/PrivacyPolicyPage.dart';
 import 'package:mentalhealthapp/views/MoodTrackerOverview.dart';
 import 'package:mentalhealthapp/views/AppointmentScreen.dart';
 import 'package:mentalhealthapp/views/UserHome.dart';
 import 'package:mentalhealthapp/views/UserEditProfile.dart';
+import 'package:mentalhealthapp/views/HelpPage.dart';
+import 'package:mentalhealthapp/views/TermsOfServicesPage.dart';
+import 'package:mentalhealthapp/main.dart';
 
 class UserProfilePage extends StatefulWidget {
   @override
@@ -91,7 +95,80 @@ class _UserProfilePageState extends State<UserProfilePage> {
           ),
         ),
       ),
-      bottomNavigationBar: _buildBottomNavigationBar(),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed, // Add this line
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.mood),
+            label: 'Mood',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.group),
+            label: 'Therapists',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.file_copy),
+            label: 'Resources',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profile',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.black,
+        unselectedItemColor: Colors.grey,
+        backgroundColor: Colors.white,
+        showUnselectedLabels: true, // Add this line to ensure unselected labels are shown
+        onTap: (index) {
+          // Handle item tap
+          switch (index) {
+            case 0:
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => UserHomePage(),
+                ),
+              );
+            case 1:
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => MoodTrackerOverview(),
+                ),
+              );
+              break;
+            case 2:
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => AppointmentScreen(),
+                ),
+              );
+              break;
+            case 3:
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => UserProfilePage(),
+                ),
+              );
+              break;
+            case 4:
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => UserProfilePage(),
+                ),
+              );
+              break;
+          }
+        },
+      ),
     );
   }
 
@@ -160,11 +237,31 @@ class _UserProfilePageState extends State<UserProfilePage> {
     return Column(
       children: [
         _buildPastAppointmentsOption(),
-        _buildMenuOption(Icons.help_outline, 'Help', () {}),
+        _buildMenuOption(Icons.help_outline, 'Help', () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => HelpPage()), // Navigate to HelpPage
+          );
+        }),
         _buildMenuOption(Icons.notifications_none_outlined, 'Notification Setting', () {}),
-        _buildMenuOption(Icons.description_outlined, 'Terms of Services', () {}),
-        _buildMenuOption(Icons.privacy_tip_outlined, 'Privacy Policy', () {}),
-        _buildMenuOption(Icons.favorite_border, 'About SereneSoul', () {}),
+        _buildMenuOption(Icons.description_outlined, 'Terms of Services', () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => TermsOfServicesPage()), // Navigate to HelpPage
+          );
+        }),
+        _buildMenuOption(Icons.privacy_tip_outlined, 'Privacy Policy', () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => PrivacyPolicyPage()), // Navigate to HelpPage
+          );
+        }),
+        _buildMenuOption(Icons.favorite_border, 'About SereneSoul', () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => AboutSereneSoul()), // Navigate to HelpPage
+          );
+        }),
       ],
     );
   }
@@ -201,80 +298,9 @@ class _UserProfilePageState extends State<UserProfilePage> {
       onTap: () {
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => UserLogin()),
+          MaterialPageRoute(builder: (context) => MainPage()),
         );
       },
     );
-  }
-
-  Widget _buildBottomNavigationBar() {
-    return BottomNavigationBar(
-      items: const <BottomNavigationBarItem>[
-        BottomNavigationBarItem(
-          icon: Icon(Icons.home),
-          label: 'Home',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.mood),
-          label: 'Mood',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.group),
-          label: 'Therapists',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.file_copy),
-          label: 'Resources',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.person),
-          label: 'Profile',
-        ),
-      ],
-      currentIndex: _selectedIndex,
-      selectedItemColor: Colors.black,
-      unselectedItemColor: Colors.grey,
-      showUnselectedLabels: true,
-      onTap: _onItemTapped,
-    );
-  }
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-
-    switch (index) {
-      case 0:
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => UserHomePage(),
-          ),
-        );
-        break;
-      case 1:
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => MoodTrackerOverview(),
-          ),
-        );
-        break;
-      case 2:
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => AppointmentScreen(),
-          ),
-        );
-        break;
-      case 3:
-      // Handle navigation to Resources page
-        break;
-      case 4:
-      // Already on the Profile page
-        break;
-    }
   }
 }

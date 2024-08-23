@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:mentalhealthapp/model/mood.dart';
 import 'package:mentalhealthapp/model/appUser.dart';
+import 'package:mentalhealthapp/views/NotificationService.dart';
 
 class MoodTrackerPage extends StatefulWidget {
   @override
@@ -50,6 +51,7 @@ class _MoodTrackerPageState extends State<MoodTrackerPage> {
         elevation: 0, // Remove the shadow
         centerTitle: true, // Center the title text
       ),
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16),
         child: Column(
@@ -249,6 +251,17 @@ class _MoodTrackerPageState extends State<MoodTrackerPage> {
         });
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Mood entry saved successfully')),
+        );
+
+        // Schedule next day's reminder
+        DateTime nextReminder = DateTime.now().add(Duration(days: 1));
+        nextReminder = DateTime(nextReminder.year, nextReminder.month, nextReminder.day, 20, 0); // Set to 8 PM
+
+        await NotificationService().scheduleNotification(
+          10000, // Use a different ID range for journal reminders
+          'Journal Reminder',
+          'Time to write in your journal!',
+          nextReminder,
         );
       } else {
         print('Failed to save mood entry');

@@ -1,1 +1,0 @@
- C:\\Users\\Irdina\ Farisya\\StudioProjects\\MentalHealthApp\\.dart_tool\\flutter_build\\e582209f751f0a4efffde09b51789584\\native_assets.yaml: 

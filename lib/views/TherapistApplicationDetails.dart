@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:mentalhealthapp/views/AdminHome.dart';
 import '../model/therapist.dart';
 import 'dart:convert';
 import 'dart:typed_data';
+import 'package:mentalhealthapp/model/admin.dart';
 
 class TherapistApplicationDetails extends StatelessWidget {
   final Therapist therapist;
   final Function(Therapist) onApprove;
+  final Admin admin;
 
   const TherapistApplicationDetails({
     Key? key,
     required this.therapist,
     required this.onApprove,
+    required this.admin,
   }) : super(key: key);
 
   @override
@@ -30,6 +34,7 @@ class TherapistApplicationDetails extends StatelessWidget {
         elevation: 0,
         centerTitle: true,
       ),
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         padding: EdgeInsets.all(20.0),
         child: Column(
@@ -61,7 +66,18 @@ class TherapistApplicationDetails extends StatelessWidget {
             SizedBox(height: 40),
             Center(
               child: ElevatedButton(
-                onPressed: () => onApprove(therapist),
+                onPressed: () async {
+                  // Perform the approval logic
+                  await onApprove(therapist);
+
+                  // Navigate back to AdminHome with the required 'admin' parameter
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => AdminHome(admin: admin),
+                    ),
+                  );
+                },
                 child: Text(
                   'Approve Application',
                   style: TextStyle(

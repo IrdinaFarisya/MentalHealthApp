@@ -223,6 +223,7 @@ class _UserHomePageState extends State<UserHomePage> with WidgetsBindingObserver
             currentIndex: _selectedIndex,
             selectedItemColor: Colors.black,
             unselectedItemColor: Colors.grey,
+            backgroundColor: Colors.white,
             showUnselectedLabels: true, // Add this line to ensure unselected labels are shown
             onTap: (index) {
               // Handle item tap

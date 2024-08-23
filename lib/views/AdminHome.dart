@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import '../model/therapist.dart';
-import '../model/admin.dart';
-import 'TherapistApplicationDetails.dart';
+import 'package:mentalhealthapp/main.dart';
+import 'package:mentalhealthapp/model/admin.dart';
+import 'package:mentalhealthapp/model/therapist.dart';
+import 'package:mentalhealthapp/views/TherapistApplicationDetails.dart';
 
 class AdminHome extends StatefulWidget {
   final Admin admin;
@@ -51,8 +52,16 @@ class _AdminHomeState extends State<AdminHome> {
         builder: (context) => TherapistApplicationDetails(
           therapist: therapist,
           onApprove: _approveTherapist,
+          admin: widget.admin,  // Pass the admin object
         ),
       ),
+    );
+  }
+
+  void _logout() {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => MainPage()),  // Navigate to MainPage
     );
   }
 
@@ -69,10 +78,16 @@ class _AdminHomeState extends State<AdminHome> {
             fontFamily: 'BodoniModa',
           ),
         ),
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.white,
         elevation: 0,
         centerTitle: true,
         automaticallyImplyLeading: false,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.logout, color: Colors.black),
+            onPressed: _logout,
+          ),
+        ],
       ),
       body: Container(
         color: Colors.white,

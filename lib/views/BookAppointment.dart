@@ -3,6 +3,7 @@ import 'package:mentalhealthapp/model/therapist.dart'; // Import your Therapist 
 import 'package:mentalhealthapp/model/appointment.dart'; // Import your Appointment model
 import 'package:mentalhealthapp/model/appUser.dart'; // Import your AppUser model
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:mentalhealthapp/views/NotificationService.dart';
 
 class BookAppointment extends StatefulWidget {
   final Therapist therapist;
@@ -55,6 +56,7 @@ class _BookAppointmentState extends State<BookAppointment> {
         elevation: 0, // Remove the shadow
         centerTitle: true, // Center the title text
       ),
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -246,15 +248,29 @@ class _BookAppointmentState extends State<BookAppointment> {
 
 
   void _saveAppointment(Appointment appointment) async {
-    // Implement logic to save the appointment
     bool success = await appointment.saveAppointment();
 
     if (success) {
-      // Handle success case (e.g., navigate to success screen)
       print('Appointment saved successfully');
+
+      // Schedule a notification for the appointment
+      DateTime appointmentDateTime = DateTime.parse('${appointment.appointmentDate} ${appointment.appointmentTime}');
+      await NotificationService().scheduleNotification(
+        appointment.appointmentId ?? 0, // Use 0 if appointmentId is null
+        'Upcoming Appointment',
+        'You have an appointment in 1 hour',
+        appointmentDateTime.subtract(Duration(hours: 1)),
+      );
+
+      // Show success message to user
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Appointment booked successfully')),
+      );
     } else {
-      // Handle failure case
       print('Failed to save appointment');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Failed to book appointment. Please try again.')),
+      );
     }
   }
 }

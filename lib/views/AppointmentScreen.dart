@@ -3,6 +3,9 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:mentalhealthapp/model/therapist.dart';
 import 'package:mentalhealthapp/views/BookAppointment.dart';
+import 'package:mentalhealthapp/views/MoodTrackerOverview.dart';
+import 'package:mentalhealthapp/views/UserHome.dart';
+import 'package:mentalhealthapp/views/UserProfile.dart';
 
 class AppointmentScreen extends StatefulWidget {
   @override
@@ -11,6 +14,7 @@ class AppointmentScreen extends StatefulWidget {
 
 class _AppointmentScreenState extends State<AppointmentScreen> {
   List<Therapist> therapists = [];
+  int _selectedIndex = 2;
 
   @override
   void initState() {
@@ -46,6 +50,7 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
         elevation: 0, // Remove the shadow
         centerTitle: true, // Center the title text
       ),
+      backgroundColor: Colors.white,
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -125,6 +130,80 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
             ),
           ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed, // Add this line
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.mood),
+            label: 'Mood',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.group),
+            label: 'Therapists',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.file_copy),
+            label: 'Resources',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profile',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.black,
+        unselectedItemColor: Colors.grey,
+        backgroundColor: Colors.white,
+        showUnselectedLabels: true, // Add this line to ensure unselected labels are shown
+        onTap: (index) {
+          // Handle item tap
+          switch (index) {
+            case 0:
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => UserHomePage(),
+                ),
+              );
+            case 1:
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => MoodTrackerOverview(),
+                ),
+              );
+              break;
+            case 2:
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => AppointmentScreen(),
+                ),
+              );
+              break;
+            case 3:
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => UserProfilePage(),
+                ),
+              );
+              break;
+            case 4:
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => UserProfilePage(),
+                ),
+              );
+              break;
+          }
+        },
       ),
     );
   }
