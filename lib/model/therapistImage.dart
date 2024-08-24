@@ -1,37 +1,28 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
-import '../Controller/request_controller.dart';
-
-class therapistImage {
+class TherapistImage {
 
   int? imageId;
-  String? image;
+  String? image; // Base64-encoded image
   int? therapistId;
 
-  therapistImage(
-      this.imageId,
-      this.image,
-      this.therapistId
-      );
+  TherapistImage(this.imageId, this.image, this.therapistId);
 
-  therapistImage.forImage(
-      this.imageId,
-      this.image
-      );
+  // Constructor for creating an instance from an image only
+  TherapistImage.forImage(this.imageId, this.image);
 
+  // Factory constructor for creating an instance from JSON
+  factory TherapistImage.fromJson(Map<String, dynamic> json) => TherapistImage(
+    json['imageId'] as int?,
+    json['image'] as String?,
+    json['therapistId'] as int?,
+  );
 
-  therapistImage.fromJson(Map<String, dynamic> json)
-      : imageId = json['imageId'] as dynamic,
-        image = json['image'] as String,
-        therapistId = json['therapistId'] as dynamic;
-
-  // toJson will be automatically called by jsonEncode when necessary
+  // Convert the instance to JSON
   Map<String, dynamic> toJson() => {
     'imageId': imageId,
     'image': image,
     'therapistId': therapistId,
   };
-
-
 }

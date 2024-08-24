@@ -32,9 +32,9 @@ class Appointment {
   });
 
   Appointment.fromJson(Map<String, dynamic> json)
-      : appointmentId = json['appointmentId'],
-        appUserId = json['appUserId'],
-        therapistId = json['therapistId'],
+      : appointmentId = json['appointmentId'] != null ? int.parse(json['appointmentId'].toString()) : null,
+        appUserId = json['appUserId'] != null ? int.parse(json['appUserId'].toString()) : null,
+        therapistId = json['therapistId'] != null ? int.parse(json['therapistId'].toString()) : null,
         appointmentDate = json['appointmentDate'],
         appointmentTime = json['appointmentTime'],
         status = json['status'],
@@ -79,7 +79,6 @@ class Appointment {
   static Future<List<Appointment>> loadAppointment() async {
     List<Appointment> result = [];
 
-    // Create a Therapist instance to use getTherapistId
     Therapist therapist = Therapist();
     int? therapistId = await therapist.getTherapistId();
 
@@ -182,6 +181,41 @@ class Appointment {
 
     RequestController req = RequestController(
         path: "/api/fetchDoneAppointment.php?appUserId=$appUserId");
+    await req.get();
+
+    if (req.status() == 200 && req.result() != null) {
+      Map<String, dynamic> responseData = req.result();
+      if (responseData.containsKey('data') && responseData['data'] is List) {
+        List<dynamic> appointmentsData = responseData['data'];
+        result =
+            appointmentsData.map((json) => Appointment.fromJson(json)).toList();
+        // Filter appointments to include only 'ACCEPTED' and 'DONE' statuses
+        result = result.where((appointment) =>
+        appointment.status == 'DONE').toList();
+      } else {
+        print('Response data is not in the expected format.');
+      }
+    } else {
+      print('Failed to fetch data.');
+      print('Server response: ${req.result()}');
+    }
+
+    return result;
+  }
+
+  static Future<List<Appointment>> therapistDoneAppointment() async {
+    List<Appointment> result = [];
+
+    Therapist therapist = Therapist();
+    int? therapistId = await therapist.getTherapistId();
+
+    if (therapistId == null) {
+      print('Error: Therapist ID not found');
+      return result;
+    }
+
+    RequestController req = RequestController(
+        path: "/api/therapistDoneAppointment.php?therapistId=$therapistId");
     await req.get();
 
     if (req.status() == 200 && req.result() != null) {

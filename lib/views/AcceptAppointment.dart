@@ -98,6 +98,7 @@ class _AcceptAppointmentState extends State<AcceptAppointment> {
   }
 
   void _acceptAppointment() async {
+    print('Appointment ID: ${widget.appointment.appointmentId}');
     if (_urlController.text.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Please enter a meeting URL')),
@@ -109,10 +110,13 @@ class _AcceptAppointmentState extends State<AcceptAppointment> {
       RequestController req = RequestController(path: "/api/appointment.php");
       req.setBody({
         'appointmentId': widget.appointment.appointmentId,
-        'status': 'ACCEPTED', // Change this to 'ACCEPTED'
+        'status': 'ACCEPTED',
         'appointmentLink': _urlController.text,
       });
       await req.put();
+
+      print('Response status: ${req.status()}');
+      print('Response body: ${req.result()}');
 
       if (req.status() == 200) {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -120,9 +124,10 @@ class _AcceptAppointmentState extends State<AcceptAppointment> {
         );
         Navigator.pop(context, true);
       } else {
-        throw Exception('Failed to accept appointment');
+        throw Exception('Failed to accept appointment: ${req.result()}');
       }
     } catch (e) {
+      print('Error accepting appointment: $e');
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Error: ${e.toString()}')),
       );

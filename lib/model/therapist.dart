@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import '../Controller/request_controller.dart';
 import 'package:mentalhealthapp/model/therapistImage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:mentalhealthapp/model/therapistImage.dart';
 
 class Therapist {
   int? therapistId;
@@ -13,7 +14,6 @@ class Therapist {
   String? availability;
   String? location;
   String? accessStatus;
-  therapistImage? TherapistImage;
   Uint8List? supportingDocument;  // New field for supporting document
   String? approvalStatus;
 
@@ -27,7 +27,6 @@ class Therapist {
     this.availability,
     this.location,
     this.accessStatus,
-    this.TherapistImage,
     this.supportingDocument,  // Added to constructor
     this.approvalStatus,
 
@@ -54,9 +53,6 @@ class Therapist {
       availability: json['availability'],
       location: json['location'],
       accessStatus: json['accessStatus'],
-      TherapistImage: json['therapistImage'] != null
-          ? therapistImage.fromJson(json['therapistImage'])
-          : null,
       supportingDocument: decodedDocument,
       approvalStatus: json['approvalStatus'],
 
@@ -150,36 +146,40 @@ class Therapist {
   }
 
 
-  Future<bool> updateProfile(Uint8List? newProfilePicture, Uint8List? newSupportingDocument) async {
-    RequestController req = RequestController(path: "/api/updateTherapistProfile.php");
-
-    String? base64ProfilePicture;
-    if (newProfilePicture != null) {
-      base64ProfilePicture = base64Encode(newProfilePicture);
-    }
-
-    String? base64SupportingDocument;
-    if (newSupportingDocument != null) {
-      base64SupportingDocument = base64Encode(newSupportingDocument);
-    }
-
-    req.setBody({
-      "therapistId": therapistId,
-      "name": name,
-      "email": email,
-      "password": password,
-      "specialization": specialization,
-      "availability": availability,
-      "location": location,
-      "profilePicture": base64ProfilePicture,
-      "supportingDocument": base64SupportingDocument,
-    });
-    await req.put();
-    if (req.status() == 400) {
+  Future<bool> updateProfile() async {
+    if (therapistId == null) {
+      print("Error: therapistId is not set");
       return false;
-    } else if (req.status() == 200) {
+    }
+
+    Map<String, dynamic> body = {
+      'therapistId': therapistId,
+      'name': name,
+      'email': email,
+      'specialization': specialization,
+      'location': location,
+    };
+
+    // Only include password if it's not null or empty
+    if (password != null && password!.isNotEmpty) {
+      body['password'] = password;
+    }
+
+    // Convert supportingDocument to base64 string if it's not null
+    if (supportingDocument != null) {
+      body['supportingDocument'] = base64Encode(supportingDocument!);
+    }
+
+    print("Update profile request body: $body");  // Add this line for debugging
+
+    RequestController req = RequestController(path: "/api/UpdateTherapistProfile.php");
+    req.setBody(body);
+    await req.put();
+
+    if (req.status() == 200) {
       return true;
     } else {
+      print("Update failed: ${req.result()}");
       return false;
     }
   }
@@ -224,8 +224,8 @@ class Therapist {
 
   Future<int?> getTherapistId() async {
     final prefs = await SharedPreferences.getInstance();
-    String therapistEmail = prefs.getString('therapistEmail') ?? '';
-    if (therapistEmail == null || therapistEmail!.isEmpty) {
+    String? therapistEmail = prefs.getString('therapistEmail');
+    if (therapistEmail == null || therapistEmail.isEmpty) {
       print("Error: Email is not set");
       return null;
     }
@@ -237,9 +237,16 @@ class Therapist {
     if (req.status() == 200) {
       Map<String, dynamic> result = req.result();
       if (result.containsKey('therapistId')) {
-        therapistId = result['therapistId'];
-        print("Fetched therapistId: $therapistId");
-        return therapistId;
+        // Parse the therapistId as an int
+        int? parsedTherapistId = int.tryParse(result['therapistId'].toString());
+        if (parsedTherapistId != null) {
+          therapistId = parsedTherapistId;
+          print("Fetched therapistId: $therapistId");
+          return therapistId;
+        } else {
+          print("Failed to parse therapistId");
+          return null;
+        }
       } else {
         print("therapistId not found in response");
         return null;
@@ -268,6 +275,90 @@ class Therapist {
     req.setBody({"therapistId": therapistId});
     await req.put();
     return req.status() == 200;
+  }
+
+  Future<List<Therapist>> fetchFullTherapistDetails() async {
+    List<Therapist> result = [];
+
+    int? appUserId = await getTherapistId();
+
+    if (appUserId == null) {
+      print('Error: Therapist ID not found');
+      return result;
+    }
+
+    RequestController req = RequestController(path: "/api/fetchFullTherapistDetails.php?therapistId=$therapistId");
+    await req.get();
+
+    if (req.status() == 200 && req.result() != null) {
+      var responseData = req.result();
+
+      if (responseData is Map<String, dynamic>) {
+        var data = responseData['data'];
+        if (data is List) {
+          result = data.map((json) => Therapist.fromJson(json as Map<String, dynamic>)).toList();
+        } else if (data is Map<String, dynamic>) {
+          // Handle the case where 'data' is a single object
+          result = [Therapist.fromJson(data)];
+        } else {
+          print('Unexpected data format: $data');
+        }
+      } else {
+        print('Response is not a Map<String, dynamic>: $responseData');
+      }
+    } else {
+      print('Failed to fetch data.');
+    }
+
+    return result;
+  }
+
+  Future<bool> saveProfilePicture(TherapistImage therapistImage) async {
+    RequestController req = RequestController(path: "/api/saveTherapistImage.php");
+
+    // Make sure both therapistId and image are not null
+    if (therapistImage.therapistId == null || therapistImage.image == null) {
+      print("Error: therapistId or image is null");
+      return false;
+    }
+
+    req.setBody({
+      'therapistId': therapistImage.therapistId,
+      'image': therapistImage.image,
+    });
+
+    await req.post();
+
+    if (req.status() == 200) {
+      print("Profile picture saved successfully");
+      return true;
+    } else {
+      print("Failed to save profile picture: ${req.result()}");
+      return false;
+    }
+  }
+
+  Future<String?> getProfilePicture() async {
+    if (therapistId == null) {
+      print("Error: AppUserId is not set");
+      return null;
+    }
+
+    RequestController req = RequestController(path: "/api/getTherapistImage.php?therapistId=$therapistId");
+    await req.get(); // Changed from post() to get()
+
+    if (req.status() == 200) {
+      Map<String, dynamic> result = req.result();
+      if (result.containsKey('image')) {
+        return result['image'] as String?;
+      } else {
+        print("No profile picture found.");
+        return null;
+      }
+    } else {
+      print("Failed to fetch profile picture: ${req.result()}");
+      return null;
+    }
   }
 
 }

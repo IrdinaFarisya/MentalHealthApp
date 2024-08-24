@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:intl/intl.dart';
+import 'package:mentalhealthapp/views/TherapistProfile.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../model/appointment.dart';
@@ -246,21 +247,20 @@ class _TherapistHomePageState extends State<TherapistHomePage> with WidgetsBindi
                   ).then((_) => fetchAcceptedAppointments());
                   break;
                 case 2:
-                  Navigator.push(
+                  /*Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => AppointmentScreen(),
                     ),
                   ).then((_) => fetchAcceptedAppointments());
-                  break;
+                  break;*/
                 case 3:
-                  Navigator.push(
+                Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => TherapistHomePage(),
-                    ),
-                  ).then((_) => fetchAcceptedAppointments());
-                  break;
+                        builder: (context) => TherapistProfilePage())
+                );
+                break;
               }
             },
           ),

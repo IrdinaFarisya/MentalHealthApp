@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:mentalhealthapp/views/TherapistHome.dart';
+import 'package:mentalhealthapp/views/TherapistProfile.dart';
 import '../model/appointment.dart';
 import 'AcceptAppointment.dart';
 
@@ -11,6 +13,8 @@ class PatientsBookingList extends StatefulWidget {
 class _PatientsBookingListState extends State<PatientsBookingList> {
   List<Appointment> pendingAppointments = [];
   bool isLoading = true;
+  String errorMessage = '';
+  int _selectedIndex = 1;
 
   @override
   void initState() {
@@ -18,9 +22,16 @@ class _PatientsBookingListState extends State<PatientsBookingList> {
     _loadAppointments();
   }
 
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   Future<void> _loadAppointments() async {
     setState(() {
       isLoading = true;
+      errorMessage = '';
     });
     try {
       List<Appointment> loadedAppointments = await Appointment.loadAppointment();
@@ -32,6 +43,7 @@ class _PatientsBookingListState extends State<PatientsBookingList> {
       print('Error loading appointments: $e');
       setState(() {
         isLoading = false;
+        errorMessage = 'Failed to load appointments. Please try again.';
       });
     }
   }
@@ -132,6 +144,68 @@ class _PatientsBookingListState extends State<PatientsBookingList> {
             ),
           ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.group),
+            label: 'Patients',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.file_copy),
+            label: 'Resources',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profile',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.black,
+        unselectedItemColor: Colors.grey,
+        showUnselectedLabels: true,
+        onTap: (index) {
+          setState(() {
+            _selectedIndex = index;
+          });
+          switch (index) {
+            case 0:
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => TherapistHomePage())
+              );
+              break;
+            case 1:
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => PatientsBookingList(),
+                ),
+              ).then((_) => TherapistHomePage());
+              break;
+            case 2:
+            /*Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => AppointmentScreen(),
+                    ),
+                  ).then((_) => fetchAcceptedAppointments());
+                  break;*/
+            case 3:
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => TherapistProfilePage())
+            );
+            break;
+          }
+        },
       ),
     );
   }
