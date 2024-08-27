@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:mentalhealthapp/model/therapist.dart';
 import 'package:mentalhealthapp/views/BookAppointment.dart';
 import 'package:mentalhealthapp/views/MoodTrackerOverview.dart';
+import 'package:mentalhealthapp/views/SelfAssessmentPage.dart';
 import 'package:mentalhealthapp/views/UserHome.dart';
 import 'package:mentalhealthapp/views/UserProfile.dart';
 
@@ -190,7 +191,7 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => UserProfilePage(),
+                  builder: (context) => SelfAssessmentPage(),
                 ),
               );
               break;

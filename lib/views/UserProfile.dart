@@ -8,6 +8,7 @@ import 'package:mentalhealthapp/views/PastAppointmentList.dart';
 import 'package:mentalhealthapp/views/PrivacyPolicyPage.dart';
 import 'package:mentalhealthapp/views/MoodTrackerOverview.dart';
 import 'package:mentalhealthapp/views/AppointmentScreen.dart';
+import 'package:mentalhealthapp/views/SelfAssessmentPage.dart';
 import 'package:mentalhealthapp/views/UserHome.dart';
 import 'package:mentalhealthapp/views/UserEditProfile.dart';
 import 'package:mentalhealthapp/views/HelpPage.dart';
@@ -154,7 +155,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => UserProfilePage(),
+                  builder: (context) => SelfAssessmentPage(),
                 ),
               );
               break;

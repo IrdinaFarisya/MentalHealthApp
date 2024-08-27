@@ -4,6 +4,7 @@ import 'package:mentalhealthapp/views/AppointmentScreen.dart';
 import 'package:mentalhealthapp/views/MoodTracker.dart';
 import 'package:intl/intl.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'package:mentalhealthapp/views/SelfAssessmentPage.dart';
 import 'package:mentalhealthapp/views/UserHome.dart';
 import 'package:mentalhealthapp/views/UserProfile.dart';
 
@@ -239,7 +240,7 @@ class _MoodTrackerOverviewState extends State<MoodTrackerOverview> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => UserProfilePage(),
+                  builder: (context) => SelfAssessmentPage(),
                 ),
               );
               break;

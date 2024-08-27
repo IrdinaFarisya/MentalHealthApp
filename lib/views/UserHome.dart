@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:mentalhealthapp/views/MoodTracker.dart';
+import 'package:mentalhealthapp/views/SelfAssessmentPage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:mentalhealthapp/views/AppointmentScreen.dart';
 import 'package:mentalhealthapp/model/appUser.dart';
@@ -255,7 +256,7 @@ class _UserHomePageState extends State<UserHomePage> with WidgetsBindingObserver
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => UserProfilePage(),
+                        builder: (context) => SelfAssessmentPage(),
                       ),
                     );
                     break;
