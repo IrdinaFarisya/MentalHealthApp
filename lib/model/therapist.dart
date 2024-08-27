@@ -119,17 +119,56 @@ class Therapist {
     }
   }
 
-  Future<bool> resetPassword() async {
-    RequestController req = RequestController(path: "/api/resetPassword.php");
-    req.setBody({"therapistId": therapistId, "password": password});
+  Future<bool> resetPassword(int therapistId, String newPassword) async {
+    RequestController req = RequestController(path: "/api/resetPasswordTherapist.php");
+    req.setBody({"therapistId": therapistId, "password": newPassword});
     await req.put();
-    if (req.status() == 400) {
-      return false;
-    } else if (req.status() == 200) {
-      return true;
-    } else {
+    print("Reset password response: ${req.result()}"); // Add this line for debugging
+    return req.status() == 200;
+  }
+
+  Future<bool> sendResetConfirmation() async {
+    if (email == null || email!.isEmpty) {
+      print("Error: Email is not set");
       return false;
     }
+
+    print("Sending reset confirmation to email: $email");
+
+    try {
+      RequestController req = RequestController(path: "/api/sendResetConfirmationTherapist.php");
+      req.setBody({"email": email});
+      await req.post();
+
+      if (req.status() == 200) {
+        print("Confirmation sent successfully");
+        return true;
+      } else {
+        print("Failed to send confirmation: ${req.result()}");
+        return false;
+      }
+    } catch (e) {
+      print("Error sending confirmation: $e");
+      return false;
+    }
+  }
+
+  Future<bool> verifyResetCode(String code) async {
+    if (email == null || email!.isEmpty) {
+      print("Error: Email is not set");
+      return false;
+    }
+
+    RequestController req = RequestController(path: "/api/verifyResetCodeTherapist.php");
+    req.setBody({"email": email, "code": code});
+    await req.post();
+
+    if (req.status() == 200) {
+      Map<String, dynamic> result = req.result();
+      print("Verification response: $result"); // Add this line for debugging
+      return result['status'] == 'success';
+    }
+    return false;
   }
 
   Future<bool> getTherapistName(int therapistId) async {

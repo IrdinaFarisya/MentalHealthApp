@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import '../Model/therapist.dart';
+import 'package:mentalhealthapp/model/therapist.dart';
 import 'package:mentalhealthapp/views/TherapistLogin.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class PasswordResetPage extends StatefulWidget {
-  const PasswordResetPage({super.key});
+  const PasswordResetPage({Key? key}) : super(key: key);
 
   @override
   _PasswordResetPageState createState() => _PasswordResetPageState();
@@ -13,7 +14,9 @@ class _PasswordResetPageState extends State<PasswordResetPage> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmationPasswordController = TextEditingController();
+  TextEditingController confirmationCodeController = TextEditingController();
   bool isPasswordVisible = false;
+  bool isConfirmationSent = false;
 
   void _togglePasswordVisibility() {
     setState(() {
@@ -21,46 +24,72 @@ class _PasswordResetPageState extends State<PasswordResetPage> {
     });
   }
 
-  Future<void> _checkUser() async {
+  void _sendConfirmation() async {
+    final String email = emailController.text.trim();
+
+    if (email.isNotEmpty) {
+      Therapist therapist = Therapist(email: email);
+      bool sentResult = await therapist.sendResetConfirmation();
+
+      if (sentResult) {
+        final prefs = await SharedPreferences.getInstance();
+        await prefs.setString('therapistEmail', email);
+
+        setState(() {
+          isConfirmationSent = true;
+        });
+
+        _showAlertMessage("Confirmation code sent to your email.");
+      } else {
+        _showAlertMessage("Failed to send confirmation code.");
+      }
+    } else {
+      _showAlertMessage("Please enter your email address.");
+    }
+  }
+
+  void _resetPassword() async {
     final String email = emailController.text.trim();
     final String password = passwordController.text.trim();
     final String confirmationPassword = confirmationPasswordController.text.trim();
+    final String confirmationCode = confirmationCodeController.text.trim();
 
-    if (email.isEmpty || password.isEmpty || confirmationPassword.isEmpty) {
-      _showAlertMessage("Please fill in all the required fields.");
-      return;
-    }
+    if (password == confirmationPassword) {
+      if (email.isNotEmpty && password.isNotEmpty && confirmationCode.isNotEmpty) {
+        Therapist therapist = Therapist(email: email);
 
-    if (password != confirmationPassword) {
-      _showAlertMessage("Passwords do not match.");
-      return;
-    }
+        bool isCodeVerified = await therapist.verifyResetCode(confirmationCode);
+        print("Is code verified: $isCodeVerified");
 
-    try {
-      Therapist therapist = Therapist();
-      therapist.email = email;
-      therapist.password = password;
+        if (isCodeVerified) {
+          print("Email being used for getUserId: ${therapist.email}");
+          int? therapistId = await therapist.getTherapistId();
 
-      int? therapistId = await therapist.getTherapistId();
-      if (therapistId != null) {
-        therapist.therapistId = therapistId;
-        bool result = await therapist.resetPassword();
-        if (result) {
-          _showAlertMessage("Password successfully reset.");
-          Future.delayed(Duration(seconds: 2), () {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => TherapistLogin()),
-            );
-          });
+          if (therapistId != null) {
+            bool resetResult = await therapist.resetPassword(therapistId, password);
+
+            if (resetResult) {
+              _showAlertMessage("Password successfully reset");
+              Future.delayed(Duration(seconds: 2), () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => TherapistLogin()),
+                );
+              });
+            } else {
+              _showAlertMessage("Failed to reset password");
+            }
+          } else {
+            _showAlertMessage("Failed to get user ID");
+          }
         } else {
-          _showAlertMessage("Failed to reset password. Please try again.");
+          _showAlertMessage("Invalid confirmation code");
         }
       } else {
-        _showAlertMessage("Invalid email address.");
+        _showAlertMessage("Please fill in all fields");
       }
-    } catch (e) {
-      _showAlertMessage("An error occurred. Please try again.");
+    } else {
+      _showAlertMessage("Passwords do not match");
     }
   }
 
@@ -89,133 +118,210 @@ class _PasswordResetPageState extends State<PasswordResetPage> {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 90,
-        title: Align(
-          alignment: Alignment.centerLeft,
-          child: Text(
-            'Reset Password',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 28,
-              color: Colors.white,
+        title: Padding(
+          padding: EdgeInsets.only(left: 10.0),
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              'SereneSoul',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 35,
+                fontFamily: 'BodoniModa',
+                foreground: Paint()
+                  ..shader = LinearGradient(
+                    colors: <Color>[Colors.black, Colors.brown],
+                  ).createShader(Rect.fromLTWH(0.0, 0.0, 200.0, 70.0)),
+              ),
             ),
           ),
         ),
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.transparent,
       ),
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(height: 40),
-              ClipOval(
+              SizedBox(height: 20),
+              ClipRect(
                 child: Image.asset(
-                  'assets/Main.png',
+                  'assets/resetpassword.jpg', // Make sure to add this image to your assets
                   width: 200,
                   height: 200,
                   fit: BoxFit.cover,
                 ),
               ),
               SizedBox(height: 50),
-              _buildTextField("Email Address", emailController),
-              _buildPasswordField("Password", passwordController),
-              _buildPasswordField("Confirm Password", confirmationPasswordController),
-              SizedBox(height: 15),
+              Container(
+                width: 500,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Email Address',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(height: 1.0),
+                      Container(
+                        padding: const EdgeInsets.all(8.0),
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey),
+                          borderRadius: BorderRadius.circular(50.0),
+                        ),
+                        child: TextField(
+                          controller: emailController,
+                          decoration: const InputDecoration(
+                            border: InputBorder.none,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(height: 16),
               ElevatedButton(
-                onPressed: _checkUser,
+                onPressed: _sendConfirmation,
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.black,
                 ),
                 child: Text(
-                  'Reset Password',
-                  style: TextStyle(
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
+                  'Send Confirmation Code',
+                  style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold, color: Colors.white),
                 ),
               ),
-              SizedBox(height: 30),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildTextField(String label, TextEditingController controller) {
-    return Container(
-      width: 500,
-      padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            label,
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          SizedBox(height: 5.0),
-          Container(
-            padding: const EdgeInsets.all(8.0),
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey),
-              borderRadius: BorderRadius.circular(50.0),
-            ),
-            child: TextField(
-              controller: controller,
-              decoration: InputDecoration(
-                border: InputBorder.none,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildPasswordField(String label, TextEditingController controller) {
-    return Container(
-      width: 500,
-      padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            label,
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          SizedBox(height: 5.0),
-          Container(
-            padding: const EdgeInsets.all(8.0),
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey),
-              borderRadius: BorderRadius.circular(50.0),
-            ),
-            child: Row(
-              children: [
-                Expanded(
-                  child: TextField(
-                    controller: controller,
-                    obscureText: !isPasswordVisible,
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
+              if (isConfirmationSent) ...[
+                SizedBox(height: 16),
+                Container(
+                  width: 500,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Confirmation Code',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(height: 1.0),
+                        Container(
+                          padding: const EdgeInsets.all(8.0),
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.grey),
+                            borderRadius: BorderRadius.circular(50.0),
+                          ),
+                          child: TextField(
+                            controller: confirmationCodeController,
+                            decoration: const InputDecoration(
+                              border: InputBorder.none,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
-                IconButton(
-                  icon: Icon(
-                    isPasswordVisible ? Icons.visibility : Icons.visibility_off,
+                SizedBox(height: 16),
+                Container(
+                  width: 500,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'New Password',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(height: 5.0),
+                        Container(
+                          padding: const EdgeInsets.all(8.0),
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.grey),
+                            borderRadius: BorderRadius.circular(50.0),
+                          ),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: TextField(
+                                  controller: passwordController,
+                                  obscureText: !isPasswordVisible,
+                                  decoration: const InputDecoration(
+                                    border: InputBorder.none,
+                                  ),
+                                ),
+                              ),
+                              IconButton(
+                                onPressed: _togglePasswordVisibility,
+                                icon: Icon(
+                                  isPasswordVisible ? Icons.visibility : Icons.visibility_off,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                  onPressed: _togglePasswordVisibility,
+                ),
+                SizedBox(height: 16),
+                Container(
+                  width: 500,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Confirm New Password',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(height: 5.0),
+                        Container(
+                          padding: const EdgeInsets.all(8.0),
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.grey),
+                            borderRadius: BorderRadius.circular(50.0),
+                          ),
+                          child: TextField(
+                            controller: confirmationPasswordController,
+                            obscureText: !isPasswordVisible,
+                            decoration: const InputDecoration(
+                              border: InputBorder.none,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(height: 16),
+                ElevatedButton(
+                  onPressed: _resetPassword,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.black,
+                  ),
+                  child: Text(
+                    'Reset Password',
+                    style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold, color: Colors.white),
+                  ),
                 ),
               ],
-            ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }

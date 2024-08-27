@@ -73,13 +73,15 @@ class AppUser {
     final prefs = await SharedPreferences.getInstance();
     String? userEmail = prefs.getString('userEmail');
     if (userEmail == null || userEmail.isEmpty) {
-      print("Error: Email is not set");
+      print("Error: Email is not set in SharedPreferences");
       return null;
     }
 
     RequestController req = RequestController(path: "/api/getAppUserId.php");
     req.setBody({"email": userEmail});
     await req.post();
+
+    print("GetUserId response: ${req.result()}"); // Add this line for debugging
 
     if (req.status() == 200) {
       Map<String, dynamic> result = req.result();
@@ -96,17 +98,11 @@ class AppUser {
     }
   }
 
-
-
-  Future<bool> resetPassword() async {
-    if (appUserId == null || password == null) {
-      print("Error: AppUserId or password is not set");
-      return false;
-    }
-
+  Future<bool> resetPassword(int appUserId, String newPassword) async {
     RequestController req = RequestController(path: "/api/resetPassword.php");
-    req.setBody({"appUserId": appUserId, "password": password});
+    req.setBody({"appUserId": appUserId, "password": newPassword});
     await req.put();
+    print("Reset password response: ${req.result()}"); // Add this line for debugging
     return req.status() == 200;
   }
 
@@ -120,6 +116,50 @@ class AppUser {
       lastError = req.result().toString();
       return false;
     }
+  }
+
+  Future<bool> sendResetConfirmation() async {
+    if (email == null || email!.isEmpty) {
+      print("Error: Email is not set");
+      return false;
+    }
+
+    print("Sending reset confirmation to email: $email");
+
+    try {
+      RequestController req = RequestController(path: "/api/sendResetConfirmation.php");
+      req.setBody({"email": email});
+      await req.post();
+
+      if (req.status() == 200) {
+        print("Confirmation sent successfully");
+        return true;
+      } else {
+        print("Failed to send confirmation: ${req.result()}");
+        return false;
+      }
+    } catch (e) {
+      print("Error sending confirmation: $e");
+      return false;
+    }
+  }
+
+  Future<bool> verifyResetCode(String code) async {
+    if (email == null || email!.isEmpty) {
+      print("Error: Email is not set");
+      return false;
+    }
+
+    RequestController req = RequestController(path: "/api/verifyResetCode.php");
+    req.setBody({"email": email, "code": code});
+    await req.post();
+
+    if (req.status() == 200) {
+      Map<String, dynamic> result = req.result();
+      print("Verification response: $result"); // Add this line for debugging
+      return result['status'] == 'success';
+    }
+    return false;
   }
 
   Future<bool> updateProfile() async {
