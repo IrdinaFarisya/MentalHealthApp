@@ -189,6 +189,11 @@ class AssessmentQuestionsPage extends StatefulWidget {
 class _AssessmentQuestionsPageState extends State<AssessmentQuestionsPage> {
   Map<int, String> answers = {};
 
+  void storeAnswer(int questionId, String answer) {
+    answers[questionId] = answer;
+    print('Stored answer for question $questionId: ${answers[questionId]}');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -210,7 +215,8 @@ class _AssessmentQuestionsPageState extends State<AssessmentQuestionsPage> {
       ),
       body: ListView(
         children: [
-          if (widget.assessment.introText != null && widget.assessment.introText!.isNotEmpty)
+          if (widget.assessment.introText != null &&
+              widget.assessment.introText!.isNotEmpty)
             Padding(
               padding: const EdgeInsets.only(bottom: 16.0),
               child: Text(
@@ -221,22 +227,24 @@ class _AssessmentQuestionsPageState extends State<AssessmentQuestionsPage> {
           ListView.builder(
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
-            itemCount: (widget.assessment.questions?.length ?? 0) + 1, // Add 1 for the button
+            itemCount: (widget.assessment.questions?.length ?? 0) + 1,
+            // Add 1 for the button
             itemBuilder: (context, index) {
               if (index == widget.assessment.questions?.length) {
                 // Return the button as the last item
                 return Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: ElevatedButton(
-                    child: Text(
-                      'Submit',
-                      style: TextStyle(color: Colors.white), // White text color
-                    ),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.black, // Black background color
-                    ),
-                    onPressed: _submitAssessment,
-                  )
+                    padding: const EdgeInsets.all(16.0),
+                    child: ElevatedButton(
+                      child: Text(
+                        'Submit',
+                        style: TextStyle(
+                            color: Colors.white), // White text color
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.black, // Black background color
+                      ),
+                      onPressed: _submitAssessment,
+                    )
 
                 );
               } else {
@@ -254,12 +262,15 @@ class _AssessmentQuestionsPageState extends State<AssessmentQuestionsPage> {
   Widget _buildQuestionCard(Question question) {
     return Card(
       margin: EdgeInsets.all(8),
-      color: Colors.white, // Set card background color to white
+      color: Colors.white,
+      // Set card background color to white
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8.0), // Optional: rounded corners
-        side: BorderSide(color: Colors.grey, width: 1.0), // Add border color and width
+        side: BorderSide(
+            color: Colors.grey, width: 1.0), // Add border color and width
       ),
-      elevation: 2, // Optional: add slight elevation
+      elevation: 2,
+      // Optional: add slight elevation
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -284,67 +295,54 @@ class _AssessmentQuestionsPageState extends State<AssessmentQuestionsPage> {
         children: question.answers?.map((answer) {
           return RadioListTile<String>(
             title: Text(answer.answerText ?? ''),
-            value: answer.answerId.toString(),
+            value: answer.mark.toString(),
             groupValue: answers[question.questionId],
             onChanged: (value) {
               setState(() {
                 answers[question.questionId!] = value!;
               });
             },
-            activeColor: Colors.black, // Set the color of the radio button when selected
           );
         }).toList() ?? [],
       );
     } else if (question.questionType == 'y_n') {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          ElevatedButton(
+        children: ['Yes', 'No'].map((option) {
+          bool isSelected = answers[question.questionId] == option;
+          return ElevatedButton(
             child: Text(
-              'Yes',
+              option,
               style: TextStyle(
-                color: answers[question.questionId] == 'Yes' ? Colors.white : Colors.black,
+                color: isSelected ? Colors.white : Colors.black,
               ),
             ),
             onPressed: () {
               setState(() {
-                answers[question.questionId!] = 'Yes';
+                answers[question.questionId!] = option;
               });
             },
             style: ElevatedButton.styleFrom(
-              backgroundColor: answers[question.questionId] == 'Yes' ? Colors.black : Colors.white,
-              side: BorderSide(color: Colors.black), // Add a border
+              backgroundColor: isSelected ? Colors.black : Colors.white,
+              side: BorderSide(color: Colors.black),
             ),
-          ),
-          ElevatedButton(
-            child: Text(
-              'No',
-              style: TextStyle(
-                color: answers[question.questionId] == 'No' ? Colors.white : Colors.black,
-              ),
-            ),
-            onPressed: () {
-              setState(() {
-                answers[question.questionId!] = 'No';
-              });
-            },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: answers[question.questionId] == 'No' ? Colors.black : Colors.white,
-              side: BorderSide(color: Colors.black), // Add a border
-            ),
-          ),
-        ],
+          );
+        }).toList(),
       );
     }
-    return SizedBox.shrink(); // Return an empty SizedBox if the question type does not match
+    return SizedBox.shrink();
   }
-
 
   void _submitAssessment() async {
     if (answers.length == widget.assessment.questions?.length) {
-      String clientResult = widget.assessment.calculateScore(answers);
-      Map<String, dynamic> serverResult = await widget.assessment.submitAssessment(
-          widget.user?.appUserId ?? 0, answers);
+      String clientResult = widget.assessment.calculateScore(
+          answers.map((key, value) => MapEntry(key.toString(), value))
+      );
+      Map<String, dynamic> serverResult = await widget.assessment
+          .submitAssessment(
+          widget.user?.appUserId ?? 0,
+          answers
+      );
 
       if (serverResult['status'] == 'success') {
         showDialog(
@@ -356,9 +354,9 @@ class _AssessmentQuestionsPageState extends State<AssessmentQuestionsPage> {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Client-side result: $clientResult'),
                   SizedBox(height: 10),
-                  Text('Server-side result: ${serverResult['result']}'),
+                  Text('${serverResult['result']}',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
                 ],
               ),
               actions: [
