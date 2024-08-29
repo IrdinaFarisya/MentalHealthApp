@@ -157,10 +157,6 @@ class _PatientsBookingListState extends State<PatientsBookingList> {
             label: 'Patients',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.file_copy),
-            label: 'Resources',
-          ),
-          BottomNavigationBarItem(
             icon: Icon(Icons.person),
             label: 'Profile',
           ),
@@ -190,14 +186,6 @@ class _PatientsBookingListState extends State<PatientsBookingList> {
               ).then((_) => TherapistHomePage());
               break;
             case 2:
-            /*Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => AppointmentScreen(),
-                    ),
-                  ).then((_) => fetchAcceptedAppointments());
-                  break;*/
-            case 3:
             Navigator.push(
                 context,
                 MaterialPageRoute(

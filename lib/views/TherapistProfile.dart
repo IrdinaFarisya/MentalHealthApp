@@ -24,7 +24,7 @@ class _TherapistProfilePageState extends State<TherapistProfilePage> {
   bool isLoading = true;
   String errorMessage = '';
   String? profilePictureBase64;
-  int _selectedIndex = 3; // Set the initial index to match the Profile tab
+  int _selectedIndex = 2; // Set the initial index to match the Profile tab
 
   @override
   void initState() {
@@ -105,10 +105,6 @@ class _TherapistProfilePageState extends State<TherapistProfilePage> {
             label: 'Patients',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.file_copy),
-            label: 'Resources',
-          ),
-          BottomNavigationBarItem(
             icon: Icon(Icons.person),
             label: 'Profile',
           ),
@@ -138,12 +134,6 @@ class _TherapistProfilePageState extends State<TherapistProfilePage> {
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => PatientsBookingList()),
-        );
-        break;
-      case 2:
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => AppointmentScreen()),
         );
         break;
       case 3:
@@ -227,7 +217,6 @@ class _TherapistProfilePageState extends State<TherapistProfilePage> {
             MaterialPageRoute(builder: (context) => HelpPage()),
           );
         }),
-        _buildMenuOption(Icons.notifications_none_outlined, 'Notification Setting', () {}),
         _buildMenuOption(Icons.description_outlined, 'Terms of Services', () {
           Navigator.push(
             context,

@@ -218,10 +218,6 @@ class _TherapistHomePageState extends State<TherapistHomePage> with WidgetsBindi
                 label: 'Patients',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.file_copy),
-                label: 'Resources',
-              ),
-              BottomNavigationBarItem(
                 icon: Icon(Icons.person),
                 label: 'Profile',
               ),
@@ -247,14 +243,6 @@ class _TherapistHomePageState extends State<TherapistHomePage> with WidgetsBindi
                   ).then((_) => fetchAcceptedAppointments());
                   break;
                 case 2:
-                  /*Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => AppointmentScreen(),
-                    ),
-                  ).then((_) => fetchAcceptedAppointments());
-                  break;*/
-                case 3:
                 Navigator.push(
                     context,
                     MaterialPageRoute(
