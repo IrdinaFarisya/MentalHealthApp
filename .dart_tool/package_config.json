@@ -159,7 +159,7 @@
     },
     {
       "name": "flutter_plugin_android_lifecycle",
-      "rootUri": "file:///C:/Users/Irdina%20Farisya/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.21",
+      "rootUri": "file:///C:/Users/Irdina%20Farisya/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.22",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     },
@@ -291,7 +291,7 @@
     },
     {
       "name": "mime",
-      "rootUri": "file:///C:/Users/Irdina%20Farisya/AppData/Local/Pub/Cache/hosted/pub.dev/mime-1.0.5",
+      "rootUri": "file:///C:/Users/Irdina%20Farisya/AppData/Local/Pub/Cache/hosted/pub.dev/mime-1.0.6",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     },
@@ -363,7 +363,7 @@
     },
     {
       "name": "shared_preferences_android",
-      "rootUri": "file:///C:/Users/Irdina%20Farisya/AppData/Local/Pub/Cache/hosted/pub.dev/shared_preferences_android-2.3.1",
+      "rootUri": "file:///C:/Users/Irdina%20Farisya/AppData/Local/Pub/Cache/hosted/pub.dev/shared_preferences_android-2.3.2",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     },
@@ -560,7 +560,7 @@
       "languageVersion": "3.3"
     }
   ],
-  "generated": "2024-08-23T17:05:07.584036Z",
+  "generated": "2024-08-29T11:47:51.623991Z",
   "generator": "pub",
   "generatorVersion": "3.5.0",
   "flutterRoot": "file:///C:/Users/Irdina%20Farisya/Downloads/flutter_windows_3.24.0-stable/flutter",

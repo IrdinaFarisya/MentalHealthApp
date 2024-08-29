@@ -3,7 +3,7 @@ import 'package:mentalhealthapp/model/therapist.dart'; // Import your Therapist 
 import 'package:mentalhealthapp/model/appointment.dart'; // Import your Appointment model
 import 'package:mentalhealthapp/model/appUser.dart'; // Import your AppUser model
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:mentalhealthapp/views/NotificationService.dart';
+import 'package:mentalhealthapp/model/NotificationService.dart';
 
 class BookAppointment extends StatefulWidget {
   final Therapist therapist;

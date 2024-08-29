@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:mentalhealthapp/model/mood.dart';
 import 'package:mentalhealthapp/model/appUser.dart';
-import 'package:mentalhealthapp/views/NotificationService.dart';
+import 'package:mentalhealthapp/model/NotificationService.dart';
 
 class MoodTrackerPage extends StatefulWidget {
   @override

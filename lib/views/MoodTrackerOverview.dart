@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:mentalhealthapp/model/NavigationBar.dart';
 import 'package:mentalhealthapp/model/mood.dart';
 import 'package:mentalhealthapp/views/AppointmentScreen.dart';
 import 'package:mentalhealthapp/views/MoodTracker.dart';
 import 'package:intl/intl.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'package:mentalhealthapp/views/ResourcePage.dart';
 import 'package:mentalhealthapp/views/SelfAssessmentPage.dart';
 import 'package:mentalhealthapp/views/UserHome.dart';
 import 'package:mentalhealthapp/views/UserProfile.dart';
@@ -43,7 +45,8 @@ class _MoodTrackerOverviewState extends State<MoodTrackerOverview> {
         isLoading = false;
       });
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Failed to fetch recent moods. Please try again later.')),
+        SnackBar(content: Text(
+            'Failed to fetch recent moods. Please try again later.')),
       );
     }
   }
@@ -60,7 +63,7 @@ class _MoodTrackerOverviewState extends State<MoodTrackerOverview> {
             children: [
               Text(
                 mood.details ?? 'No description available',
-                style: TextStyle(fontSize: 15,color: Colors.grey[600]),
+                style: TextStyle(fontSize: 15, color: Colors.grey[600]),
               ),
             ],
           ),
@@ -92,167 +95,112 @@ class _MoodTrackerOverviewState extends State<MoodTrackerOverview> {
             fontFamily: 'BodoniModa',
           ),
         ),
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.green[50],
         elevation: 0,
         centerTitle: true,
       ),
-      backgroundColor: Colors.white,
-      body: RefreshIndicator(
-        onRefresh: _fetchRecentMoods,
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => MoodTrackerPage()),
-                  ).then((_) => _fetchRecentMoods());
-                },
-                child: Text(
-                  'New Mood Entry',
-                  style: TextStyle(color: Colors.white),
-                ),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.black,
-                  padding: EdgeInsets.symmetric(vertical: 15),
-                ),
-              ),
-              SizedBox(height: 20),
-              Text(
-                'Mood Distribution',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'LibreBaskerville',
-                ),
-              ),
-              SizedBox(height: 10),
-              Container(
-                height: 300,
-                child: isLoading
-                    ? Center(child: CircularProgressIndicator())
-                    : MoodBarChart(moodEntries: recentMoods),
-              ),
-              SizedBox(height: 20),
-              Text(
-                'Recent Mood Entries',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'LibreBaskerville',
-                ),
-              ),
-              SizedBox(height: 10),
-              Expanded(
-                child: isLoading
-                    ? Center(child: CircularProgressIndicator())
-                    : recentMoods.isEmpty
-                    ? Center(child: Text('No mood entries found.'))
-                    : ListView.builder(
-                  itemCount: recentMoods.length,
-                  itemBuilder: (context, index) {
-                    Mood mood = recentMoods[index];
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 5.0),
-                      child: Card(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        elevation: 2,
-                        child: ListTile(
-                          contentPadding: EdgeInsets.all(4),
-                          title: Text(mood.mood ?? 'Unknown Mood'),
-                          subtitle: Text(DateFormat('yyyy-MM-dd').format(DateTime.parse(mood.date!))),
-                          trailing: Icon(Icons.mood),
-                          onTap: () {
-                            // Navigate to detail view of this mood entry
-                            _showMoodDetailDialog(mood);
-                          },
-                        ),
-                      ),
-                    );
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Colors.green[50]!, Colors.white],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+        ),
+        child: RefreshIndicator(
+          onRefresh: _fetchRecentMoods,
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => MoodTrackerPage()),
+                    ).then((_) => _fetchRecentMoods());
                   },
+                  child: Text(
+                    'New Mood Entry',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.black,
+                    padding: EdgeInsets.symmetric(vertical: 15),
+                  ),
                 ),
-              ),
-            ],
+                SizedBox(height: 20),
+                Text(
+                  'Mood Distribution',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'LibreBaskerville',
+                  ),
+                ),
+                SizedBox(height: 10),
+                Container(
+                  height: 300,
+                  child: isLoading
+                      ? Center(child: CircularProgressIndicator())
+                      : MoodBarChart(moodEntries: recentMoods),
+                ),
+                SizedBox(height: 20),
+                Text(
+                  'Recent Mood Entries',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'LibreBaskerville',
+                  ),
+                ),
+                SizedBox(height: 10),
+                Expanded(
+                  child: isLoading
+                      ? Center(child: CircularProgressIndicator())
+                      : recentMoods.isEmpty
+                      ? Center(child: Text('No mood entries found.'))
+                      : ListView.builder(
+                    itemCount: recentMoods.length,
+                    itemBuilder: (context, index) {
+                      Mood mood = recentMoods[index];
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 5.0),
+                        child: Card(
+                          color: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          elevation: 2,
+                          child: ListTile(
+                            contentPadding: EdgeInsets.all(4),
+                            title: Text(mood.mood ?? 'Unknown Mood'),
+                            subtitle: Text(DateFormat('yyyy-MM-dd').format(
+                                DateTime.parse(mood.date!))),
+                            trailing: Icon(Icons.mood),
+                            onTap: () {
+                              // Navigate to detail view of this mood entry
+                              _showMoodDetailDialog(mood);
+                            },
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed, // Add this line
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.mood),
-            label: 'Mood',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.group),
-            label: 'Therapists',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.file_copy),
-            label: 'Resources',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
-          ),
-        ],
+      bottomNavigationBar: CustomNavigationBar(
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.black,
-        unselectedItemColor: Colors.grey,
-        backgroundColor: Colors.white,
-        showUnselectedLabels: true, // Add this line to ensure unselected labels are shown
         onTap: (index) {
-          // Handle item tap
-          switch (index) {
-            case 0:
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => UserHomePage(),
-                ),
-              );
-            case 1:
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => MoodTrackerOverview(),
-                ),
-              );
-              break;
-            case 2:
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => AppointmentScreen(),
-                ),
-              );
-              break;
-            case 3:
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => SelfAssessmentPage(),
-                ),
-              );
-              break;
-            case 4:
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => UserProfilePage(),
-                ),
-              );
-              break;
-          }
+          setState(() {
+            _selectedIndex = index;
+          });
         },
       ),
     );

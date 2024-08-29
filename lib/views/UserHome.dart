@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:mentalhealthapp/views/HelplineContactPage.dart';
 import 'dart:async';
 import 'package:mentalhealthapp/views/MoodTracker.dart';
+import 'package:mentalhealthapp/views/ResourcePage.dart';
 import 'package:mentalhealthapp/views/SelfAssessmentPage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:mentalhealthapp/views/AppointmentScreen.dart';
@@ -8,6 +10,9 @@ import 'package:mentalhealthapp/model/appUser.dart';
 import 'package:mentalhealthapp/model/appointment.dart';
 import 'package:mentalhealthapp/views/UserAppointmentDetails.dart';
 import 'package:mentalhealthapp/views/UserProfile.dart';
+import 'package:mentalhealthapp/model/helpline.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:mentalhealthapp/model/NavigationBar.dart';
 
 import 'MoodTrackerOverview.dart';
 import 'PastAppointmentDetails.dart';
@@ -80,7 +85,7 @@ class _UserHomePageState extends State<UserHomePage> with WidgetsBindingObserver
         Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [Color(0xFFFFE8D6), Color(0xFFFFF5F3)],
+              colors: [Colors.green[50]!, Colors.white],
               // Gradient colors
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
@@ -99,7 +104,7 @@ class _UserHomePageState extends State<UserHomePage> with WidgetsBindingObserver
                 fontFamily: 'BodoniModa',
               ),
             ),
-            backgroundColor: Colors.transparent,
+            backgroundColor: Colors.green[50],
             // Make the background transparent
             elevation: 0,
             // Remove the shadow
@@ -141,7 +146,7 @@ class _UserHomePageState extends State<UserHomePage> with WidgetsBindingObserver
                               fontFamily: 'BodoniModa',
                               fontSize: 32,
                               fontWeight: FontWeight.bold,
-                              color: Colors.orange,
+                              color: Colors.green[800],
                             ),
                           ),
                           const SizedBox(height: 2),
@@ -192,83 +197,29 @@ class _UserHomePageState extends State<UserHomePage> with WidgetsBindingObserver
                     ),
                     const SizedBox(height: 16.0),
                     _buildAcceptedAppointmentsList(),
+                    SizedBox(height: 16),
+                    Text(
+                      'Kindness Calls',
+                      style: TextStyle(
+                        fontFamily: 'LibreBaskerville',
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
+                    ),
+
+                    _buildHelplineSection(),
                   ],
                 ),
               ),
             ),
           ),
-          bottomNavigationBar: BottomNavigationBar(
-            type: BottomNavigationBarType.fixed, // Add this line
-            items: const <BottomNavigationBarItem>[
-              BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                label: 'Home',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.mood),
-                label: 'Mood',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.group),
-                label: 'Therapists',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.file_copy),
-                label: 'Resources',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.person),
-                label: 'Profile',
-              ),
-            ],
+          bottomNavigationBar: CustomNavigationBar(
             currentIndex: _selectedIndex,
-            selectedItemColor: Colors.black,
-            unselectedItemColor: Colors.grey,
-            backgroundColor: Colors.white,
-            showUnselectedLabels: true, // Add this line to ensure unselected labels are shown
             onTap: (index) {
-              // Handle item tap
-              switch (index) {
-                case 0:
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => UserHomePage(),
-                    ),
-                  );
-                case 1:
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => MoodTrackerOverview(),
-                    ),
-                  );
-                  break;
-                case 2:
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => AppointmentScreen(),
-                    ),
-                  );
-                  break;
-                case 3:
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => SelfAssessmentPage(),
-                      ),
-                    );
-                    break;
-                case 4:
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => UserProfilePage(),
-                    ),
-                  );
-                  break;
-              }
+              setState(() {
+                _selectedIndex = index;
+              });
             },
           ),
         ),
@@ -288,6 +239,7 @@ class _UserHomePageState extends State<UserHomePage> with WidgetsBindingObserver
       itemBuilder: (context, index) {
         Appointment appointment = UserAcceptedAppointments[index];
         return Card(
+          color: Colors.white,
           elevation: 2,
           margin: EdgeInsets.only(bottom: 16),
           child: ListTile(
@@ -351,4 +303,50 @@ class _UserHomePageState extends State<UserHomePage> with WidgetsBindingObserver
       },
     );
   }
+
+  Widget _buildHelplineSection() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 4.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(height: 8),
+          // Use a Card widget for the helpline section
+          Card(
+            color: Colors.white,
+            elevation: 2.0,
+            margin: EdgeInsets.only(bottom: 16), // Matches appointment card spacing
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16.0),
+              side: BorderSide(color: Colors.grey.shade300, width: 1.0),
+            ),
+            child: ListTile(
+              leading: Icon(Icons.call, color: Colors.black, size: 30),
+              title: Text(
+                'Talk to someone', // Update this text as needed
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black87,
+                ),
+              ),
+              trailing: Icon(
+                Icons.arrow_forward_ios_outlined,
+                color: Colors.black,
+                size: 20,
+              ),
+              onTap: () {
+                // Navigate to the HelplinePage
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => HelplinePage()),
+                );
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }
+

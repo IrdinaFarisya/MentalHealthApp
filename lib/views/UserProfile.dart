@@ -1,13 +1,16 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:mentalhealthapp/model/NavigationBar.dart';
 import 'package:mentalhealthapp/model/appUser.dart';
 import 'package:mentalhealthapp/model/appointment.dart';
 import 'package:mentalhealthapp/views/AboutSereneSoul.dart';
+import 'package:mentalhealthapp/views/NotificationSetting.dart';
 import 'package:mentalhealthapp/views/PastAppointmentList.dart';
 import 'package:mentalhealthapp/views/PrivacyPolicyPage.dart';
 import 'package:mentalhealthapp/views/MoodTrackerOverview.dart';
 import 'package:mentalhealthapp/views/AppointmentScreen.dart';
+import 'package:mentalhealthapp/views/ResourcePage.dart';
 import 'package:mentalhealthapp/views/SelfAssessmentPage.dart';
 import 'package:mentalhealthapp/views/UserHome.dart';
 import 'package:mentalhealthapp/views/UserEditProfile.dart';
@@ -19,6 +22,7 @@ class UserProfilePage extends StatefulWidget {
   @override
   _UserProfilePageState createState() => _UserProfilePageState();
 }
+//hello
 
 class _UserProfilePageState extends State<UserProfilePage> {
   AppUser? user;
@@ -73,7 +77,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
             fontFamily: 'BodoniModa',
           ),
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.green[50],
         elevation: 0,
         centerTitle: true,
       ),
@@ -81,93 +85,39 @@ class _UserProfilePageState extends State<UserProfilePage> {
           ? Center(child: CircularProgressIndicator())
           : errorMessage.isNotEmpty
           ? Center(child: Text(errorMessage, style: TextStyle(color: Colors.red)))
-          : SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              if (user != null) _buildUserInfoSection(),
-              SizedBox(height: 32.0),
-              _buildMenuOptions(),
-              SizedBox(height: 20.0),
-              _buildLogoutOption(), // Add this to include the logout option at the bottom
+          : Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Colors.green[50]!, // Start color
+              Colors.white, // End color
             ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+        ),
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                if (user != null) _buildUserInfoSection(),
+                SizedBox(height: 32.0),
+                _buildMenuOptions(),
+                SizedBox(height: 20.0),
+                _buildLogoutOption(), // Add this to include the logout option at the bottom
+              ],
+            ),
           ),
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed, // Add this line
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.mood),
-            label: 'Mood',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.group),
-            label: 'Therapists',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.file_copy),
-            label: 'Resources',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
-          ),
-        ],
+      bottomNavigationBar: CustomNavigationBar(
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.black,
-        unselectedItemColor: Colors.grey,
-        backgroundColor: Colors.white,
-        showUnselectedLabels: true, // Add this line to ensure unselected labels are shown
         onTap: (index) {
-          // Handle item tap
-          switch (index) {
-            case 0:
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => UserHomePage(),
-                ),
-              );
-            case 1:
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => MoodTrackerOverview(),
-                ),
-              );
-              break;
-            case 2:
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => AppointmentScreen(),
-                ),
-              );
-              break;
-            case 3:
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => SelfAssessmentPage(),
-                ),
-              );
-              break;
-            case 4:
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => UserProfilePage(),
-                ),
-              );
-              break;
-          }
+          setState(() {
+            _selectedIndex = index;
+          });
         },
       ),
     );
@@ -244,7 +194,12 @@ class _UserProfilePageState extends State<UserProfilePage> {
             MaterialPageRoute(builder: (context) => HelpPage()), // Navigate to HelpPage
           );
         }),
-        _buildMenuOption(Icons.notifications_none_outlined, 'Notification Setting', () {}),
+        _buildMenuOption(Icons.notifications_none_outlined, 'Notification Setting', () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => NotificationSettingsPage()), // Navigate to HelpPage
+          );
+        }),
         _buildMenuOption(Icons.description_outlined, 'Terms of Services', () {
           Navigator.push(
             context,

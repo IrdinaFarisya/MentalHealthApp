@@ -1,9 +1,11 @@
 import 'dart:convert';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
+import 'package:mentalhealthapp/model/NavigationBar.dart';
 import 'package:mentalhealthapp/model/therapist.dart';
 import 'package:mentalhealthapp/views/BookAppointment.dart';
 import 'package:mentalhealthapp/views/MoodTrackerOverview.dart';
+import 'package:mentalhealthapp/views/ResourcePage.dart';
 import 'package:mentalhealthapp/views/SelfAssessmentPage.dart';
 import 'package:mentalhealthapp/views/UserHome.dart';
 import 'package:mentalhealthapp/views/UserProfile.dart';
@@ -47,25 +49,31 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
             fontFamily: 'BodoniModa',
           ),
         ),
-        backgroundColor: Colors.transparent, // Make the background transparent
+        backgroundColor: Colors.green[50], // Make the background transparent
         elevation: 0, // Remove the shadow
         centerTitle: true, // Center the title text
       ),
-      backgroundColor: Colors.white,
-      body: Padding(
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Colors.green[50]!, Colors.white],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+        ),
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Find Your Therapists',
+              'Choose Your Therapists',
               style: TextStyle(
+                fontFamily: 'LibreBaskerville',
+                fontSize: 20,
                 fontWeight: FontWeight.bold,
-                fontSize: 24,
-                fontFamily: 'BodoniModa',
+                color: Colors.black,
               ),
             ),
-            SizedBox(height: 16),
             Expanded(
               child: ListView.builder(
                 itemCount: therapists.length,
@@ -89,10 +97,11 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
                           child: Container(
                             margin: EdgeInsets.symmetric(vertical: 10.0),
                             decoration: BoxDecoration(
-                              border: Border.all(color: Colors.brown, width: 2.0),
+                              //border: Border.all(color: Colors.brown, width: 2.0),
                               borderRadius: BorderRadius.circular(16),
                             ),
                             child: Card(
+                              color: Colors.white,
                               elevation: 4.0,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(8),
@@ -113,7 +122,7 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
                                     Text(
                                       therapist.specialization ?? '',
                                       style: TextStyle(
-                                        color: Colors.brown,
+                                        color: Colors.black,
                                       ),
                                     ),
                                     SizedBox(height: 8),
@@ -132,78 +141,12 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed, // Add this line
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.mood),
-            label: 'Mood',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.group),
-            label: 'Therapists',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.file_copy),
-            label: 'Resources',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
-          ),
-        ],
+      bottomNavigationBar: CustomNavigationBar(
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.black,
-        unselectedItemColor: Colors.grey,
-        backgroundColor: Colors.white,
-        showUnselectedLabels: true, // Add this line to ensure unselected labels are shown
         onTap: (index) {
-          // Handle item tap
-          switch (index) {
-            case 0:
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => UserHomePage(),
-                ),
-              );
-            case 1:
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => MoodTrackerOverview(),
-                ),
-              );
-              break;
-            case 2:
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => AppointmentScreen(),
-                ),
-              );
-              break;
-            case 3:
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => SelfAssessmentPage(),
-                ),
-              );
-              break;
-            case 4:
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => UserProfilePage(),
-                ),
-              );
-              break;
-          }
+          setState(() {
+            _selectedIndex = index;
+          });
         },
       ),
     );

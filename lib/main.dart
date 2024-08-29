@@ -3,7 +3,7 @@ import 'package:mentalhealthapp/views/UserLogin.dart'; // Replace with your actu
 import 'package:mentalhealthapp/views/TherapistLogin.dart'; // Replace with your actual TherapistLogin.dart path
 import 'package:mentalhealthapp/views/TherapistRegister.dart'; // Replace with your actual TherapistRegister.dart path
 import 'package:mentalhealthapp/views/ThankYouPage.dart'; // Replace with your actual ThankYouPage.dart path
-import 'views/NotificationService.dart';
+import 'model/NotificationService.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
