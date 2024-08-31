@@ -82,6 +82,17 @@ class _UserProfilePageState extends State<UserProfilePage> {
         backgroundColor: Colors.green[50],
         elevation: 0,
         centerTitle: true,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.logout, color: Colors.black),
+            onPressed: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => MainPage()),
+              );
+            },
+          ),
+        ],
       ),
       body: isLoading
           ? Center(child: CircularProgressIndicator())
@@ -108,7 +119,6 @@ class _UserProfilePageState extends State<UserProfilePage> {
                 SizedBox(height: 32.0),
                 _buildMenuOptions(),
                 SizedBox(height: 20.0),
-                _buildLogoutOption(), // Add this to include the logout option at the bottom
               ],
             ),
           ),
@@ -124,6 +134,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
       ),
     );
   }
+
 
   Widget _buildUserInfoSection() {
     return Row(

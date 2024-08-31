@@ -34,21 +34,25 @@ class NotificationService {
   }
 
   Future<void> showNotification(int id, String title, String body) async {
-    await flutterLocalNotificationsPlugin.show(
-      id,
-      title,
-      body,
-      NotificationDetails(
-        android: AndroidNotificationDetails(
-          'appointments_channel',
-          'Appointments',
-          channelDescription: 'Notifications for appointments',
-          importance: Importance.max,
-          priority: Priority.high,
+    try {
+      await flutterLocalNotificationsPlugin.show(
+        id,
+        title,
+        body,
+        NotificationDetails(
+          android: AndroidNotificationDetails(
+            'appointments_channel',
+            'Appointments',
+            channelDescription: 'Notifications for appointments',
+            importance: Importance.max,
+            priority: Priority.high,
+          ),
         ),
-        iOS: DarwinNotificationDetails(),  // Change this line
-      ),
-    );
+      );
+      print("Notification sent: $title");
+    } catch (e) {
+      print("Error sending notification: $e");
+    }
   }
 
   Future<void> scheduleNotification(int id, String title, String body, DateTime scheduledDate) async {

@@ -13,6 +13,8 @@ class AppUser {
   String? phoneNumber;
   String? accessStatus;
   String? lastError;
+  DateTime? deactivatedAt;
+  bool? reactivationOffered;
 
   AppUser({
     this.appUserId,
@@ -22,6 +24,7 @@ class AppUser {
     this.dateOfBirth,
     this.phoneNumber,
     this.accessStatus,
+    this.deactivatedAt,
   });
 
   AppUser.fromJson(Map<String, dynamic> json)
@@ -31,7 +34,8 @@ class AppUser {
         password = json['password'] as String?,
         dateOfBirth = json['dateOfBirth'] as String?,
         phoneNumber = json['phoneNumber'] as String?,
-        accessStatus = json['accessStatus'] as String?;
+        accessStatus = json['accessStatus'] as String?,
+        deactivatedAt = json['deactivatedAt'] != null ? DateTime.parse(json['deactivatedAt']) : null;
 
   Map<String, dynamic> toJson() => {
     'appUserId': appUserId,
@@ -41,6 +45,7 @@ class AppUser {
     'dateOfBirth': dateOfBirth,
     'phoneNumber': phoneNumber,
     'accessStatus': accessStatus,
+    'deactivatedAt': deactivatedAt?.toIso8601String(),
   };
 
   bool isValidEmail() {
@@ -63,16 +68,29 @@ class AppUser {
     if (req.status() == 200) {
       Map<String, dynamic> result = req.result();
 
-      appUserId = int.tryParse(result['appUserId'].toString());
-      username = result['username'].toString();
-      email = result['email'].toString();
-      password = result['password'].toString();
-      dateOfBirth = result['dateOfBirth'].toString();
-      phoneNumber = result['phoneNumber'].toString();
-      accessStatus = result['accessStatus'].toString();
-
-      return true;
+      if (result['success'] == true) {
+        // User exists and is active
+        var userData = result['user'];
+        appUserId = int.tryParse(userData['appUserId'].toString());
+        username = userData['username'].toString();
+        email = userData['email'].toString();
+        password = userData['password'].toString();
+        dateOfBirth = userData['dateOfBirth'].toString();
+        phoneNumber = userData['phoneNumber'].toString();
+        accessStatus = userData['accessStatus'].toString();
+        return true;
+      } else if (result['reactivate'] == true) {
+        // User exists but is inactive
+        appUserId = int.tryParse(result['appUserId'].toString());
+        reactivationOffered = true;
+        return true; // Changed from false to true
+      } else {
+        // Other error
+        lastError = result['error'] ?? "Unknown error occurred";
+        return false;
+      }
     } else {
+      lastError = "Failed to check user existence";
       return false;
     }
   }
@@ -119,7 +137,13 @@ class AppUser {
     req.setBody(toJson());
     await req.post();
     if (req.status() == 200) {
-      return true;
+      var result = req.result();
+      if (result is Map<String, dynamic> && result['success'] == true) {
+        return true;
+      } else {
+        lastError = result.toString(); // Store the entire response as a string
+        return false;
+      }
     } else {
       lastError = req.result().toString();
       return false;
@@ -294,4 +318,28 @@ class AppUser {
     }
   }
 
+  Future<bool> reactivateAccount() async {
+    if (appUserId == null) {
+      print("Error: AppUserId is not set");
+      return false;
+    }
+
+    RequestController req = RequestController(path: "/api/reactivateAccount.php");
+    req.setBody({"appUserId": appUserId.toString()});
+    await req.post();
+
+    if (req.status() == 200) {
+      Map<String, dynamic> result = req.result();
+      if (result['success'] == true) {
+        accessStatus = 'ACTIVE';
+        return true;
+      } else {
+        lastError = result['error'] ?? "Failed to reactivate account";
+        return false;
+      }
+    } else {
+      lastError = "Failed to reactivate account";
+      return false;
+    }
+  }
 }

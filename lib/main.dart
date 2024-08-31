@@ -4,8 +4,11 @@ import 'package:mentalhealthapp/views/TherapistLogin.dart'; // Replace with your
 import 'package:mentalhealthapp/views/TherapistRegister.dart'; // Replace with your actual TherapistRegister.dart path
 import 'package:mentalhealthapp/views/ThankYouPage.dart'; // Replace with your actual ThankYouPage.dart path
 import 'model/NotificationService.dart';
+import 'package:timezone/data/latest.dart' as tz;
+import 'package:timezone/timezone.dart' as tz;
 
 void main() async {
+  tz.initializeTimeZones();
   WidgetsFlutterBinding.ensureInitialized();
   await NotificationService().init();
   runApp(MyApp());

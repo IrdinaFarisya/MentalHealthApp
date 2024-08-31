@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../model/appUser.dart';
+import 'dart:convert';
 import 'package:mentalhealthapp/views/UserLogin.dart';
 
 void main() {
@@ -65,14 +66,27 @@ class _signUpState extends State<SignUp> {
         accessStatus: accessStatus,
       );
 
-      if (await user.save()) {
+      bool saveResult = await user.save();
+      if (saveResult) {
         _AlertMessage("Sign Up Successful");
         Future.delayed(const Duration(seconds: 2), () {
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => UserLogin()));
         });
       } else {
-        _AlertMessage("Sign up unsuccessful. Please try again.");
+        // Parse the error message
+        String errorMessage = "Sign up unsuccessful. Please try again.";
+        if (user.lastError != null) {
+          // Check if the error contains "Email already registered"
+          if (user.lastError!.contains("Email already registered")) {
+            errorMessage = "Email already registered. Please use a different email.";
+          }
+          // Check if the error contains "Phone number already registered"
+          else if (user.lastError!.contains("Phone number already registered")) {
+            errorMessage = "Phone number already registered. Please use a different phone number.";
+          }
+        }
+        _AlertMessage(errorMessage);
         print("Error during sign up: ${user.lastError}");
       }
     } else {

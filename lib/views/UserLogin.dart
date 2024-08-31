@@ -49,21 +49,57 @@ class _SignInState extends State<UserLogin> {
       AppUser user = AppUser(email: email, password: password);
 
       if (await user.checkUserExistence()) {
-        // Save email to SharedPreferences
-        final prefs = await SharedPreferences.getInstance();
-        await prefs.setString('userEmail', email);
+        if (user.reactivationOffered == true) {
+          _showReactivationPopup(user);
+        } else {
+          // Save email to SharedPreferences
+          final prefs = await SharedPreferences.getInstance();
+          await prefs.setString('userEmail', email);
 
-        setState(() {
-          emailController.clear();
-          passwordController.clear();
-        });
+          setState(() {
+            emailController.clear();
+            passwordController.clear();
+          });
 
-        _showMessage("LogIn Successful");
-        Navigator.push(context, MaterialPageRoute(builder: (context) => UserHomePage()));
+          _showMessage("LogIn Successful");
+          Navigator.push(context, MaterialPageRoute(builder: (context) => UserHomePage()));
+        }
       } else {
         _AlertMessage("EMAIL OR PASSWORD IS WRONG!");
       }
     }
+  }
+
+  void _showReactivationPopup(AppUser user) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Account Reactivation"),
+          content: Text("Your account is currently inactive. Would you like to reactivate it?"),
+          actions: <Widget>[
+            TextButton(
+              child: Text("No"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: Text("Yes"),
+              onPressed: () async {
+                Navigator.of(context).pop();
+                bool reactivated = await user.reactivateAccount();
+                if (reactivated) {
+                  _showMessage("Account reactivated successfully. Please log in again.");
+                } else {
+                  _AlertMessage("Failed to reactivate account. Please try again later.");
+                }
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 
   void _AlertMessage(String msg) {

@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:mentalhealthapp/model/NotificationService.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:timezone/data/latest.dart' as tz;
+import 'package:timezone/timezone.dart' as tz;
 
 class NotificationSettingsPage extends StatefulWidget {
   @override
@@ -13,12 +17,47 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage> {
   @override
   void initState() {
     super.initState();
-    // Load initial settings here if needed
+    _loadSettings();
+    _checkNotificationPermissions();
+  }
+
+  _loadSettings() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _isNotificationEnabled = prefs.getBool('isNotificationEnabled') ?? true;
+      final hour = prefs.getInt('notificationHour') ?? 8;
+      final minute = prefs.getInt('notificationMinute') ?? 0;
+      _selectedTime = TimeOfDay(hour: hour, minute: minute);
+    });
+    print("Settings loaded: Enabled=$_isNotificationEnabled, Time=$_selectedTime");
+  }
+
+  _saveSettings() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('isNotificationEnabled', _isNotificationEnabled);
+    await prefs.setInt('notificationHour', _selectedTime.hour);
+    await prefs.setInt('notificationMinute', _selectedTime.minute);
+    print("Settings saved: Enabled=$_isNotificationEnabled, Time=$_selectedTime");
+  }
+
+  Future<void> _checkNotificationPermissions() async {
+    final iosPlatformChannelSpecifics = NotificationService().flutterLocalNotificationsPlugin
+        .resolvePlatformSpecificImplementation<IOSFlutterLocalNotificationsPlugin>();
+
+    if (iosPlatformChannelSpecifics != null) {
+      final bool? result = await iosPlatformChannelSpecifics.requestPermissions(
+        alert: true,
+        badge: true,
+        sound: true,
+      );
+      print("Notification permissions granted: $result");
+    }
   }
 
   Future<void> _scheduleDailyNotification(TimeOfDay time) async {
-    final now = DateTime.now();
-    final scheduledDate = DateTime(
+    final now = tz.TZDateTime.now(tz.local);
+    var scheduledDate = tz.TZDateTime(
+      tz.local,
       now.year,
       now.month,
       now.day,
@@ -26,18 +65,26 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage> {
       time.minute,
     );
 
+    if (scheduledDate.isBefore(now)) {
+      scheduledDate = scheduledDate.add(Duration(days: 1));
+    }
+
     await NotificationService().scheduleNotification(
-        0,
-        'Daily Reminder',
-        'Time for your daily check-in!',
-        scheduledDate
+      0,
+      'Daily Reminder',
+      'Time for your daily check-in!',
+      scheduledDate,
     );
+    print("Notification scheduled for $scheduledDate");
   }
+
+
 
   void _onTimeChanged(TimeOfDay newTime) {
     setState(() {
       _selectedTime = newTime;
     });
+    _saveSettings();
     _scheduleDailyNotification(newTime);
   }
 
@@ -48,6 +95,19 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage> {
     );
     if (picked != null && picked != _selectedTime) {
       _onTimeChanged(picked);
+    }
+  }
+
+  Future<void> _testImmediateNotification() async {
+    try {
+      await NotificationService().showNotification(
+        1,
+        'Test Notification',
+        'This is a test notification',
+      );
+      print("Test notification sent");
+    } catch (e) {
+      print("Error sending test notification: $e");
     }
   }
 
@@ -100,6 +160,16 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage> {
               Text(
                 'You will receive a daily reminder at the selected time.',
                 style: TextStyle(color: Colors.grey),
+              ),
+              ElevatedButton(
+                onPressed: () async {
+                  await NotificationService().showNotification(
+                    1,
+                    'Test Notification',
+                    'This is a test notification',
+                  );
+                },
+                child: Text('Trigger Notification'),
               ),
             ],
           ),
