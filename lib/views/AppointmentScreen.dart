@@ -1,14 +1,12 @@
-import 'dart:convert';
-import 'dart:typed_data';
 import 'package:flutter/material.dart';
-import 'package:mentalhealthapp/model/NavigationBar.dart';
 import 'package:mentalhealthapp/model/therapist.dart';
 import 'package:mentalhealthapp/views/BookAppointment.dart';
+import 'package:mentalhealthapp/views/UserHome.dart';
+import 'package:mentalhealthapp/views/UserProfile.dart';
 import 'package:mentalhealthapp/views/MoodTrackerOverview.dart';
 import 'package:mentalhealthapp/views/ResourcePage.dart';
 import 'package:mentalhealthapp/views/SelfAssessmentPage.dart';
-import 'package:mentalhealthapp/views/UserHome.dart';
-import 'package:mentalhealthapp/views/UserProfile.dart';
+import 'package:mentalhealthapp/model/NavigationBar.dart';
 
 class AppointmentScreen extends StatefulWidget {
   @override
@@ -34,6 +32,26 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
     } catch (e) {
       print('Error loading therapists: $e');
     }
+  }
+
+  void _showSpecializationInfo(String description) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Specialization Details'),
+          content: Text(description),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text("OK"),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -97,7 +115,6 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
                           child: Container(
                             margin: EdgeInsets.symmetric(vertical: 10.0),
                             decoration: BoxDecoration(
-                              //border: Border.all(color: Colors.brown, width: 2.0),
                               borderRadius: BorderRadius.circular(16),
                             ),
                             child: Card(
@@ -119,11 +136,26 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
                                       ),
                                     ),
                                     SizedBox(height: 4),
-                                    Text(
-                                      therapist.specialization ?? '',
-                                      style: TextStyle(
-                                        color: Colors.black,
-                                      ),
+                                    Row(
+                                      children: [
+                                        Expanded(
+                                          child: Text(
+                                            therapist.specialization ?? '',
+                                            style: TextStyle(
+                                              color: Colors.black,
+                                            ),
+                                          ),
+                                        ),
+                                        IconButton(
+                                          icon: Icon(Icons.info_outline),
+                                          onPressed: () {
+                                            // Replace with the actual description for the specialization
+                                            _showSpecializationInfo(
+                                              therapist.specializationDescription ?? 'No description available',
+                                            );
+                                          },
+                                        ),
+                                      ],
                                     ),
                                     SizedBox(height: 8),
                                   ],

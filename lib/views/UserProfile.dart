@@ -7,6 +7,7 @@ import 'package:mentalhealthapp/model/appointment.dart';
 import 'package:mentalhealthapp/views/AboutSereneSoul.dart';
 import 'package:mentalhealthapp/views/NotificationSetting.dart';
 import 'package:mentalhealthapp/views/PastAppointmentList.dart';
+import 'package:mentalhealthapp/views/PendingAppointmentList.dart';
 import 'package:mentalhealthapp/views/PrivacyPolicyPage.dart';
 import 'package:mentalhealthapp/views/MoodTrackerOverview.dart';
 import 'package:mentalhealthapp/views/AppointmentScreen.dart';
@@ -27,6 +28,7 @@ class UserProfilePage extends StatefulWidget {
 class _UserProfilePageState extends State<UserProfilePage> {
   AppUser? user;
   List<Appointment> pastAppointments = [];
+  List<Appointment> pendingAppointments = [];
   bool isLoading = true;
   String errorMessage = '';
   String? profilePictureBase64;
@@ -188,38 +190,93 @@ class _UserProfilePageState extends State<UserProfilePage> {
     return Column(
       children: [
         _buildPastAppointmentsOption(),
+        _buildPendingAppointmentsOption(),
         _buildMenuOption(Icons.help_outline, 'Help', () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => HelpPage()), // Navigate to HelpPage
+            MaterialPageRoute(builder: (context) => HelpPage()),
           );
         }),
         _buildMenuOption(Icons.notifications_none_outlined, 'Notification Setting', () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => NotificationSettingsPage()), // Navigate to HelpPage
+            MaterialPageRoute(builder: (context) => NotificationSettingsPage()),
           );
         }),
         _buildMenuOption(Icons.description_outlined, 'Terms of Services', () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => TermsOfServicesPage()), // Navigate to HelpPage
+            MaterialPageRoute(builder: (context) => TermsOfServicesPage()),
           );
         }),
         _buildMenuOption(Icons.privacy_tip_outlined, 'Privacy Policy', () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => PrivacyPolicyPage()), // Navigate to HelpPage
+            MaterialPageRoute(builder: (context) => PrivacyPolicyPage()),
           );
         }),
         _buildMenuOption(Icons.favorite_border, 'About SereneSoul', () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => AboutSereneSoul()), // Navigate to HelpPage
+            MaterialPageRoute(builder: (context) => AboutSereneSoul()),
           );
         }),
+        _buildMenuOption(Icons.delete_forever, 'Delete Account', _showDeleteAccountConfirmation),
       ],
     );
+  }
+
+  void _showDeleteAccountConfirmation() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Delete Account'),
+          content: Text('Are you sure you want to delete your account? This action cannot be undone.'),
+          actions: <Widget>[
+            TextButton(
+              child: Text('Cancel'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: Text('Delete', style: TextStyle(color: Colors.red)),
+              onPressed: () {
+                Navigator.of(context).pop();
+                _deleteAccount();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _deleteAccount() async {
+    if (user != null) {
+      try {
+        bool success = await user!.updateAccessStatus('INACTIVE');
+        if (success) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Your account has been deactivated.')),
+          );
+          // Navigate to the main page or login page
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => MainPage()),
+          );
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Failed to deactivate account. Please try again.')),
+          );
+        }
+      } catch (e) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('An error occurred: $e')),
+        );
+      }
+    }
   }
 
   Widget _buildPastAppointmentsOption() {
@@ -232,6 +289,22 @@ class _UserProfilePageState extends State<UserProfilePage> {
           context,
           MaterialPageRoute(
             builder: (context) => PastAppointmentList(pastAppointments: pastAppointments),
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _buildPendingAppointmentsOption() {
+    return ListTile(
+      leading: Icon(Icons.playlist_add_check_outlined, color: Colors.black),
+      title: Text('Pending Appointments'),
+      trailing: Icon(Icons.arrow_forward_ios, size: 16, color: Colors.grey),
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => PendingAppointmentList(),
           ),
         );
       },

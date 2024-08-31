@@ -29,11 +29,21 @@ class _SignInState extends State<UserLogin> {
     });
   }
 
+  bool isValidEmail(String email) {
+    final emailRegExp = RegExp(r'^[^@]+@[^@]+\.[^@]+');
+    return emailRegExp.hasMatch(email);
+  }
+
+
   void _checkUser() async {
     final String email = emailController.text.trim();
     final String password = passwordController.text.trim();
 
-    if (email.isNotEmpty && password.isNotEmpty) {
+    if (email.isEmpty || password.isEmpty) {
+      _AlertMessage("PLEASE INSERT ALL THE INFORMATION NEEDED");
+    } else if (!isValidEmail(email)) {
+      _AlertMessage("INVALID EMAIL ADDRESS");
+    } else {
       print('Checking AppUser existence...');
 
       AppUser user = AppUser(email: email, password: password);
@@ -51,14 +61,8 @@ class _SignInState extends State<UserLogin> {
         _showMessage("LogIn Successful");
         Navigator.push(context, MaterialPageRoute(builder: (context) => UserHomePage()));
       } else {
-        _AlertMessage("EMAIL OR PASSWORD WRONG!");
+        _AlertMessage("EMAIL OR PASSWORD IS WRONG!");
       }
-    } else {
-      _AlertMessage("Please Insert All The Information Needed");
-      setState(() {
-        emailController.clear();
-        passwordController.clear();
-      });
     }
   }
 

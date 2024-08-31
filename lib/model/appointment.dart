@@ -203,6 +203,48 @@ class Appointment {
     return result;
   }
 
+  static Future<List<Appointment>> fetchPendingAppointment() async {
+    List<Appointment> result = [];
+
+    AppUser appUser = AppUser();
+    int? appUserId = await appUser.getUserId();
+
+    if (appUserId == null) {
+      print('Error: AppUser ID not found');
+      return result;
+    }
+
+    print('Fetching pending appointments for appUserId: $appUserId'); // Debug log
+
+    RequestController req = RequestController(
+        path: "/api/fetchPendingAppointment.php?appUserId=$appUserId");
+    await req.get();
+
+    print('Request status: ${req.status()}'); // Debug log
+    print('Request result: ${req.result()}'); // Debug log
+
+    if (req.status() == 200 && req.result() != null) {
+      Map<String, dynamic> responseData = req.result();
+      if (responseData.containsKey('data') && responseData['data'] is List) {
+        List<dynamic> appointmentsData = responseData['data'];
+        result =
+            appointmentsData.map((json) => Appointment.fromJson(json)).toList();
+        // Filter appointments to include only 'PENDING' statuses
+        result = result.where((appointment) =>
+        appointment.status == 'PENDING').toList();
+
+        print('Fetched ${result.length} pending appointments'); // Debug log
+      } else {
+        print('Response data is not in the expected format.');
+      }
+    } else {
+      print('Failed to fetch data.');
+      print('Server response: ${req.result()}');
+    }
+
+    return result;
+  }
+
   static Future<List<Appointment>> therapistDoneAppointment() async {
     List<Appointment> result = [];
 

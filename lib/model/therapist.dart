@@ -400,5 +400,55 @@ class Therapist {
     }
   }
 
+  String? get specializationDescription {
+    if (specialization == null) return null;
+
+    switch (specialization) {
+      case 'Clinical Psychologist':
+        return 'Focuses on diagnosing and treating mental health disorders through psychological methods.';
+      case 'Counseling Psychologist':
+        return 'Provides therapy and counseling for individuals, couples, and families to address emotional and psychological challenges.';
+      case 'Child and Adolescent Therapist':
+        return 'Specializes in working with children and adolescents to address mental health and developmental issues.';
+      case 'Marriage and Family Therapist':
+        return 'Works with individuals, couples, and families to improve relationships and resolve issues within the family unit.';
+      case 'Cognitive Behavioral Therapist (CBT)':
+        return 'Specializes in cognitive behavioral therapy, focusing on changing negative thought patterns and behaviors.';
+      case 'Dialectical Behavior Therapist (DBT)':
+        return 'Uses dialectical behavior therapy to help individuals manage emotions, improve relationships, and reduce self-destructive behaviors.';
+      case 'Trauma Therapist':
+        return 'Specializes in helping individuals recover from trauma and manage PTSD symptoms.';
+      case 'Addiction Therapist':
+        return 'Provides support and treatment for individuals struggling with substance abuse and addiction.';
+      case 'Grief Counselor':
+        return 'Offers support to individuals dealing with loss and bereavement, helping them navigate the grieving process.';
+      case 'Anger Management Counselor':
+        return 'Helps individuals manage and control anger through therapy and coping strategies.';
+      case 'Anxiety Specialist':
+        return 'Focuses on treating anxiety disorders and helping individuals manage anxiety symptoms.';
+      case 'Depression Specialist':
+        return 'Specializes in treating depression and helping individuals cope with depressive symptoms.';
+      case 'Eating Disorder Specialist':
+        return 'Provides treatment for eating disorders such as anorexia, bulimia, and binge eating disorder.';
+      case 'Stress Management Counselor':
+        return 'Offers techniques and strategies to manage and reduce stress in individuals’ lives.';
+      case 'Workplace Mental Health Counselor':
+        return 'Focuses on mental health issues related to the workplace, including stress, burnout, and work-life balance.';
+      case 'Psychoanalyst':
+        return 'Uses psychoanalysis to explore unconscious processes and resolve deep-seated emotional issues.';
+      case 'Neuropsychologist':
+        return 'Specializes in understanding the relationship between brain function and behavior, often working with cognitive disorders.';
+      case 'Behavioral Therapist':
+        return 'Focuses on changing specific behaviors through techniques such as conditioning and reinforcement.';
+      case 'Psychiatrist':
+        return 'Medical doctor specializing in mental health, including the diagnosis and treatment of mental illnesses with medication and therapy.';
+      case 'Mindfulness-Based Therapist':
+        return 'Uses mindfulness techniques to help individuals increase awareness and manage stress and emotional difficulties.';
+      case 'Other':
+        return 'Specialization not listed. Please contact for more details.';
+      default:
+        return 'No description available for this specialization.';
+    }
+  }
 }
 

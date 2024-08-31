@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import '../../model/appUser.dart';
 import 'package:mentalhealthapp/views/UserLogin.dart';
-//import 'login.dart';
 
 void main() {
   runApp(
     MaterialApp(
       home: Directionality(
-        textDirection: TextDirection.ltr, // or TextDirection.rtl
+        textDirection: TextDirection.ltr,
         child: const SignUp(),
       ),
     ),
@@ -22,13 +21,12 @@ class SignUp extends StatefulWidget {
 }
 
 class _signUpState extends State<SignUp> {
+  final _formKey = GlobalKey<FormState>();
   TextEditingController usernameController = TextEditingController();
-  TextEditingController emailController=TextEditingController();
-  TextEditingController passwordController=TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
   TextEditingController dateOfBirthController = TextEditingController();
-  TextEditingController phoneNumberController=TextEditingController();
-
-
+  TextEditingController phoneNumberController = TextEditingController();
   DateTime? selectedDate;
 
   Future<void> _selectDate(BuildContext context) async {
@@ -47,56 +45,38 @@ class _signUpState extends State<SignUp> {
     }
   }
 
-
   void _addUser() async {
-    final List<AppUser> admin= [];
-    final String username = usernameController.text.trim();
-    final String email = emailController.text.trim();
-    final String password = passwordController.text.trim();
-    final String dateOfBirth = dateOfBirthController.text.trim();
-    final String phoneNumber = phoneNumberController.text.trim();
-    final String accessStatus = 'ACTIVE';
-    int appUserId=0;
-
-    if (username.isNotEmpty && email.isNotEmpty && password.isNotEmpty
-        && dateOfBirth.isNotEmpty && phoneNumber.isNotEmpty) {
+    if (_formKey.currentState!.validate()) {
+      final String username = usernameController.text.trim();
+      final String email = emailController.text.trim();
+      final String password = passwordController.text.trim();
+      final String dateOfBirth = dateOfBirthController.text.trim();
+      final String phoneNumber = phoneNumberController.text.trim();
+      final String accessStatus = 'ACTIVE';
+      int appUserId = 0;
 
       AppUser user = AppUser(
-          appUserId: appUserId,
-          username: username,
-          email: email,
-          password: password,
-          dateOfBirth: dateOfBirth,
-          phoneNumber: phoneNumber,
-          accessStatus: accessStatus,
+        appUserId: appUserId,
+        username: username,
+        email: email,
+        password: password,
+        dateOfBirth: dateOfBirth,
+        phoneNumber: phoneNumber,
+        accessStatus: accessStatus,
       );
 
       if (await user.save()) {
-        setState(() {
-          usernameController.clear();
-          emailController.clear();
-          passwordController.clear();
-          dateOfBirthController.clear();
-          phoneNumberController.clear();
-        });
         _AlertMessage("Sign Up Successful");
-        Future.delayed(Duration(seconds: 2), () {
-          // Navigate to the login screen
-          Navigator.push(context, MaterialPageRoute(builder: (context) => UserLogin()));
+        Future.delayed(const Duration(seconds: 2), () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => UserLogin()));
         });
       } else {
         _AlertMessage("Sign up unsuccessful. Please try again.");
         print("Error during sign up: ${user.lastError}");
       }
     } else {
-      _AlertMessage("Please Insert All The Information Needed");
-      setState(() {
-        usernameController.clear();
-        emailController.clear();
-        passwordController.clear();
-        dateOfBirthController.clear();
-        phoneNumberController.clear();
-      });
+      _AlertMessage("Please fill out all fields correctly.");
     }
   }
 
@@ -105,14 +85,14 @@ class _signUpState extends State<SignUp> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Message"),
+          title: const Text("Message"),
           content: Text(msg),
           actions: <Widget>[
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text("OK"),
+              child: const Text("OK"),
             ),
           ],
         );
@@ -120,17 +100,6 @@ class _signUpState extends State<SignUp> {
     );
   }
 
-  void _showMessage(String msg){
-    if(mounted){
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(msg),
-        ),
-      );
-    }
-  }
-
-//hello world
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -151,208 +120,182 @@ class _signUpState extends State<SignUp> {
       ),
       body: SingleChildScrollView(
         child: Center(
-          child:Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children:[
-              ClipOval(
-                child: Image.asset(
-                  'assets/logo.jpg',
-                  width: 180,
-                  height: 180,
-                  fit: BoxFit.cover, // This ensures that the image covers the circular area
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    width: 150.0, // Set the width to the desired value
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Username', // Your label text
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          SizedBox(height: 5.0),
-                          Container(
-                            padding: const EdgeInsets.all(4.0),
-                            decoration: BoxDecoration(
-                              border: Border.all(color: Colors.grey),
-                              borderRadius: BorderRadius.circular(50.0),
-                            ),
-                            child: TextField(
-                              controller: usernameController,
-                              decoration: const InputDecoration(
-                                border: InputBorder.none,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Container(
-                    width: 150.0,
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Email', // Your label text
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          SizedBox(height: 5.0), // Add some space between the label and the text field
-                          Container(
-                            padding: const EdgeInsets.all(4.0),
-                            decoration: BoxDecoration(
-                              border: Border.all(color: Colors.grey),
-                              borderRadius: BorderRadius.circular(50.0),
-                            ),
-                            child: TextField(
-                              controller: emailController,
-                              decoration: const InputDecoration(
-                                border: InputBorder.none,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              Container(
-                width: 300.0,
-                child: Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Password', // Your label text
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(height: 5.0), // Add some space between the label and the text field
-                      Container(
-                        padding: const EdgeInsets.all(4.0),
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.grey),
-                          borderRadius: BorderRadius.circular(50.0),
-                        ),
-                        child: TextField(
-                          controller: passwordController,
-                          obscureText: true,
-                          decoration: const InputDecoration(
-                            border: InputBorder.none,
-                          ),
-                        ),
-                      ),
-                    ],
+          child: Form(
+            key: _formKey,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ClipOval(
+                  child: Image.asset(
+                    'assets/logo.jpg',
+                    width: 180,
+                    height: 180,
+                    fit: BoxFit.cover,
                   ),
                 ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    width: 150,
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Date of Birth',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          SizedBox(height: 5.0),
-                          Container(
-                            padding: const EdgeInsets.all(4.0),
-                            decoration: BoxDecoration(
-                              border: Border.all(color: Colors.grey),
-                              borderRadius: BorderRadius.circular(50.0),
-                            ),
-                            child: Row(
-                              children: [
-                                Expanded(
-                                  child: TextFormField(
-                                    controller: dateOfBirthController,
-                                    decoration: const InputDecoration(
-                                      border: InputBorder.none,
-                                    ),
-                                  ),
-                                ),
-                                IconButton(
-                                  icon: Icon(Icons.calendar_today),
-                                  onPressed: () {
-                                    _selectDate(context);
-                                  },
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                _buildTextField(
+                  controller: usernameController,
+                  label: 'Username',
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter your username';
+                    }
+                    return null;
+                  },
+                ),
+                _buildTextField(
+                  controller: emailController,
+                  label: 'Email',
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter your email';
+                    } else if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
+                      return 'Please enter a valid email';
+                    }
+                    return null;
+                  },
+                ),
+                _buildTextField(
+                  controller: passwordController,
+                  label: 'Password',
+                  obscureText: true,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter your password';
+                    } else if (value.length < 6) {
+                      return 'Password must be at least 6 characters long';
+                    }
+                    return null;
+                  },
+                ),
+                _buildDateField(
+                  controller: dateOfBirthController,
+                  label: 'Date of Birth',
+                  context: context,
+                  onTap: () => _selectDate(context),
+                ),
+                _buildTextField(
+                  controller: phoneNumberController,
+                  label: 'Phone Number',
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter your phone number';
+                    } else if (!RegExp(r'^[0-9]{10,15}$').hasMatch(value)) {
+                      return 'Please enter a valid phone number';
+                    }
+                    return null;
+                  },
+                ),
+                SizedBox(height: 20),
+                ElevatedButton(
+                  onPressed: _addUser,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.black,
                   ),
-                ],
-              ),
-              Container(
-                width:300,
-                child: Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Phone Number', // Your label text
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(height: 5.0), // Add some space between the label and the text field
-                      Container(
-                        padding: const EdgeInsets.all(4.0),
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.grey),
-                          borderRadius: BorderRadius.circular(50.0),
-                        ),
-                        child: TextField(
-                          controller: phoneNumberController,
-                          decoration: const InputDecoration(
-                            border: InputBorder.none,
-                          ),
-                        ),
-                      ),
-                    ],
+                  child: const Text(
+                    'Sign up',
+                    style: TextStyle(
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
                   ),
                 ),
-              ),
-              SizedBox(height: 5),
-              ElevatedButton(
-                onPressed: _addUser,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.black, // Set your desired background color here
-                ),
-                child: const Text('Sign up',
-                    style: TextStyle(fontSize: 18.0,
-                        fontWeight: FontWeight.bold, color: Colors.white)),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _buildTextField({
+    required TextEditingController controller,
+    required String label,
+    bool obscureText = false,
+    required String? Function(String?) validator,
+  }) {
+    return Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            label,
+            style: const TextStyle(fontWeight: FontWeight.bold),
+          ),
+          SizedBox(height: 5.0),
+          Container(
+            padding: const EdgeInsets.all(4.0),
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.grey),
+              borderRadius: BorderRadius.circular(50.0),
+            ),
+            child: TextFormField(
+              controller: controller,
+              obscureText: obscureText,
+              decoration: const InputDecoration(
+                border: InputBorder.none,
+                contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+              ),
+              textAlign: TextAlign.center, // Center the input text
+              validator: (value) {
+                String? result = validator(value);
+                if (result != null && result.isNotEmpty) {
+                  return result; // Return the centered error message
+                }
+                return null;
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildDateField({
+    required TextEditingController controller,
+    required String label,
+    required BuildContext context,
+    required VoidCallback onTap,
+  }) {
+    return Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            label,
+            style: const TextStyle(fontWeight: FontWeight.bold),
+          ),
+          SizedBox(height: 5.0),
+          Container(
+            padding: const EdgeInsets.all(4.0),
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.grey),
+              borderRadius: BorderRadius.circular(50.0),
+            ),
+            child: Row(
+              children: [
+                Expanded(
+                  child: TextFormField(
+                    controller: controller,
+                    readOnly: true,
+                    decoration: const InputDecoration(
+                      border: InputBorder.none,
+                      contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                    ),
+                    textAlign: TextAlign.center, // Center the input text
+                    onTap: onTap,
+                  ),
+                ),
+                IconButton(
+                  icon: const Icon(Icons.calendar_today),
+                  onPressed: onTap,
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

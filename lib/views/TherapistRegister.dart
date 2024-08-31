@@ -14,6 +14,8 @@ class TherapistRegister extends StatefulWidget {
 }
 
 class _TherapistRegisterState extends State<TherapistRegister> {
+  final _formKey = GlobalKey<FormState>();
+
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -44,7 +46,7 @@ class _TherapistRegisterState extends State<TherapistRegister> {
     'Behavioral Therapist',
     'Psychiatrist',
     'Mindfulness-Based Therapist',
-    'Other', // Add the "Other" option
+    'Other',
   ];
 
   final List<String> location = [
@@ -65,15 +67,13 @@ class _TherapistRegisterState extends State<TherapistRegister> {
   }
 
   void _addUser() async {
-    final String name = nameController.text.trim();
-    final String email = emailController.text.trim();
-    final String password = passwordController.text.trim();
-    final String specialization = selectedSpecialization == 'Other'
-        ? otherSpecializationController.text.trim()
-        : selectedSpecialization ?? '';
-
-    if (name.isNotEmpty && email.isNotEmpty && password.isNotEmpty &&
-        specialization.isNotEmpty && supportingDocument != null && selectedLocation != null) {
+    if (_formKey.currentState!.validate() && supportingDocument != null && selectedLocation != null) {
+      final String name = nameController.text.trim();
+      final String email = emailController.text.trim();
+      final String password = passwordController.text.trim();
+      final String specialization = selectedSpecialization == 'Other'
+          ? otherSpecializationController.text.trim()
+          : selectedSpecialization ?? '';
 
       Uint8List supportingDocumentBytes = await supportingDocument!.readAsBytes();
 
@@ -85,14 +85,10 @@ class _TherapistRegisterState extends State<TherapistRegister> {
         specialization: specialization,
         location: selectedLocation,
         supportingDocument: supportingDocumentBytes,
-        availability: "", // Add this line
+        availability: "",
         accessStatus: 'ACTIVE',
         approvalStatus: 'PENDING',
       );
-
-      // Print the data being sent
-      print('Sending data to server:');
-      print(therapist.toJson());
 
       if (await therapist.saveTherapist()) {
         _clearFields();
@@ -104,7 +100,7 @@ class _TherapistRegisterState extends State<TherapistRegister> {
         _showMessage("SIGNUP UNSUCCESSFUL: Email has been registered");
       }
     } else {
-      _showMessage("Please Insert All The Information Needed");
+      _showMessage("Please complete all required fields");
     }
   }
 
@@ -124,6 +120,34 @@ class _TherapistRegisterState extends State<TherapistRegister> {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(msg)));
   }
 
+  String? _validateName(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return 'Name is required';
+    }
+    return null;
+  }
+
+  String? _validateEmail(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return 'Email is required';
+    }
+    final RegExp emailRegex = RegExp(r'^[^@]+@[^@]+\.[^@]+');
+    if (!emailRegex.hasMatch(value)) {
+      return 'Enter a valid email';
+    }
+    return null;
+  }
+
+  String? _validatePassword(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return 'Password is required';
+    }
+    if (value.length < 6) {
+      return 'Password must be at least 6 characters long';
+    }
+    return null;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -137,121 +161,143 @@ class _TherapistRegisterState extends State<TherapistRegister> {
             fontFamily: 'BodoniModa',
           ),
         ),
-        backgroundColor: Colors.transparent, // Make the background transparent
-        elevation: 0, // Remove the shadow
-        centerTitle: true, // Center the title text
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                'Therapist Application',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 24,
-                  fontFamily: 'BodoniModa',
+          child: Form(
+            key: _formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'Therapist Application',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 24,
+                    fontFamily: 'BodoniModa',
+                  ),
                 ),
-              ),
-              const SizedBox(height: 16),
-              TextField(
-                controller: nameController,
-                decoration: const InputDecoration(
-                  labelText: 'Name',
-                  prefixIcon: Icon(Icons.person),
-                ),
-              ),
-              TextField(
-                controller: emailController,
-                decoration: const InputDecoration(
-                  labelText: 'Email',
-                  prefixIcon: Icon(Icons.email),
-                ),
-              ),
-              TextField(
-                controller: passwordController,
-                decoration: const InputDecoration(
-                  labelText: 'Password',
-                  prefixIcon: Icon(Icons.lock),
-                ),
-                obscureText: true,
-              ),
-              DropdownButtonFormField<String>(
-                value: selectedSpecialization,
-                onChanged: (newValue) {
-                  setState(() {
-                    selectedSpecialization = newValue;
-                  });
-                },
-                items: specializations.map<DropdownMenuItem<String>>((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),
-                decoration: const InputDecoration(
-                  labelText: 'Specialization',
-                  prefixIcon: Icon(Icons.work),
-                ),
-              ),
-              if (selectedSpecialization == 'Other')
-                TextField(
-                  controller: otherSpecializationController,
+                const SizedBox(height: 16),
+                TextFormField(
+                  controller: nameController,
                   decoration: const InputDecoration(
-                    labelText: 'Please specify your specialization',
-                    prefixIcon: Icon(Icons.edit),
+                    labelText: 'Name',
+                    prefixIcon: Icon(Icons.person),
+                  ),
+                  validator: _validateName,
+                ),
+                TextFormField(
+                  controller: emailController,
+                  decoration: const InputDecoration(
+                    labelText: 'Email',
+                    prefixIcon: Icon(Icons.email),
+                  ),
+                  validator: _validateEmail,
+                ),
+                TextFormField(
+                  controller: passwordController,
+                  decoration: const InputDecoration(
+                    labelText: 'Password',
+                    prefixIcon: Icon(Icons.lock),
+                  ),
+                  obscureText: true,
+                  validator: _validatePassword,
+                ),
+                DropdownButtonFormField<String>(
+                  value: selectedSpecialization,
+                  onChanged: (newValue) {
+                    setState(() {
+                      selectedSpecialization = newValue;
+                    });
+                  },
+                  items: specializations.map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                  decoration: const InputDecoration(
+                    labelText: 'Specialization',
+                    prefixIcon: Icon(Icons.work),
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Specialization is required';
+                    }
+                    return null;
+                  },
+                ),
+                if (selectedSpecialization == 'Other')
+                  TextFormField(
+                    controller: otherSpecializationController,
+                    decoration: const InputDecoration(
+                      labelText: 'Please specify your specialization',
+                      prefixIcon: Icon(Icons.edit),
+                    ),
+                    validator: (value) {
+                      if (selectedSpecialization == 'Other' &&
+                          (value == null || value.trim().isEmpty)) {
+                        return 'Please specify your specialization';
+                      }
+                      return null;
+                    },
+                  ),
+                DropdownButtonFormField<String>(
+                  value: selectedLocation,
+                  onChanged: (newValue) {
+                    setState(() {
+                      selectedLocation = newValue;
+                    });
+                  },
+                  items: location.map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                  decoration: const InputDecoration(
+                    labelText: 'Location',
+                    prefixIcon: Icon(Icons.location_on),
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Location is required';
+                    }
+                    return null;
+                  },
+                ),
+                const SizedBox(height: 8),
+                OutlinedButton.icon(
+                  onPressed: _pickSupportingDocument,
+                  icon: const Icon(Icons.upload_file),
+                  label: const Text('Upload Supporting Document'),
+                  style: OutlinedButton.styleFrom(
+                    foregroundColor: Colors.black, side: const BorderSide(color: Colors.black), // Outline color
                   ),
                 ),
-              DropdownButtonFormField<String>(
-                value: selectedLocation,
-                onChanged: (newValue) {
-                  setState(() {
-                    selectedLocation = newValue;
-                  });
-                },
-                items: location.map<DropdownMenuItem<String>>((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),
-                decoration: const InputDecoration(
-                  labelText: 'Location',
-                  prefixIcon: Icon(Icons.location_on),
-                ),
-              ),
-              const SizedBox(height: 8),
-              OutlinedButton.icon(
-                onPressed: _pickSupportingDocument,
-                icon: const Icon(Icons.upload_file),
-                label: const Text('Upload Supporting Document'),
-                style: OutlinedButton.styleFrom(
-                  foregroundColor: Colors.black, side: const BorderSide(color: Colors.black), // Outline color
-                ),
-              ),
-              if (supportingDocument != null)
-                Padding(
-                  padding: const EdgeInsets.only(top: 8.0),
-                  child: Text(
-                    'Document uploaded: ${supportingDocument!.path.split('/').last}',
-                    style: const TextStyle(fontWeight: FontWeight.bold),
+                if (supportingDocument != null)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8.0),
+                    child: Text('Selected file: ${supportingDocument!.path.split('/').last}'),
+                  ),
+                const SizedBox(height: 16),
+                Center(
+                  child: ElevatedButton.icon(
+                    onPressed: _addUser,
+                    icon: const Icon(Icons.person_add),
+                    label: const Text('Apply', style: TextStyle(fontSize: 18)),
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.white, backgroundColor: Colors.black, // Text color
+                      padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16), // Button padding
+                    ),
                   ),
                 ),
-              const SizedBox(height: 40),
-              Center(
-                child: ElevatedButton.icon(
-                  onPressed: _addUser,
-                  icon: const Icon(Icons.person_add),
-                  label: const Text('Apply', style: TextStyle(fontSize: 18)),
-                  style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.white, backgroundColor: Colors.black, // Text color
-                    padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16), // Button padding
-                  ),
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

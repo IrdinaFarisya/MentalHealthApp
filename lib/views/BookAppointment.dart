@@ -17,9 +17,10 @@ class BookAppointment extends StatefulWidget {
 class _BookAppointmentState extends State<BookAppointment> {
   DateTime? selectedDate = DateTime.now();
   String? selectedTimeSlot;
+  final _formKey = GlobalKey<FormState>(); // Form key for validation
 
   final List<String> timeSlots = [
-    '9:00',
+    '09:00',
     '10:00',
     '11:00',
     '12:00',
@@ -37,7 +38,6 @@ class _BookAppointmentState extends State<BookAppointment> {
     super.initState();
     _appUser = AppUser();  // Set the email here
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -60,54 +60,61 @@ class _BookAppointmentState extends State<BookAppointment> {
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'About Your Therapist',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-              ),
-              SizedBox(height: 16),
-              _buildDetailCard(
-                icon: Icons.person,
-                title: 'Name',
-                value: widget.therapist.name ?? '',
-              ),
-              _buildDetailCard(
-                icon: Icons.work,
-                title: 'Specialization',
-                value: widget.therapist.specialization ?? '',
-              ),
-              _buildDetailCard(
-                icon: Icons.access_time,
-                title: 'Availability',
-                value: widget.therapist.availability ?? '',
-              ),
-              _buildDetailCard(
-                icon: Icons.location_on,
-                title: 'Location',
-                value: widget.therapist.location ?? '',
-              ),
-              SizedBox(height: 16),
-              _buildCalendar(),
-              SizedBox(height: 16),
-              _buildTimeSelector(),
-              SizedBox(height: 16),
-              Center(
-                child: ElevatedButton(
-                  onPressed: () => _bookAppointment(),
-                  style: ElevatedButton.styleFrom(
-                    padding: EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-                  ),
-                  child: Text(
-                    'Book Appointment',
-                    style: TextStyle(
-                      color: Colors.black, // Set text color to black
+          child: Form(
+            key: _formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'About Your Therapist',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(height: 16),
+                _buildDetailCard(
+                  icon: Icons.person,
+                  title: 'Name',
+                  value: widget.therapist.name ?? '',
+                ),
+                _buildDetailCard(
+                  icon: Icons.work,
+                  title: 'Specialization',
+                  value: widget.therapist.specialization ?? '',
+                ),
+                _buildDetailCard(
+                  icon: Icons.access_time,
+                  title: 'Availability',
+                  value: widget.therapist.availability ?? '',
+                ),
+                _buildDetailCard(
+                  icon: Icons.location_on,
+                  title: 'Location',
+                  value: widget.therapist.location ?? '',
+                ),
+                SizedBox(height: 16),
+                _buildCalendar(),
+                SizedBox(height: 16),
+                _buildTimeSelector(),
+                SizedBox(height: 16),
+                Center(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        _bookAppointment();
+                      }
+                    },
+                    style: ElevatedButton.styleFrom(
+                      padding: EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                    ),
+                    child: Text(
+                      'Book Appointment',
+                      style: TextStyle(
+                        color: Colors.black, // Set text color to black
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
@@ -228,33 +235,93 @@ class _BookAppointmentState extends State<BookAppointment> {
   }
 
   void _bookAppointment() async {
-    int? appUserId = await _appUser.getUserId();
-    if (appUserId != null) {
-      Appointment appointment = Appointment(
-        appUserId: appUserId,
-        therapistId: widget.therapist.therapistId,
-        appointmentDate: selectedDate?.toIso8601String().split('T')[0],
-        appointmentTime: selectedTimeSlot!,
-        status: 'PENDING', // Change this to 'PENDING'
-      );
-      _saveAppointment(appointment);
-    } else {
-      print('Failed to fetch appUserId');
+    DateTime now = DateTime.now();
+
+    // Debug: Print the selected time slot
+    print('Selected time slot: $selectedTimeSlot');
+
+    // Ensure time slot format is correct
+    if (selectedTimeSlot == null || !RegExp(r'^\d{1,2}:\d{2}$').hasMatch(selectedTimeSlot!)) {
+      print('Invalid time slot format: $selectedTimeSlot');
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Failed to fetch user information. Please try again.')),
+        SnackBar(content: Text('Invalid time slot format.')),
+      );
+      return;
+    }
+
+    // Construct the DateTime object for the selected appointment time
+    try {
+      String timeSlot = selectedTimeSlot!;
+      List<String> timeParts = timeSlot.split(':');
+      int hour = int.parse(timeParts[0]);
+      int minute = int.parse(timeParts[1]);
+
+      DateTime selectedDateTime = DateTime(
+        selectedDate!.year,
+        selectedDate!.month,
+        selectedDate!.day,
+        hour,
+        minute,
+      );
+
+      // Debug: Print the current time and selected appointment time
+      print('Current time: $now');
+      print('Selected appointment time: $selectedDateTime');
+
+      // Check if the selected time is in the past
+      if (selectedDateTime.isBefore(now)) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Selected time is in the past. Please choose a future time.')),
+        );
+        return;
+      }
+
+      // Proceed with booking the appointment
+      int? appUserId = await _appUser.getUserId();
+      if (appUserId != null) {
+        Appointment appointment = Appointment(
+          appUserId: appUserId,
+          therapistId: widget.therapist.therapistId,
+          appointmentDate: selectedDate?.toIso8601String().split('T')[0],
+          appointmentTime: selectedTimeSlot!,
+          status: 'PENDING',
+        );
+        _saveAppointment(appointment);
+      } else {
+        print('Failed to fetch appUserId');
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Failed to fetch user information. Please try again.')),
+        );
+      }
+    } catch (e) {
+      print('Error parsing DateTime: $e');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('An error occurred while booking the appointment.')),
       );
     }
   }
 
-
   void _saveAppointment(Appointment appointment) async {
+    // Construct the DateTime string in the required format
+    String appointmentDateTimeString = '${appointment.appointmentDate} ${appointment.appointmentTime}:00';
+    DateTime appointmentDateTime;
+
+    try {
+      appointmentDateTime = DateTime.parse(appointmentDateTimeString);
+    } catch (e) {
+      print('Error parsing DateTime: $e');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Invalid appointment date and time.')),
+      );
+      return;
+    }
+
     bool success = await appointment.saveAppointment();
 
     if (success) {
       print('Appointment saved successfully');
 
       // Schedule a notification for the appointment
-      DateTime appointmentDateTime = DateTime.parse('${appointment.appointmentDate} ${appointment.appointmentTime}');
       await NotificationService().scheduleNotification(
         appointment.appointmentId ?? 0, // Use 0 if appointmentId is null
         'Upcoming Appointment',

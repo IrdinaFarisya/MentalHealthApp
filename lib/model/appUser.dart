@@ -43,9 +43,17 @@ class AppUser {
     'accessStatus': accessStatus,
   };
 
-  Future<bool> checkUserExistence() async {
+  bool isValidEmail() {
     if (email == null || email!.isEmpty) {
-      print("Error: Email is not set");
+      return false;
+    }
+    final regex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+    return regex.hasMatch(email!);
+  }
+
+  Future<bool> checkUserExistence() async {
+    if (!isValidEmail()) {
+      print("Error: Invalid email format");
       return false;
     }
 
@@ -263,6 +271,26 @@ class AppUser {
     } else {
       print("Failed to fetch profile picture: ${req.result()}");
       return null;
+    }
+  }
+
+  Future<bool> updateAccessStatus(String newStatus) async {
+    try {
+      RequestController req = RequestController(path: "/api/updateUserStatus.php");
+      req.setBody({
+        'appUserId': appUserId.toString(),
+        'accessStatus': newStatus,
+      });
+      await req.post();
+      if (req.status() == 200) {
+        return true;
+      } else {
+        print('Failed to update access status: ${req.status()} - ${req.result()}');
+        return false;
+      }
+    } catch (e) {
+      print('Error updating access status: $e');
+      return false;
     }
   }
 

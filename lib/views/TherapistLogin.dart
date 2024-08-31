@@ -30,11 +30,20 @@ class _SignInState extends State<TherapistLogin> {
     });
   }
 
+  bool isValidEmail(String email) {
+    final emailRegExp = RegExp(r'^[^@]+@[^@]+\.[^@]+');
+    return emailRegExp.hasMatch(email);
+  }
+
   void _checkUser() async {
     final String email = emailController.text.trim();
     final String password = passwordController.text.trim();
 
-    if (email.isNotEmpty && password.isNotEmpty) {
+    if (email.isEmpty || password.isEmpty) {
+      _AlertMessage("PLEASE INSERT ALL THE INFORMATION NEEDED");
+    } else if (!isValidEmail(email)) {
+      _AlertMessage("INVALID EMAIL ADDRESS");
+    } else {
       print('Checking user existence...');
 
       // Check if it's an admin
@@ -43,9 +52,9 @@ class _SignInState extends State<TherapistLogin> {
         // It's an admin
         Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => AdminHome(admin: admin)));
       } else {
-
         final prefs = await SharedPreferences.getInstance();
         await prefs.setString('therapistEmail', email);
+
         // Check if it's a therapist
         Therapist therapist = Therapist(
           email: email,
@@ -61,22 +70,17 @@ class _SignInState extends State<TherapistLogin> {
             _showMessage("Login Successful");
             Navigator.push(context, MaterialPageRoute(builder: (context) => TherapistHomePage()));
           } else if (therapist.approvalStatus == 'PENDING') {
-            _AlertMessage("Your account is pending approval.");
+            _AlertMessage("YOUR ACCOUNT IS PENDING APPROVAL");
           } else {
-            _AlertMessage("Your account has been rejected.");
+            _AlertMessage("YOUR APPLICATION HAS BEEN REJECTED");
           }
         } else {
-          _AlertMessage("EMAIL OR PASSWORD WRONG!");
+          _AlertMessage("EMAIL OR PASSWORD IS WRONG");
         }
       }
-    } else {
-      _AlertMessage("Please Insert All The Information Needed");
-      setState(() {
-        emailController.clear();
-        passwordController.clear();
-      });
     }
   }
+
 
   void _AlertMessage(String msg) {
     showDialog(
