@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mentalhealthapp/model/therapist.dart';
 import 'package:mentalhealthapp/views/BookAppointment.dart';
-import 'package:mentalhealthapp/views/UserHome.dart';
-import 'package:mentalhealthapp/views/UserProfile.dart';
-import 'package:mentalhealthapp/views/MoodTrackerOverview.dart';
-import 'package:mentalhealthapp/views/ResourcePage.dart';
-import 'package:mentalhealthapp/views/SelfAssessmentPage.dart';
 import 'package:mentalhealthapp/model/NavigationBar.dart';
 
 class AppointmentScreen extends StatefulWidget {
@@ -15,7 +10,9 @@ class AppointmentScreen extends StatefulWidget {
 
 class _AppointmentScreenState extends State<AppointmentScreen> {
   List<Therapist> therapists = [];
+  List<Therapist> filteredTherapists = [];
   int _selectedIndex = 2;
+  String? selectedSpecialization;
 
   @override
   void initState() {
@@ -28,6 +25,7 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
       List<Therapist> loadedTherapists = await Therapist.fetchTherapist();
       setState(() {
         therapists = loadedTherapists;
+        filteredTherapists = loadedTherapists;
       });
     } catch (e) {
       print('Error loading therapists: $e');
@@ -54,6 +52,47 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
     );
   }
 
+  void _showFilterDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Filter by Specialization'),
+          content: DropdownButton<String>(
+            value: selectedSpecialization,
+            hint: Text('Select Specialization'),
+            onChanged: (String? newValue) {
+              setState(() {
+                selectedSpecialization = newValue;
+                if (newValue == null) {
+                  filteredTherapists = therapists;
+                } else {
+                  filteredTherapists = therapists.where((therapist) =>
+                  therapist.specialization == newValue
+                  ).toList();
+                }
+              });
+              Navigator.of(context).pop();
+            },
+            items: [
+              DropdownMenuItem<String>(
+                value: null,
+                child: Text('All Specializations'),
+              ),
+              ...Set<String>.from(therapists.map((t) => t.specialization ?? 'Unknown'))
+                  .map<DropdownMenuItem<String>>((String value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Text(value),
+                );
+              }).toList(),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,9 +106,9 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
             fontFamily: 'BodoniModa',
           ),
         ),
-        backgroundColor: Colors.green[50], // Make the background transparent
-        elevation: 0, // Remove the shadow
-        centerTitle: true, // Center the title text
+        backgroundColor: Colors.green[50],
+        elevation: 0,
+        centerTitle: true,
       ),
       body: Container(
         decoration: BoxDecoration(
@@ -83,20 +122,33 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              'Choose Your Therapists',
-              style: TextStyle(
-                fontFamily: 'LibreBaskerville',
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Choose Your Therapists',
+                  style: TextStyle(
+                    fontFamily: 'LibreBaskerville',
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+                ),
+                ElevatedButton(
+                  onPressed: _showFilterDialog,
+                  child: Text('Filter'),
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.black, backgroundColor: Colors.white,
+                  ),
+                ),
+              ],
             ),
+            SizedBox(height: 10),
             Expanded(
               child: ListView.builder(
-                itemCount: therapists.length,
+                itemCount: filteredTherapists.length,
                 itemBuilder: (context, index) {
-                  final therapist = therapists[index];
+                  final therapist = filteredTherapists[index];
 
                   return GestureDetector(
                     onTap: () {
@@ -149,7 +201,6 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
                                         IconButton(
                                           icon: Icon(Icons.info_outline),
                                           onPressed: () {
-                                            // Replace with the actual description for the specialization
                                             _showSpecializationInfo(
                                               therapist.specializationDescription ?? 'No description available',
                                             );

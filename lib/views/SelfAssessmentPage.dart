@@ -5,6 +5,8 @@ import 'package:mentalhealthapp/views/AppointmentScreen.dart';
 import 'package:mentalhealthapp/views/MoodTrackerOverview.dart';
 import 'package:mentalhealthapp/views/UserHome.dart';
 import 'package:mentalhealthapp/views/UserProfile.dart';
+import 'package:mentalhealthapp/views/PastAssessmentsPage.dart'; // New import
+import 'package:mentalhealthapp/model/NavigationBar.dart';
 
 class SelfAssessmentPage extends StatefulWidget {
   @override
@@ -66,81 +68,44 @@ class _SelfAssessmentPageState extends State<SelfAssessmentPage> {
           ? Center(child: CircularProgressIndicator())
           : errorMessage.isNotEmpty
           ? Center(child: Text(errorMessage, style: TextStyle(color: Colors.red)))
-          : _buildAssessmentList(),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed, // Add this line
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.mood),
-            label: 'Mood',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.group),
-            label: 'Therapists',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.file_copy),
-            label: 'Resources',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
-          ),
-        ],
+          : _buildContent(),
+      bottomNavigationBar: CustomNavigationBar(
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.black,
-        unselectedItemColor: Colors.grey,
-        backgroundColor: Colors.white,
-        showUnselectedLabels: true, // Add this line to ensure unselected labels are shown
         onTap: (index) {
-          // Handle item tap
-          switch (index) {
-            case 0:
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => UserHomePage(),
-                ),
-              );
-            case 1:
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => MoodTrackerOverview(),
-                ),
-              );
-              break;
-            case 2:
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => AppointmentScreen(),
-                ),
-              );
-              break;
-            case 3:
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => SelfAssessmentPage(),
-                ),
-              );
-              break;
-            case 4:
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => UserProfilePage(),
-                ),
-              );
-              break;
-          }
+          setState(() {
+            _selectedIndex = index;
+          });
         },
       ),
+    );
+  }
+
+  Widget _buildContent() {
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: ElevatedButton(
+            child: Text(
+              'View Past Assessments',
+              style: TextStyle(color: Colors.white),
+            ),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.black,
+              minimumSize: Size(double.infinity, 50), // full width button
+            ),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => PastAssessmentsPage(user: user),
+                ),
+              );
+            },
+          ),
+        ),
+        Expanded(child: _buildAssessmentList()),
+      ],
     );
   }
 
@@ -155,10 +120,9 @@ class _SelfAssessmentPageState extends State<SelfAssessmentPage> {
 
   Widget _buildAssessmentTile(Assessment assessment) {
     return ListTile(
-      leading: Icon(Icons.assignment_outlined, color: Colors.black), // Adjust icon as needed
+      leading: Icon(Icons.assignment_outlined, color: Colors.black),
       title: Text(
         assessment.assessmentName ?? '',
-        //style: TextStyle(fontWeight: FontWeight.bold),
       ),
       trailing: Icon(Icons.arrow_forward_ios, size: 16, color: Colors.grey),
       onTap: () {
