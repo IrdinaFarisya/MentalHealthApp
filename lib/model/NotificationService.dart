@@ -13,45 +13,51 @@ class NotificationService {
   NotificationService._internal();
 
   Future<void> init() async {
-    final AndroidInitializationSettings initializationSettingsAndroid =
+    tz.initializeTimeZones();
+    const AndroidInitializationSettings initializationSettingsAndroid =
     AndroidInitializationSettings('@mipmap/ic_launcher');
-
     final DarwinInitializationSettings initializationSettingsIOS =
     DarwinInitializationSettings(
       requestSoundPermission: false,
       requestBadgePermission: false,
       requestAlertPermission: false,
     );
-
     final InitializationSettings initializationSettings = InitializationSettings(
-        android: initializationSettingsAndroid, iOS: initializationSettingsIOS);
+      android: initializationSettingsAndroid,
+      iOS: initializationSettingsIOS,
+    );
 
-    await flutterLocalNotificationsPlugin.initialize(initializationSettings);
+    await flutterLocalNotificationsPlugin.initialize(
+      initializationSettings,
+      onDidReceiveNotificationResponse: (NotificationResponse notificationResponse) async {
+        print('Notification clicked: ${notificationResponse.payload}');
+      },
+    );
 
-    tz.initializeTimeZones();
-    final String timeZoneName = tz.local.name;
-    tz.setLocalLocation(tz.getLocation(timeZoneName));
+    await _requestPermissions();
   }
 
-  Future<void> showNotification(int id, String title, String body) async {
-    try {
-      await flutterLocalNotificationsPlugin.show(
-        id,
-        title,
-        body,
-        NotificationDetails(
-          android: AndroidNotificationDetails(
-            'appointments_channel',
-            'Appointments',
-            channelDescription: 'Notifications for appointments',
-            importance: Importance.max,
-            priority: Priority.high,
-          ),
-        ),
+  Future<void> _requestPermissions() async {
+    // For Android
+    final AndroidFlutterLocalNotificationsPlugin? androidImplementation =
+    flutterLocalNotificationsPlugin.resolvePlatformSpecificImplementation<
+        AndroidFlutterLocalNotificationsPlugin>();
+
+    if (androidImplementation != null) {
+      await androidImplementation.requestNotificationsPermission();
+    }
+
+    // For iOS
+    final IOSFlutterLocalNotificationsPlugin? iOSImplementation =
+    flutterLocalNotificationsPlugin.resolvePlatformSpecificImplementation<
+        IOSFlutterLocalNotificationsPlugin>();
+
+    if (iOSImplementation != null) {
+      await iOSImplementation.requestPermissions(
+        alert: true,
+        badge: true,
+        sound: true,
       );
-      print("Notification sent: $title");
-    } catch (e) {
-      print("Error sending notification: $e");
     }
   }
 
@@ -61,18 +67,43 @@ class NotificationService {
       title,
       body,
       tz.TZDateTime.from(scheduledDate, tz.local),
-      NotificationDetails(
+      const NotificationDetails(
         android: AndroidNotificationDetails(
-          'appointments_channel',
-          'Appointments',
-          channelDescription: 'Notifications for appointments',
+          'daily_notification_channel',
+          'Daily Notifications',
+          channelDescription: 'Daily notification channel',
           importance: Importance.max,
           priority: Priority.high,
         ),
-        iOS: DarwinNotificationDetails(),  // Change this line
+        iOS: DarwinNotificationDetails(),
       ),
       androidAllowWhileIdle: true,
       uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime,
+      matchDateTimeComponents: DateTimeComponents.time,
+    );
+    print("Notification scheduled for ${scheduledDate.toString()}");
+  }
+
+  Future<void> cancelAllNotifications() async {
+    await flutterLocalNotificationsPlugin.cancelAll();
+  }
+
+  Future<void> showNotification(int id, String title, String body) async {
+    const AndroidNotificationDetails androidPlatformChannelSpecifics =
+    AndroidNotificationDetails(
+      'appointments_channel',
+      'Appointments',
+      channelDescription: 'Notifications for appointments',
+      importance: Importance.max,
+      priority: Priority.high,
+    );
+    const NotificationDetails platformChannelSpecifics =
+    NotificationDetails(android: androidPlatformChannelSpecifics);
+    await flutterLocalNotificationsPlugin.show(
+      id,
+      title,
+      body,
+      platformChannelSpecifics,
     );
   }
 }

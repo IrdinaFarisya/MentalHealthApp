@@ -130,51 +130,51 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage> {
         iconTheme: IconThemeData(color: Colors.black),
       ),
       body: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _buildSwitchOption(
-                icon: Icons.notifications_active_outlined,
-                title: 'Enable Notifications',
-                value: _isNotificationEnabled,
-                onChanged: (bool value) {
-                  setState(() {
-                    _isNotificationEnabled = value;
-                  });
-                  if (!_isNotificationEnabled) {
-                    NotificationService().flutterLocalNotificationsPlugin.cancelAll();
-                  } else {
-                    _scheduleDailyNotification(_selectedTime);
-                  }
-                },
-              ),
-              SizedBox(height: 20.0),
-              _buildTimePickerOption(
-                icon: Icons.access_time,
-                title: 'Daily Reminder Time',
-                subtitle: '${_selectedTime.format(context)}',
-                onTap: () => _selectTime(context),
-              ),
-              SizedBox(height: 40.0),
-              Text(
-                'You will receive a daily reminder at the selected time.',
-                style: TextStyle(color: Colors.grey),
-              ),
-              ElevatedButton(
-                onPressed: () async {
-                  await NotificationService().showNotification(
-                    1,
-                    'Test Notification',
-                    'This is a test notification',
-                  );
-                },
-                child: Text('Trigger Notification'),
-              ),
-            ],
-          ),
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _buildSwitchOption(
+              icon: Icons.notifications_active_outlined,
+              title: 'Enable Notifications',
+              value: _isNotificationEnabled,
+              onChanged: (bool value) {
+                setState(() {
+                  _isNotificationEnabled = value;
+                });
+                if (!_isNotificationEnabled) {
+                  NotificationService().flutterLocalNotificationsPlugin.cancelAll();
+                } else {
+                  _scheduleDailyNotification(_selectedTime);
+                }
+              },
+            ),
+            SizedBox(height: 20.0),
+            _buildTimePickerOption(
+              icon: Icons.access_time,
+              title: 'Daily Reminder Time',
+              subtitle: '${_selectedTime.format(context)}',
+              onTap: () => _selectTime(context),
+            ),
+            SizedBox(height: 40.0),
+            Text(
+              'You will receive a daily reminder at the selected time.',
+              style: TextStyle(color: Colors.grey),
+            ),
+            ElevatedButton(
+              onPressed: () async {
+                await NotificationService().showNotification(
+                  1,
+                  'Test Notification',
+                  'This is a test notification',
+                );
+              },
+              child: Text('Trigger Notification'),
+            ),
+          ],
         ),
-      );
+      ),
+    );
   }
 
   Widget _buildSwitchOption({

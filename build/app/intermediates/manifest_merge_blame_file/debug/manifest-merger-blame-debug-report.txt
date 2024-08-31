@@ -15,258 +15,264 @@
 15    <uses-permission android:name="android.permission.INTERNET" />
 15-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:2:5-67
 15-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:2:22-64
-16    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
-16-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:3:5-77
-16-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:3:22-74
-17
-18    <queries>
-18-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:29:5-38:15
-19        <intent>
-19-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:30:9-33:18
-20            <action android:name="android.intent.action.PROCESS_TEXT" />
-20-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:31:13-72
-20-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:31:21-70
-21
-22            <data android:mimeType="text/plain" />
-22-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:32:13-50
-22-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:32:19-48
-23        </intent>
-24        <intent>
-24-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:30:9-33:18
-25            <action android:name="android.intent.action.PROCESS_TEXT" />
-25-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:31:13-72
-25-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:31:21-70
-26
-27            <data android:mimeType="text/plain" />
-27-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:32:13-50
-27-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:32:19-48
-28        </intent>
-29    </queries>
-30
-31    <uses-permission android:name="android.permission.CAMERA" />
-31-->[:flutter_barcode_scanner] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-65
-31-->[:flutter_barcode_scanner] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:9:22-62
+16    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+16-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\debug\AndroidManifest.xml:7:5-80
+16-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\debug\AndroidManifest.xml:7:22-78
+17    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+17-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\debug\AndroidManifest.xml:8:5-78
+17-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\debug\AndroidManifest.xml:8:22-76
+18    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
+18-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:3:5-77
+18-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:3:22-74
+19
+20    <queries>
+20-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:29:5-38:15
+21        <intent>
+21-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:30:9-33:18
+22            <action android:name="android.intent.action.PROCESS_TEXT" />
+22-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:31:13-72
+22-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:31:21-70
+23
+24            <data android:mimeType="text/plain" />
+24-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:32:13-50
+24-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:32:19-48
+25        </intent>
+26        <intent>
+26-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:30:9-33:18
+27            <action android:name="android.intent.action.PROCESS_TEXT" />
+27-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:31:13-72
+27-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:31:21-70
+28
+29            <data android:mimeType="text/plain" />
+29-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:32:13-50
+29-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:32:19-48
+30        </intent>
+31    </queries>
 32
-33    <uses-feature android:name="android.hardware.camera" />
-33-->[:flutter_barcode_scanner] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:11:5-60
-33-->[:flutter_barcode_scanner] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:11:19-57
+33    <uses-permission android:name="android.permission.CAMERA" />
+33-->[:flutter_barcode_scanner] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-65
+33-->[:flutter_barcode_scanner] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:9:22-62
 34
-35    <uses-permission android:name="android.permission.FLASHLIGHT" />
-35-->[:flutter_barcode_scanner] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:13:5-69
-35-->[:flutter_barcode_scanner] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:13:22-66
-36    <uses-permission android:name="android.permission.VIBRATE" />
-36-->[:flutter_local_notifications] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-66
-36-->[:flutter_local_notifications] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:9:22-63
-37    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-37-->[:flutter_local_notifications] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:10:5-77
-37-->[:flutter_local_notifications] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:10:22-74
-38
-39    <permission
-39-->[androidx.core:core:1.13.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\a73a9bba78b2e3f48906b9417624ec5b\transformed\core-1.13.1\AndroidManifest.xml:22:5-24:47
-40        android:name="com.example.mentalhealthapp.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
-40-->[androidx.core:core:1.13.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\a73a9bba78b2e3f48906b9417624ec5b\transformed\core-1.13.1\AndroidManifest.xml:23:9-81
-41        android:protectionLevel="signature" />
-41-->[androidx.core:core:1.13.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\a73a9bba78b2e3f48906b9417624ec5b\transformed\core-1.13.1\AndroidManifest.xml:24:9-44
-42
-43    <uses-permission android:name="com.example.mentalhealthapp.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
-43-->[androidx.core:core:1.13.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\a73a9bba78b2e3f48906b9417624ec5b\transformed\core-1.13.1\AndroidManifest.xml:26:5-97
-43-->[androidx.core:core:1.13.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\a73a9bba78b2e3f48906b9417624ec5b\transformed\core-1.13.1\AndroidManifest.xml:26:22-94
+35    <uses-feature android:name="android.hardware.camera" />
+35-->[:flutter_barcode_scanner] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:11:5-60
+35-->[:flutter_barcode_scanner] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:11:19-57
+36
+37    <uses-permission android:name="android.permission.FLASHLIGHT" />
+37-->[:flutter_barcode_scanner] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:13:5-69
+37-->[:flutter_barcode_scanner] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:13:22-66
+38    <uses-permission android:name="android.permission.VIBRATE" />
+38-->[:flutter_local_notifications] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-66
+38-->[:flutter_local_notifications] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:9:22-63
+39    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+39-->[:flutter_local_notifications] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:10:5-77
+39-->[:flutter_local_notifications] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\flutter_local_notifications\intermediates\merged_manifest\debug\AndroidManifest.xml:10:22-74
+40
+41    <permission
+41-->[androidx.core:core:1.13.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\a73a9bba78b2e3f48906b9417624ec5b\transformed\core-1.13.1\AndroidManifest.xml:22:5-24:47
+42        android:name="com.example.mentalhealthapp.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+42-->[androidx.core:core:1.13.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\a73a9bba78b2e3f48906b9417624ec5b\transformed\core-1.13.1\AndroidManifest.xml:23:9-81
+43        android:protectionLevel="signature" />
+43-->[androidx.core:core:1.13.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\a73a9bba78b2e3f48906b9417624ec5b\transformed\core-1.13.1\AndroidManifest.xml:24:9-44
 44
-45    <application
-45-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:5:5-28:19
-46        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-46-->[androidx.core:core:1.13.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\a73a9bba78b2e3f48906b9417624ec5b\transformed\core-1.13.1\AndroidManifest.xml:28:18-86
-47        android:debuggable="true"
-48        android:icon="@mipmap/ic_launcher"
-48-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:7:9-43
-49        android:label="mental_health_app"
-49-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:6:9-42
-50        android:largeHeap="true"
-50-->[:flutter_barcode_scanner] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:16:9-33
-51        android:theme="@style/Theme.AppCompat.NoActionBar" >
-51-->[:flutter_barcode_scanner] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:17:9-59
-52        <activity
-52-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:8:9-24:20
-53            android:name="com.example.mentalhealthapp.MainActivity"
-53-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:9:13-41
-54            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
-54-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:13:13-163
-55            android:exported="true"
-55-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:10:13-36
-56            android:hardwareAccelerated="true"
-56-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:14:13-47
-57            android:launchMode="singleTop"
-57-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:11:13-43
-58            android:theme="@style/LaunchTheme"
-58-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:12:13-47
-59            android:windowSoftInputMode="adjustResize" >
-59-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:15:13-55
-60            <meta-data
-60-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:16:13-19:19
-61                android:name="io.flutter.embedding.android.NormalTheme"
-61-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:17:17-72
-62                android:resource="@style/NormalTheme" />
-62-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:18:17-54
-63
-64            <intent-filter>
-64-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:20:13-23:29
-65                <action android:name="android.intent.action.MAIN" />
-65-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:21:17-68
-65-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:21:25-66
-66
-67                <category android:name="android.intent.category.LAUNCHER" />
-67-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:22:17-76
-67-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:22:27-74
-68            </intent-filter>
-69        </activity>
-70
-71        <meta-data
-71-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:25:9-27:33
-72            android:name="flutterEmbedding"
-72-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:26:13-44
-73            android:value="2" />
-73-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:27:13-30
-74
-75        <activity android:name="com.amolg.flutterbarcodescanner.BarcodeCaptureActivity" />
-75-->[:flutter_barcode_scanner] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:18:9-91
-75-->[:flutter_barcode_scanner] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:18:19-88
+45    <uses-permission android:name="com.example.mentalhealthapp.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+45-->[androidx.core:core:1.13.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\a73a9bba78b2e3f48906b9417624ec5b\transformed\core-1.13.1\AndroidManifest.xml:26:5-97
+45-->[androidx.core:core:1.13.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\a73a9bba78b2e3f48906b9417624ec5b\transformed\core-1.13.1\AndroidManifest.xml:26:22-94
+46
+47    <application
+47-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:5:5-28:19
+48        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+48-->[androidx.core:core:1.13.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\a73a9bba78b2e3f48906b9417624ec5b\transformed\core-1.13.1\AndroidManifest.xml:28:18-86
+49        android:debuggable="true"
+50        android:icon="@mipmap/ic_launcher"
+50-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:7:9-43
+51        android:label="mental_health_app"
+51-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:6:9-42
+52        android:largeHeap="true"
+52-->[:flutter_barcode_scanner] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:16:9-33
+53        android:theme="@style/Theme.AppCompat.NoActionBar" >
+53-->[:flutter_barcode_scanner] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:17:9-59
+54        <activity
+54-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:8:9-24:20
+55            android:name="com.example.mentalhealthapp.MainActivity"
+55-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:9:13-41
+56            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+56-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:13:13-163
+57            android:exported="true"
+57-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:10:13-36
+58            android:hardwareAccelerated="true"
+58-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:14:13-47
+59            android:launchMode="singleTop"
+59-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:11:13-43
+60            android:theme="@style/LaunchTheme"
+60-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:12:13-47
+61            android:windowSoftInputMode="adjustResize" >
+61-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:15:13-55
+62            <meta-data
+62-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:16:13-19:19
+63                android:name="io.flutter.embedding.android.NormalTheme"
+63-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:17:17-72
+64                android:resource="@style/NormalTheme" />
+64-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:18:17-54
+65
+66            <intent-filter>
+66-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:20:13-23:29
+67                <action android:name="android.intent.action.MAIN" />
+67-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:21:17-68
+67-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:21:25-66
+68
+69                <category android:name="android.intent.category.LAUNCHER" />
+69-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:22:17-76
+69-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:22:27-74
+70            </intent-filter>
+71        </activity>
+72
+73        <meta-data
+73-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:25:9-27:33
+74            android:name="flutterEmbedding"
+74-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:26:13-44
+75            android:value="2" />
+75-->C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:27:13-30
 76
-77        <provider
-77-->[:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:11:9-19:20
-78            android:name="io.flutter.plugins.imagepicker.ImagePickerFileProvider"
-78-->[:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-82
-79            android:authorities="com.example.mentalhealthapp.flutter.image_provider"
-79-->[:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-74
-80            android:exported="false"
-80-->[:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:14:13-37
-81            android:grantUriPermissions="true" >
-81-->[:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:15:13-47
-82            <meta-data
-82-->[:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:16:13-18:75
-83                android:name="android.support.FILE_PROVIDER_PATHS"
-83-->[:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:17:17-67
-84                android:resource="@xml/flutter_image_picker_file_paths" />
-84-->[:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:18:17-72
-85        </provider> <!-- Trigger Google Play services to install the backported photo picker module. -->
-86        <service
-86-->[:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:21:9-33:19
-87            android:name="com.google.android.gms.metadata.ModuleDependencies"
-87-->[:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:22:13-78
-88            android:enabled="false"
-88-->[:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:23:13-36
-89            android:exported="false" >
-89-->[:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:24:13-37
-90            <intent-filter>
-90-->[:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:26:13-28:29
-91                <action android:name="com.google.android.gms.metadata.MODULE_DEPENDENCIES" />
-91-->[:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:27:17-94
-91-->[:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:27:25-91
-92            </intent-filter>
-93
-94            <meta-data
-94-->[:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:30:13-32:36
-95                android:name="photopicker_activity:0:required"
-95-->[:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:31:17-63
-96                android:value="" />
-96-->[:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:32:17-33
-97        </service>
-98
-99        <activity
-99-->[:url_launcher_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-13:74
-100            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
-100-->[:url_launcher_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-74
-101            android:exported="false"
-101-->[:url_launcher_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-37
-102            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
-102-->[:url_launcher_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-71
-103        <activity
-103-->[com.google.android.gms:play-services-base:17.4.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\84d0c386c0c1024e5891ecbb0404eaf3\transformed\jetified-play-services-base-17.4.0\AndroidManifest.xml:23:9-26:75
-104            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-104-->[com.google.android.gms:play-services-base:17.4.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\84d0c386c0c1024e5891ecbb0404eaf3\transformed\jetified-play-services-base-17.4.0\AndroidManifest.xml:24:13-79
-105            android:exported="false"
-105-->[com.google.android.gms:play-services-base:17.4.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\84d0c386c0c1024e5891ecbb0404eaf3\transformed\jetified-play-services-base-17.4.0\AndroidManifest.xml:25:13-37
-106            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-106-->[com.google.android.gms:play-services-base:17.4.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\84d0c386c0c1024e5891ecbb0404eaf3\transformed\jetified-play-services-base-17.4.0\AndroidManifest.xml:26:13-72
-107
-108        <meta-data
-108-->[com.google.android.gms:play-services-basement:17.4.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\2477ea83d56fd713a5af991a42534037\transformed\jetified-play-services-basement-17.4.0\AndroidManifest.xml:23:9-25:69
-109            android:name="com.google.android.gms.version"
-109-->[com.google.android.gms:play-services-basement:17.4.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\2477ea83d56fd713a5af991a42534037\transformed\jetified-play-services-basement-17.4.0\AndroidManifest.xml:24:13-58
-110            android:value="@integer/google_play_services_version" />
-110-->[com.google.android.gms:play-services-basement:17.4.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\2477ea83d56fd713a5af991a42534037\transformed\jetified-play-services-basement-17.4.0\AndroidManifest.xml:25:13-66
-111
-112        <uses-library
-112-->[androidx.window:window:1.2.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\80fb5b79871802f1b506ab3b0dc635cd\transformed\jetified-window-1.2.0\AndroidManifest.xml:23:9-25:40
-113            android:name="androidx.window.extensions"
-113-->[androidx.window:window:1.2.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\80fb5b79871802f1b506ab3b0dc635cd\transformed\jetified-window-1.2.0\AndroidManifest.xml:24:13-54
-114            android:required="false" />
-114-->[androidx.window:window:1.2.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\80fb5b79871802f1b506ab3b0dc635cd\transformed\jetified-window-1.2.0\AndroidManifest.xml:25:13-37
-115        <uses-library
-115-->[androidx.window:window:1.2.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\80fb5b79871802f1b506ab3b0dc635cd\transformed\jetified-window-1.2.0\AndroidManifest.xml:26:9-28:40
-116            android:name="androidx.window.sidecar"
-116-->[androidx.window:window:1.2.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\80fb5b79871802f1b506ab3b0dc635cd\transformed\jetified-window-1.2.0\AndroidManifest.xml:27:13-51
-117            android:required="false" />
-117-->[androidx.window:window:1.2.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\80fb5b79871802f1b506ab3b0dc635cd\transformed\jetified-window-1.2.0\AndroidManifest.xml:28:13-37
-118
-119        <provider
-119-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\60233a8897cca59c7418d5cab6e7a772\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:24:9-32:20
-120            android:name="androidx.startup.InitializationProvider"
-120-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\60233a8897cca59c7418d5cab6e7a772\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:25:13-67
-121            android:authorities="com.example.mentalhealthapp.androidx-startup"
-121-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\60233a8897cca59c7418d5cab6e7a772\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:26:13-68
-122            android:exported="false" >
-122-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\60233a8897cca59c7418d5cab6e7a772\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:27:13-37
-123            <meta-data
-123-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\60233a8897cca59c7418d5cab6e7a772\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:29:13-31:52
-124                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-124-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\60233a8897cca59c7418d5cab6e7a772\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:30:17-78
-125                android:value="androidx.startup" />
-125-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\60233a8897cca59c7418d5cab6e7a772\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:31:17-49
-126            <meta-data
-126-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\b0bc8a0d3279865545f0cefd8df11a24\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:29:13-31:52
-127                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
-127-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\b0bc8a0d3279865545f0cefd8df11a24\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:30:17-85
-128                android:value="androidx.startup" />
-128-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\b0bc8a0d3279865545f0cefd8df11a24\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:31:17-49
-129        </provider>
-130
-131        <receiver
-131-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\b0bc8a0d3279865545f0cefd8df11a24\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:34:9-52:20
-132            android:name="androidx.profileinstaller.ProfileInstallReceiver"
-132-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\b0bc8a0d3279865545f0cefd8df11a24\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:35:13-76
-133            android:directBootAware="false"
-133-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\b0bc8a0d3279865545f0cefd8df11a24\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:36:13-44
-134            android:enabled="true"
-134-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\b0bc8a0d3279865545f0cefd8df11a24\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:37:13-35
-135            android:exported="true"
-135-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\b0bc8a0d3279865545f0cefd8df11a24\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:38:13-36
-136            android:permission="android.permission.DUMP" >
-136-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\b0bc8a0d3279865545f0cefd8df11a24\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:39:13-57
-137            <intent-filter>
-137-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\b0bc8a0d3279865545f0cefd8df11a24\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:40:13-42:29
-138                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
-138-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\b0bc8a0d3279865545f0cefd8df11a24\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:41:17-91
-138-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\b0bc8a0d3279865545f0cefd8df11a24\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:41:25-88
-139            </intent-filter>
-140            <intent-filter>
-140-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\b0bc8a0d3279865545f0cefd8df11a24\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:43:13-45:29
-141                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
-141-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\b0bc8a0d3279865545f0cefd8df11a24\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:44:17-85
-141-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\b0bc8a0d3279865545f0cefd8df11a24\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:44:25-82
-142            </intent-filter>
-143            <intent-filter>
-143-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\b0bc8a0d3279865545f0cefd8df11a24\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:46:13-48:29
-144                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
-144-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\b0bc8a0d3279865545f0cefd8df11a24\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:47:17-88
-144-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\b0bc8a0d3279865545f0cefd8df11a24\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:47:25-85
-145            </intent-filter>
-146            <intent-filter>
-146-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\b0bc8a0d3279865545f0cefd8df11a24\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:49:13-51:29
-147                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
-147-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\b0bc8a0d3279865545f0cefd8df11a24\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:50:17-95
-147-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\b0bc8a0d3279865545f0cefd8df11a24\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:50:25-92
-148            </intent-filter>
-149        </receiver>
-150    </application>
-151
-152</manifest>
+77        <activity android:name="com.amolg.flutterbarcodescanner.BarcodeCaptureActivity" />
+77-->[:flutter_barcode_scanner] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:18:9-91
+77-->[:flutter_barcode_scanner] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:18:19-88
+78
+79        <provider
+79-->[:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:11:9-19:20
+80            android:name="io.flutter.plugins.imagepicker.ImagePickerFileProvider"
+80-->[:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-82
+81            android:authorities="com.example.mentalhealthapp.flutter.image_provider"
+81-->[:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-74
+82            android:exported="false"
+82-->[:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:14:13-37
+83            android:grantUriPermissions="true" >
+83-->[:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:15:13-47
+84            <meta-data
+84-->[:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:16:13-18:75
+85                android:name="android.support.FILE_PROVIDER_PATHS"
+85-->[:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:17:17-67
+86                android:resource="@xml/flutter_image_picker_file_paths" />
+86-->[:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:18:17-72
+87        </provider> <!-- Trigger Google Play services to install the backported photo picker module. -->
+88        <service
+88-->[:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:21:9-33:19
+89            android:name="com.google.android.gms.metadata.ModuleDependencies"
+89-->[:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:22:13-78
+90            android:enabled="false"
+90-->[:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:23:13-36
+91            android:exported="false" >
+91-->[:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:24:13-37
+92            <intent-filter>
+92-->[:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:26:13-28:29
+93                <action android:name="com.google.android.gms.metadata.MODULE_DEPENDENCIES" />
+93-->[:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:27:17-94
+93-->[:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:27:25-91
+94            </intent-filter>
+95
+96            <meta-data
+96-->[:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:30:13-32:36
+97                android:name="photopicker_activity:0:required"
+97-->[:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:31:17-63
+98                android:value="" />
+98-->[:image_picker_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:32:17-33
+99        </service>
+100
+101        <activity
+101-->[:url_launcher_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-13:74
+102            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
+102-->[:url_launcher_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-74
+103            android:exported="false"
+103-->[:url_launcher_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-37
+104            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+104-->[:url_launcher_android] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-71
+105        <activity
+105-->[com.google.android.gms:play-services-base:17.4.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\84d0c386c0c1024e5891ecbb0404eaf3\transformed\jetified-play-services-base-17.4.0\AndroidManifest.xml:23:9-26:75
+106            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+106-->[com.google.android.gms:play-services-base:17.4.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\84d0c386c0c1024e5891ecbb0404eaf3\transformed\jetified-play-services-base-17.4.0\AndroidManifest.xml:24:13-79
+107            android:exported="false"
+107-->[com.google.android.gms:play-services-base:17.4.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\84d0c386c0c1024e5891ecbb0404eaf3\transformed\jetified-play-services-base-17.4.0\AndroidManifest.xml:25:13-37
+108            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+108-->[com.google.android.gms:play-services-base:17.4.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\84d0c386c0c1024e5891ecbb0404eaf3\transformed\jetified-play-services-base-17.4.0\AndroidManifest.xml:26:13-72
+109
+110        <meta-data
+110-->[com.google.android.gms:play-services-basement:17.4.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\2477ea83d56fd713a5af991a42534037\transformed\jetified-play-services-basement-17.4.0\AndroidManifest.xml:23:9-25:69
+111            android:name="com.google.android.gms.version"
+111-->[com.google.android.gms:play-services-basement:17.4.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\2477ea83d56fd713a5af991a42534037\transformed\jetified-play-services-basement-17.4.0\AndroidManifest.xml:24:13-58
+112            android:value="@integer/google_play_services_version" />
+112-->[com.google.android.gms:play-services-basement:17.4.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\2477ea83d56fd713a5af991a42534037\transformed\jetified-play-services-basement-17.4.0\AndroidManifest.xml:25:13-66
+113
+114        <uses-library
+114-->[androidx.window:window:1.2.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\80fb5b79871802f1b506ab3b0dc635cd\transformed\jetified-window-1.2.0\AndroidManifest.xml:23:9-25:40
+115            android:name="androidx.window.extensions"
+115-->[androidx.window:window:1.2.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\80fb5b79871802f1b506ab3b0dc635cd\transformed\jetified-window-1.2.0\AndroidManifest.xml:24:13-54
+116            android:required="false" />
+116-->[androidx.window:window:1.2.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\80fb5b79871802f1b506ab3b0dc635cd\transformed\jetified-window-1.2.0\AndroidManifest.xml:25:13-37
+117        <uses-library
+117-->[androidx.window:window:1.2.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\80fb5b79871802f1b506ab3b0dc635cd\transformed\jetified-window-1.2.0\AndroidManifest.xml:26:9-28:40
+118            android:name="androidx.window.sidecar"
+118-->[androidx.window:window:1.2.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\80fb5b79871802f1b506ab3b0dc635cd\transformed\jetified-window-1.2.0\AndroidManifest.xml:27:13-51
+119            android:required="false" />
+119-->[androidx.window:window:1.2.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\80fb5b79871802f1b506ab3b0dc635cd\transformed\jetified-window-1.2.0\AndroidManifest.xml:28:13-37
+120
+121        <provider
+121-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\60233a8897cca59c7418d5cab6e7a772\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:24:9-32:20
+122            android:name="androidx.startup.InitializationProvider"
+122-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\60233a8897cca59c7418d5cab6e7a772\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:25:13-67
+123            android:authorities="com.example.mentalhealthapp.androidx-startup"
+123-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\60233a8897cca59c7418d5cab6e7a772\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:26:13-68
+124            android:exported="false" >
+124-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\60233a8897cca59c7418d5cab6e7a772\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:27:13-37
+125            <meta-data
+125-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\60233a8897cca59c7418d5cab6e7a772\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:29:13-31:52
+126                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+126-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\60233a8897cca59c7418d5cab6e7a772\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:30:17-78
+127                android:value="androidx.startup" />
+127-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\60233a8897cca59c7418d5cab6e7a772\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:31:17-49
+128            <meta-data
+128-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\b0bc8a0d3279865545f0cefd8df11a24\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:29:13-31:52
+129                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+129-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\b0bc8a0d3279865545f0cefd8df11a24\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:30:17-85
+130                android:value="androidx.startup" />
+130-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\b0bc8a0d3279865545f0cefd8df11a24\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:31:17-49
+131        </provider>
+132
+133        <receiver
+133-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\b0bc8a0d3279865545f0cefd8df11a24\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:34:9-52:20
+134            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+134-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\b0bc8a0d3279865545f0cefd8df11a24\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:35:13-76
+135            android:directBootAware="false"
+135-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\b0bc8a0d3279865545f0cefd8df11a24\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:36:13-44
+136            android:enabled="true"
+136-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\b0bc8a0d3279865545f0cefd8df11a24\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:37:13-35
+137            android:exported="true"
+137-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\b0bc8a0d3279865545f0cefd8df11a24\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:38:13-36
+138            android:permission="android.permission.DUMP" >
+138-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\b0bc8a0d3279865545f0cefd8df11a24\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:39:13-57
+139            <intent-filter>
+139-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\b0bc8a0d3279865545f0cefd8df11a24\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:40:13-42:29
+140                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+140-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\b0bc8a0d3279865545f0cefd8df11a24\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:41:17-91
+140-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\b0bc8a0d3279865545f0cefd8df11a24\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:41:25-88
+141            </intent-filter>
+142            <intent-filter>
+142-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\b0bc8a0d3279865545f0cefd8df11a24\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:43:13-45:29
+143                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+143-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\b0bc8a0d3279865545f0cefd8df11a24\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:44:17-85
+143-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\b0bc8a0d3279865545f0cefd8df11a24\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:44:25-82
+144            </intent-filter>
+145            <intent-filter>
+145-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\b0bc8a0d3279865545f0cefd8df11a24\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:46:13-48:29
+146                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+146-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\b0bc8a0d3279865545f0cefd8df11a24\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:47:17-88
+146-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\b0bc8a0d3279865545f0cefd8df11a24\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:47:25-85
+147            </intent-filter>
+148            <intent-filter>
+148-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\b0bc8a0d3279865545f0cefd8df11a24\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:49:13-51:29
+149                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+149-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\b0bc8a0d3279865545f0cefd8df11a24\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:50:17-95
+149-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\b0bc8a0d3279865545f0cefd8df11a24\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:50:25-92
+150            </intent-filter>
+151        </receiver>
+152    </application>
+153
+154</manifest>

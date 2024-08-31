@@ -28,7 +28,7 @@ android {
     namespace "com.example.mentalhealthapp"
     //compileSdk flutter.compileSdkVersion
     //compileSdk 31
-    compileSdkVersion 33
+    compileSdkVersion flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
 
     compileOptions {
@@ -54,10 +54,6 @@ android {
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         multiDexEnabled true
-        manifestPlaceholders = [
-                onesignal_app_id: 'YOUR_ONESIGNAL_APP_ID',
-                onesignal_channel_id: 'YOUR_ANDROID_NOTIFICATION_CHANNEL_ID'
-        ]
     }
 
     buildTypes {

@@ -77,9 +77,9 @@ MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\User
 MERGED from [androidx.print:print:1.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\cc4be3ea12ec50dbf9e270550b24f03e\transformed\print-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.window.extensions.core:core:1.0.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\70ea47c094bb9cdbe0142b50048ac10f\transformed\jetified-core-1.0.0\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.annotation:annotation-experimental:1.4.0] C:\Users\Irdina Farisya\.gradle\caches\transforms-3\91548280a7283381379832f6b8436bcb\transformed\jetified-annotation-experimental-1.4.0\AndroidManifest.xml:2:1-7:12
-INJECTED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\debug\AndroidManifest.xml:1:1-7:12
-INJECTED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\debug\AndroidManifest.xml:1:1-7:12
-INJECTED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\debug\AndroidManifest.xml:1:1-7:12
+INJECTED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\debug\AndroidManifest.xml:1:1-9:12
+INJECTED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\debug\AndroidManifest.xml:1:1-9:12
+INJECTED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\debug\AndroidManifest.xml:1:1-9:12
 	package
 		INJECTED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml
 		ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml:1:1-39:12
@@ -358,6 +358,14 @@ INJECTED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app
 	android:minSdkVersion
 		INJECTED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\debug\AndroidManifest.xml
+uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
+ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\debug\AndroidManifest.xml:7:5-80
+	android:name
+		ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\debug\AndroidManifest.xml:7:22-78
+uses-permission#android.permission.SCHEDULE_EXACT_ALARM
+ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\debug\AndroidManifest.xml:8:5-78
+	android:name
+		ADDED from C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\android\app\src\debug\AndroidManifest.xml:8:22-76
 uses-permission#android.permission.CAMERA
 ADDED from [:flutter_barcode_scanner] C:\Users\Irdina Farisya\StudioProjects\MentalHealthApp\build\flutter_barcode_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-65
 	android:name

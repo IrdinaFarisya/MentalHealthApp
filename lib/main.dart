@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:mentalhealthapp/views/UserLogin.dart';
-import 'package:mentalhealthapp/views/TherapistLogin.dart';
-import 'package:mentalhealthapp/views/TherapistRegister.dart';
-import 'package:mentalhealthapp/views/ThankYouPage.dart';
-import 'package:mentalhealthapp/views/NotificationSetting.dart';
-import 'services/OneSignalService.dart';
+import 'package:mentalhealthapp/views/UserLogin.dart'; // Replace with your actual UserLogin.dart path
+import 'package:mentalhealthapp/views/TherapistLogin.dart'; // Replace with your actual TherapistLogin.dart path
+import 'package:mentalhealthapp/views/TherapistRegister.dart'; // Replace with your actual TherapistRegister.dart path
+import 'package:mentalhealthapp/views/ThankYouPage.dart'; // Replace with your actual ThankYouPage.dart path
+import 'model/NotificationService.dart';
+import 'package:timezone/data/latest.dart' as tz;
+import 'package:timezone/timezone.dart' as tz;
 
 void main() async {
+  tz.initializeTimeZones();
   WidgetsFlutterBinding.ensureInitialized();
-  await OneSignalService().init();
+  await NotificationService().init();
   runApp(MyApp());
 }
 
@@ -28,7 +30,6 @@ class MyApp extends StatelessWidget {
         '/therapistlogin': (context) => TherapistLogin(),
         '/therapistregister': (context) => TherapistRegister(),
         '/thankyou': (context) => ThankYouPage(),
-        '/notificationsettings': (context) => NotificationSettingsPage(),
       },
     );
   }
