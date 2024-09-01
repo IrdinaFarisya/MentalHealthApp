@@ -235,7 +235,7 @@ class _MoodTrackerPageState extends State<MoodTrackerPage> {
     } else {
       print('Failed to fetch appUserId');
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Failed to fetch user information. Please try again.')),
+        SnackBar(content: Text('Please choose an emotion and describe your journal')),
       );
     }
   }

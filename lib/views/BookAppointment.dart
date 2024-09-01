@@ -244,7 +244,7 @@ class _BookAppointmentState extends State<BookAppointment> {
     if (selectedTimeSlot == null || !RegExp(r'^\d{1,2}:\d{2}$').hasMatch(selectedTimeSlot!)) {
       print('Invalid time slot format: $selectedTimeSlot');
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Invalid time slot format.')),
+        SnackBar(content: Text('Please select a time slot.')),
       );
       return;
     }
