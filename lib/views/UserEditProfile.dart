@@ -96,12 +96,19 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 onTap: _pickImage,
                 child: CircleAvatar(
                   radius: 50,
-                  backgroundImage: _profilePicture != null
-                      ? MemoryImage(_profilePicture!)
-                      : null,
-                  child: _profilePicture == null
-                      ? Icon(Icons.camera_alt, size: 50)
-                      : null,
+                  backgroundColor: Colors.grey, // This sets a background color for the avatar
+                  child: _profilePicture != null
+                      ? ColorFiltered(
+                    colorFilter: ColorFilter.mode(
+                      Colors.grey, // Grayscale effect
+                      BlendMode.saturation,
+                    ),
+                    child: Image.memory(
+                      _profilePicture!,
+                      fit: BoxFit.cover,
+                    ),
+                  )
+                      : Icon(Icons.camera_alt, size: 50, color: Colors.white),
                 ),
               ),
             ),
@@ -130,7 +137,11 @@ class _EditProfilePageState extends State<EditProfilePage> {
             Center(
               child: ElevatedButton(
                 onPressed: _updateProfile,
-                child: Text('Update Profile'),
+                child: Text('Update Profile', style: TextStyle(fontSize: 18)),
+                style: ElevatedButton.styleFrom(
+                  foregroundColor: Colors.white, backgroundColor: Colors.black, // Text color
+                  padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16), // Button padding
+                ),
               ),
             ),
           ],

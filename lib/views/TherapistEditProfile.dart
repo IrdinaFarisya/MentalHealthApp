@@ -25,33 +25,43 @@ class _EditProfilePageState extends State<EditProfilePage> {
   String? _selectedLocation;
 
   final List<String> specializations = [
-    'Clinical Psychologist',
-    'Counseling Psychologist',
-    'Child and Adolescent Therapist',
-    'Marriage and Family Therapist',
-    'Cognitive Behavioral Therapist (CBT)',
-    'Dialectical Behavior Therapist (DBT)',
-    'Trauma Therapist',
     'Addiction Therapist',
-    'Grief Counselor',
     'Anger Management Counselor',
     'Anxiety Specialist',
-    'Depression Specialist',
-    'Eating Disorder Specialist',
-    'Stress Management Counselor',
-    'Workplace Mental Health Counselor',
-    'Psychoanalyst',
-    'Neuropsychologist',
     'Behavioral Therapist',
-    'Psychiatrist',
+    'Child and Adolescent Therapist',
+    'Clinical Psychologist',
+    'Cognitive Behavioral Therapist (CBT)',
+    'Counseling Psychologist',
+    'Depression Specialist',
+    'Dialectical Behavior Therapist (DBT)',
+    'Eating Disorder Specialist',
+    'Grief Counselor',
+    'Marriage and Family Therapist',
     'Mindfulness-Based Therapist',
+    'Neuropsychologist',
     'Other',
+    'Psychoanalyst',
+    'Psychiatrist',
+    'Stress Management Counselor',
+    'Trauma Therapist',
+    'Workplace Mental Health Counselor',
   ];
 
   final List<String> locations = [
-    'PAHANG', 'PERAK', 'TERENGGANU', 'PERLIS', 'SELANGOR',
-    'NEGERI SEMBILAN', 'JOHOR', 'KELANTAN', 'KEDAH',
-    'PULAU PINANG', 'MELAKA', 'SABAH', 'SARAWAK',
+    'JOHOR',
+    'KEDAH',
+    'KELANTAN',
+    'MELAKA',
+    'NEGERI SEMBILAN',
+    'PAHANG',
+    'PERAK',
+    'PERLIS',
+    'PULAU PINANG',
+    'SABAH',
+    'SARAWAK',
+    'SELANGOR',
+    'TERENGGANU',
   ];
 
   @override
@@ -168,12 +178,19 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 onTap: _pickImage,
                 child: CircleAvatar(
                   radius: 50,
-                  backgroundImage: _profilePicture != null
-                      ? MemoryImage(_profilePicture!)
-                      : null,
-                  child: _profilePicture == null
-                      ? Icon(Icons.camera_alt, size: 50)
-                      : null,
+                  backgroundColor: Colors.grey, // This sets a background color for the avatar
+                  child: _profilePicture != null
+                      ? ColorFiltered(
+                    colorFilter: ColorFilter.mode(
+                      Colors.grey, // Grayscale effect
+                      BlendMode.saturation,
+                    ),
+                    child: Image.memory(
+                      _profilePicture!,
+                      fit: BoxFit.cover,
+                    ),
+                  )
+                      : Icon(Icons.camera_alt, size: 50, color: Colors.white),
                 ),
               ),
             ),
@@ -231,17 +248,35 @@ class _EditProfilePageState extends State<EditProfilePage> {
               obscureText: true,
             ),
             SizedBox(height: 20),
-            ElevatedButton(
+            OutlinedButton.icon(
               onPressed: _pickSupportingDocument,
-              child: Text('Upload Supporting Document'),
+              icon: const Icon(Icons.upload_file),
+              label: const Text('Upload Supporting Document'),
+              style: OutlinedButton.styleFrom(
+                foregroundColor: Colors.black, side: const BorderSide(color: Colors.black), // Outline color
+              ),
             ),
             if (_supportingDocument != null)
               Text('Supporting document uploaded'),
+            Padding(
+              padding: const EdgeInsets.only(top: 8.0),
+              child: Text(
+                'Accepted formats: .JPG, .JPEG, or .PNG. Maximum file size: 2MB.',
+                style: TextStyle(
+                  color: Colors.grey, // Adjust the color if necessary
+                  fontSize: 14, // Adjust the font size if necessary
+                ),
+              ),
+            ),
             SizedBox(height: 20),
             Center(
               child: ElevatedButton(
                 onPressed: _updateProfile,
-                child: Text('Update Profile'),
+                child: Text('Update Profile', style: TextStyle(fontSize: 18)),
+                style: ElevatedButton.styleFrom(
+                  foregroundColor: Colors.white, backgroundColor: Colors.black, // Text color
+                  padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16), // Button padding
+                ),
               ),
             ),
           ],

@@ -56,6 +56,11 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
     showDialog(
       context: context,
       builder: (BuildContext context) {
+        // Sort the specializations alphabetically
+        List<String> sortedSpecializations = [
+          ...Set<String>.from(therapists.map((t) => t.specialization ?? 'Unknown'))
+        ]..sort();
+
         return AlertDialog(
           title: Text('Filter by Specialization'),
           content: DropdownButton<String>(
@@ -67,9 +72,10 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
                 if (newValue == null) {
                   filteredTherapists = therapists;
                 } else {
-                  filteredTherapists = therapists.where((therapist) =>
-                  therapist.specialization == newValue
-                  ).toList();
+                  filteredTherapists = therapists
+                      .where((therapist) =>
+                  therapist.specialization == newValue)
+                      .toList();
                 }
               });
               Navigator.of(context).pop();
@@ -79,8 +85,7 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
                 value: null,
                 child: Text('All Specializations'),
               ),
-              ...Set<String>.from(therapists.map((t) => t.specialization ?? 'Unknown'))
-                  .map<DropdownMenuItem<String>>((String value) {
+              ...sortedSpecializations.map<DropdownMenuItem<String>>((String value) {
                 return DropdownMenuItem<String>(
                   value: value,
                   child: Text(value),
@@ -92,6 +97,7 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
       },
     );
   }
+
 
   @override
   Widget build(BuildContext context) {

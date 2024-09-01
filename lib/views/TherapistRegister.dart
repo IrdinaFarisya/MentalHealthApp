@@ -26,34 +26,45 @@ class _TherapistRegisterState extends State<TherapistRegister> {
   File? supportingDocument;
 
   final List<String> specializations = [
-    'Clinical Psychologist',
-    'Counseling Psychologist',
-    'Child and Adolescent Therapist',
-    'Marriage and Family Therapist',
-    'Cognitive Behavioral Therapist (CBT)',
-    'Dialectical Behavior Therapist (DBT)',
-    'Trauma Therapist',
     'Addiction Therapist',
-    'Grief Counselor',
     'Anger Management Counselor',
     'Anxiety Specialist',
-    'Depression Specialist',
-    'Eating Disorder Specialist',
-    'Stress Management Counselor',
-    'Workplace Mental Health Counselor',
-    'Psychoanalyst',
-    'Neuropsychologist',
     'Behavioral Therapist',
-    'Psychiatrist',
+    'Child and Adolescent Therapist',
+    'Clinical Psychologist',
+    'Cognitive Behavioral Therapist (CBT)',
+    'Counseling Psychologist',
+    'Depression Specialist',
+    'Dialectical Behavior Therapist (DBT)',
+    'Eating Disorder Specialist',
+    'Grief Counselor',
+    'Marriage and Family Therapist',
     'Mindfulness-Based Therapist',
+    'Neuropsychologist',
     'Other',
+    'Psychoanalyst',
+    'Psychiatrist',
+    'Stress Management Counselor',
+    'Trauma Therapist',
+    'Workplace Mental Health Counselor',
   ];
 
   final List<String> location = [
-    'PAHANG', 'PERAK', 'TERENGGANU', 'PERLIS', 'SELANGOR',
-    'NEGERI SEMBILAN', 'JOHOR', 'KELANTAN', 'KEDAH',
-    'PULAU PINANG', 'MELAKA', 'SABAH', 'SARAWAK',
+    'JOHOR',
+    'KEDAH',
+    'KELANTAN',
+    'MELAKA',
+    'NEGERI SEMBILAN',
+    'PAHANG',
+    'PERAK',
+    'PERLIS',
+    'PULAU PINANG',
+    'SABAH',
+    'SARAWAK',
+    'SELANGOR',
+    'TERENGGANU',
   ];
+
 
   Future<void> _pickSupportingDocument() async {
     final ImagePicker picker = ImagePicker();
@@ -277,6 +288,16 @@ class _TherapistRegisterState extends State<TherapistRegister> {
                   label: const Text('Upload Supporting Document'),
                   style: OutlinedButton.styleFrom(
                     foregroundColor: Colors.black, side: const BorderSide(color: Colors.black), // Outline color
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 8.0),
+                  child: Text(
+                    'Accepted formats: .JPG, .JPEG, or .PNG. Maximum file size: 2MB.',
+                    style: TextStyle(
+                      color: Colors.grey, // Adjust the color if necessary
+                      fontSize: 14, // Adjust the font size if necessary
+                    ),
                   ),
                 ),
                 if (supportingDocument != null)
